@@ -1,0 +1,31 @@
+.item {
+    background-color: lightgray;
+    display: flex;
+    align-items: center;
+    padding: 1em;
+}
+
+.item input[type="checkbox"] {
+    width: 2em;
+    height: 2em;
+    margin: 0.5em;
+    cursor: pointer;
+}
+
+.item input[type="checkbox"]:hover + label{
+    text-decoration: underline;
+}
+
+.item label {
+    flex-grow: 1;
+}
+
+svg {
+    margin: 1.5em;
+    width: 1.5em;
+    height: 1.5em;
+}
+
+svg:hover {
+    color: red;
+}

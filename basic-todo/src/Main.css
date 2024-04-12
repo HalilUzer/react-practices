@@ -1,0 +1,27 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  :root {
+    --BG-COLOR: mediumblue;
+    --COLOR: aliceblue;
+  }
+  
+  html {
+    font-size: 22px;
+    font-family: 'roboto', 'Oxygen';
+  }
+  
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding-bottom: 10rem;
+    max-width: 500px;
+    margin: 0 auto;
+}

@@ -1,0 +1,10 @@
+.Footer {
+    position: sticky;
+    bottom: 0;
+    background-color: var(--BG-COLOR);
+    color: var(--COLOR);
+    display: grid;
+    place-content: center;
+    padding: 1em;
+    font-size: 1rem;
+}
