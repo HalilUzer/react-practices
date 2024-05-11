@@ -1,0 +1,15 @@
+.App {
+   display: grid;
+   place-content: center;
+   min-height: 100vh;
+   gap: 1rem;
+}
+
+main {
+  display: flex;
+  width: 30vw;
+  height: 50vh;
+  flex-flow: column;
+  justify-content: space-evenly;
+  gap: 1rem;
+}

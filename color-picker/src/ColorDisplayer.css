@@ -1,0 +1,8 @@
+.ColorDisplayer {
+    flex-grow: 1;
+    display: grid;
+    place-content: center;
+    border-radius: var(--BORDER-RADIUS);
+    box-shadow: var(--BOX-SHADOW);
+border: var(--BORDER);
+}

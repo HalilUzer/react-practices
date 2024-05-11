@@ -1,0 +1,26 @@
+label {
+    position: absolute;
+    left: -999999px;
+}
+
+
+.ColorPicker input[type="text"] {
+    width: 100%;
+    border-radius: var(--BORDER-RADIUS);
+    box-shadow: var(--BOX-SHADOW);
+    padding: 0.25rem;
+    margin-top: 0.5rem;
+    border: var(--BORDER);
+    font-size: 1rem;
+    outline: none;
+}
+
+.ColorPicker button {
+    width: 100%;
+    border-radius: var(--BORDER-RADIUS);
+    box-shadow: var(--BOX-SHADOW);
+    padding: 0.25rem;
+    margin-top: 0.5rem;
+    border: var(--BORDER);
+    font-size: 1rem;
+}
