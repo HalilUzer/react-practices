@@ -1,0 +1,8 @@
+nav button {
+    flex: 1;
+}
+
+nav button:active {
+    background-color: black;
+    color: white;
+}

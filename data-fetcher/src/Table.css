@@ -1,0 +1,12 @@
+.Table {
+    padding: 30px;
+    margin: 0 auto;
+    border-collapse: collapse;
+}
+
+.Table thead th {
+    background-color: black;
+    border: 1px solid white;
+    color: white;
+    padding: 10px;
+}
