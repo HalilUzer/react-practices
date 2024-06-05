@@ -1,0 +1,237 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+}
+
+
+:root {
+  --FF: 'Open Sans', sans-serif;
+  --BUTTON-FS: 1.5rem;
+  --BUTTON-BORDER: 1px solid black;
+  --BUTTON-BORDER-RADIUS: 10px;
+  --BUTTON-PADDING: 0.75rem;
+}
+
+body {
+  font-family: var(--FF);
+  min-height: 100vh;
+  display: flex;
+  background-color: #efefef;
+}
+
+#root {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.HomePage,
+.NewPostPage,
+.AboutPage {
+  min-height: 100vh;
+  width: 100%;
+  max-width: 800px;
+  display: flex;
+  flex-flow: column;
+  box-shadow: 0px 0px 15px gray;
+  background-color: white;
+}
+
+.HomePage main,
+.NewPostPage main,
+.AboutPage main {
+  flex-grow: 1;
+}
+
+.Header {
+  text-align: left;
+  background-color: #66d8f5;
+  font-size: 1.5rem;
+  padding: 1.5rem;
+}
+
+.HomePage,
+.NewPostPage {
+  flex-grow: 1;
+}
+
+.Nav {
+  display: flex;
+  justify-content: space-between;
+  background-color: #333;
+  color: white;
+}
+
+.Nav ul {
+  display: flex;
+  justify-content: space-evenly;
+  list-style-type: none;
+  flex-grow: 1;
+  font-size: 1.5rem;
+}
+
+.Nav li {
+  margin: 1rem;
+  box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px;
+  transition: all .3s ease-in-out;
+}
+
+.Nav li:hover {
+  box-shadow: rgba(0, 0, 0, 0.22) 0px 19px 43px;
+  transform: translate3d(0px, -4px, 0px);
+}
+
+.Nav a {
+  text-decoration: none;
+  color: white;
+}
+
+.Nav label {
+  position: absolute;
+  left: -9999px;
+}
+
+.Nav form {
+  display: flex;
+  align-items: center;
+  margin-left: 1rem;
+}
+
+.Nav input[type="text"] {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1.5rem;
+  outline: none;
+}
+
+
+.Post {
+  padding: 2rem 1rem 2rem 1rem;
+  border-bottom: grey solid 1px;
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+}
+
+.Post .content {
+  flex-grow: 1;
+}
+
+.Post svg {
+  font-size: 3rem;
+}
+
+.Post svg:hover {
+  color: red;
+}
+
+.Post h2,
+.PostDate {
+  margin: 1rem 0rem 1rem 0rem;
+}
+
+.PostDate {
+  color: grey;
+
+}
+
+.Footer {
+  position: sticky;
+  bottom: 0;
+  padding: 0.5rem;
+  background-color: #66d8f5;
+  display: grid;
+  place-content: center;
+}
+
+.NewPostForm {
+  display: flex;
+  flex-flow: column;
+  justify-content: space-evenly;
+  padding: 2rem;
+}
+
+.NewPostForm input[type="text"],
+.NewPostForm textarea,
+.NewPostForm button {
+  border-radius: var(--BUTTON-BORDER-RADIUS);
+  border: var(--BUTTON-BORDER);
+}
+
+.NewPostForm input[type="text"],
+.NewPostForm textarea {
+  padding: 0.5rem;
+}
+
+.NewPostForm input[type="text"] {
+  height: 2rem;
+}
+
+.NewPostForm textarea {
+  margin-bottom: 1rem;
+  font-family: var(--FF);
+}
+
+.NewPostForm button {
+  cursor: pointer;
+  padding: var(--BUTTON-PADDING);
+}
+
+.AboutPage main {
+  padding: 2rem;
+}
+
+.Modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  border: 1px solid black;
+  padding: 50px;
+  z-index: 5000;
+}
+
+.Modal form {
+  display: flex;
+  flex-flow: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+
+.Modal .AcceptButton,
+.Modal .DenyButton {
+  border: var(--BUTTON-BORDER);
+  padding: var(--BUTTON-PADDING);
+  font-size: 1.5rem;
+  color: white;
+}
+
+.Modal .AcceptButton {
+  background-color: green;
+}
+
+.Modal .DenyButton {
+  background-color: red;
+}
+
+.PostLoadError {
+  padding: 3rem;
+}
+
+.PostLoadError button {
+  margin-top: 1rem;
+  display: block;
+  cursor: pointer;
+  border: var(--BUTTON-BORDER);
+  border-radius: var(--BUTTON-BORDER-RADIUS);
+  padding: var(--BUTTON-PADDING)
+}
