@@ -125,12 +125,22 @@ body {
     padding: 2rem 1rem 2rem 1rem;
     border-bottom: grey solid 1px;
     display: flex;
-    flex-flow: row;
-    align-items: center;
+    flex-flow: column;
+    cursor: pointer;
 }
 
-.Post .content {
-    flex-grow: 1;
+.Post .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.Post .title {
+    width: 80%;
+}
+
+.Post .Body {
+    word-break: break-word;
 }
 
 .Post svg {
@@ -138,8 +148,14 @@ body {
     cursor: pointer;
 }
 
-.Post svg:hover {
+.Post .DeleteButton:hover {
     color: red;
+}
+
+.Post form {
+    width: 20%;
+    display: flex;
+    justify-content: space-between;
 }
 
 .Post h2,
@@ -161,35 +177,35 @@ body {
     place-content: center;
 }
 
-.NewPostForm {
+.PostForm {
     display: flex;
     flex-flow: column;
     justify-content: space-evenly;
     padding: 2rem;
 }
 
-.NewPostForm input[type="text"],
-.NewPostForm textarea,
-.NewPostForm button {
+.PostForm input[type="text"],
+.PostForm textarea,
+.PostForm button {
     border-radius: var(--BUTTON-BORDER-RADIUS);
     border: var(--BUTTON-BORDER);
 }
 
-.NewPostForm input[type="text"],
-.NewPostForm textarea {
+.PostForm input[type="text"],
+.PostForm textarea {
     padding: 0.5rem;
 }
 
-.NewPostForm input[type="text"] {
+.PostForm input[type="text"] {
     height: 2rem;
 }
 
-.NewPostForm textarea {
+.PostForm textarea {
     margin-bottom: 1rem;
     font-family: var(--FF);
 }
 
-.NewPostForm button {
+.PostForm button {
     cursor: pointer;
     padding: var(--BUTTON-PADDING);
 }

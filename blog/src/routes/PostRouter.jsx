@@ -13,9 +13,6 @@ export default function PostRouter() {
 
     const {id} = useParams()
 
-    console.log(id)
-
-
     const {
         data: post,
         isLoading,

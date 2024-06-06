@@ -9,6 +9,7 @@ import AboutRouter from "./routes/AboutRouter";
 import HomeRouter from './routes/HomeRouter';
 import './index.css';
 import PostRouter from './routes/PostRouter';
+import EditPostRouter from "./routes/EditPostRouter";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -29,6 +30,10 @@ const router = createBrowserRouter([
     {
         path: "/post/:id",
         element: <PostRouter/>
+    },
+    {
+        path: "/edit/:id",
+        element: <EditPostRouter/>
     }
 ])
 
