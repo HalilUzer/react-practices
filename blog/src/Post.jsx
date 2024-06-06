@@ -6,8 +6,8 @@ import {MdDelete} from "react-icons/md";
 import {useDeletePostMutation} from './features/posts/postApi';
 import './index.css'
 
-export default function Post({post, setPost}) {
-    const [isModelOpen, setIsModelOpen] = useState(false)
+export default function Post({post}) {
+    const [isModalOpen, setIsModalOpen] = useState(false)
 
     return (
         <article className='Post'>
@@ -16,6 +16,13 @@ export default function Post({post, setPost}) {
                 <p className='PostDate'>{post.datetime}</p>
                 <p>{post.body.length <= 25 ? post.body : `${post.body.slice(0, 25)}...`}</p>
             </div>
+            <form action="" onClick={e => setIsModalOpen(true)}>
+                <button type='button'>
+                    <MdDelete/>
+                </button>
+            </form>
+            <DeletePostModal postId={post.id} isModalOpen={isModalOpen}
+                             setIsModelOpen={setIsModalOpen}/>
         </article>
     )
 }
