@@ -1,28 +1,26 @@
-import React, {useState} from 'react'
-import {redirect} from 'react-router-dom';
+import {useState} from "react";
+import {useNavigate} from 'react-router-dom';
 import DeletePostModal from './DeletePostModal';
 import {MdDelete} from "react-icons/md";
-
-import {useDeletePostMutation} from './features/posts/postApi';
 import './index.css'
 
 export default function Post({post}) {
-    const [isModalOpen, setIsModalOpen] = useState(false)
 
-    return (
-        <article className='Post'>
-            <div className="content">
-                <h2>{post.title}</h2>
-                <p className='PostDate'>{post.datetime}</p>
-                <p>{post.body.length <= 25 ? post.body : `${post.body.slice(0, 25)}...`}</p>
-            </div>
-            <form action="" onClick={e => setIsModalOpen(true)}>
-                <button type='button'>
-                    <MdDelete/>
-                </button>
-            </form>
-            <DeletePostModal postId={post.id} isModalOpen={isModalOpen}
-                             setIsModelOpen={setIsModalOpen}/>
-        </article>
-    )
+
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    return <article className='Post' style={{borderBottom: "none"}}>
+        <div className="content">
+            <h2 >{post.title}</h2>
+            <p className='PostDate'>{post.datetime}</p>
+            <p>{post.body }</p>
+        </div>
+        <form action="" onSubmit={event => event.preventDefault()}>
+            <button type='submit' onClick={e => setIsModalOpen(true)}>
+                <MdDelete/>
+            </button>
+        </form>
+        <DeletePostModal postId={post.id} isModalOpen={isModalOpen}
+                          setIsModelOpen={setIsModalOpen}/>
+    </article>
 }

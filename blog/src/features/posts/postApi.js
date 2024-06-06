@@ -1,4 +1,4 @@
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import {createApi, fetchBaseQuery} from "@reduxjs/toolkit/query/react";
 
 export const postApi = createApi({
     reducerPath: 'postsApi',
@@ -12,14 +12,6 @@ export const postApi = createApi({
             providesTags: ['Posts']
         }),
 
-        addPost: builder.mutation({
-            query: post => ({
-                url: '/posts',
-                method: 'POST',
-                body: { title: post.title, body: post.body, id: Math.ceil(Math.random() * 100).toString(), datetime: new Date() }
-            }),
-            invalidatesTags: ['Posts']
-        }),
         getPost: builder.query({
             query: postId => (
                 {
@@ -28,11 +20,26 @@ export const postApi = createApi({
                 })
         }),
 
+        addPost: builder.mutation({
+            query: post => ({
+                url: '/posts',
+                method: 'POST',
+                body: {
+                    title: post.title,
+                    body: post.body,
+                    id: Math.ceil(Math.random() * 100).toString(),
+                    datetime: new Date()
+                }
+            }),
+            invalidatesTags: ['Posts']
+        }),
+
+
         deletePost: builder.mutation({
-            query: ({ id }) => ({
+            query: ({id}) => ({
                 url: `/posts/${id}`,
                 method: 'DELETE',
-                body: { id: id.toString() }
+                body: {id: id.toString()}
             }),
             invalidatesTags: ['Posts']
         }),

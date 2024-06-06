@@ -3,11 +3,18 @@ import Header from '../Header'
 import Nav from '../Nav'
 import Footer from '../Footer'
 import {useGetPostQuery} from '../features/posts/postApi'
-import PostLoadError from '../PostLoadErrore'
+import PostLoadError from '../PostLoadError'
 import Post from "../Post";
+import {useParams} from "react-router-dom";
 
 
-export default function PostRouter({postId}) {
+export default function PostRouter() {
+
+
+    const {id} = useParams()
+
+    console.log(id)
+
 
     const {
         data: post,
@@ -16,7 +23,7 @@ export default function PostRouter({postId}) {
         isFetching,
         refetch,
         error
-    } = useGetPostQuery()
+    } = useGetPostQuery(id)
 
     return (
         <div className='PostPage'>
@@ -26,7 +33,7 @@ export default function PostRouter({postId}) {
                 {error ? <PostLoadError refetch={refetch}/>
                     : isLoading ? <p>Loading...</p>
                         : post ?
-                            <Post post={post}/>
+                            <Post  post={post} routerMode={true}/>
                             : <p>We couldn't found your post</p>}
             </main>
             <Footer/>

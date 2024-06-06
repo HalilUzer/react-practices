@@ -1,16 +1,20 @@
 import React from 'react'
 import { createPortal } from 'react-dom'
 import { useDeletePostMutation } from './features/posts/postApi';
+import {useNavigate} from "react-router-dom";
 
 
 export default function DeletePostModal({ postId, isModalOpen, setIsModelOpen }) {
     const [deletePost] = useDeletePostMutation();
 
+    const navigate = useNavigate();
+
     if (!isModalOpen) return null
     const handleDelete = (e) => {
         e.preventDefault();
-        deletePost({ id: postId })
-        setIsModelOpen(false)
+        deletePost({ id: postId });
+        setIsModelOpen(false);
+        navigate('/');
     }
 
     return (

@@ -1,13 +1,15 @@
 import React, { useCallback, useState } from 'react'
 import { useGetPostsQuery } from '../features/posts/postApi'
-import DeletePostModal from '../DeletePostModal';
+import {useNavigate} from "react-router-dom";
 import Header from './../Header'
 import Post from '../Post'
 import Nav from './../Nav'
 import Footer from './../Footer'
-import PostLoadError from '../PostLoadErrore';
+import PostLoadError from '../PostLoadError';
+import HomePagePost from "../HomePagePost";
 
 export default function HomeRouter() {
+
 
     const {
         data: posts,
@@ -33,7 +35,7 @@ export default function HomeRouter() {
                     <PostLoadError refetch={refetch} />
                 ) :
                     isLoading ? (<p style={{ padding: '2rem' }}>Loading...</p>) :
-                        posts ? (posts.length === 0 ? <p style={{ padding: '2rem' }}>No posts to display</p> : filterPosts(posts).map(post => <Post key={post.id} post={post} />)) : null}
+                        posts ? (posts.length === 0 ? <p style={{ padding: '2rem' }}>No posts to display</p> : filterPosts(posts).map(post => <HomePagePost key={post.id} post={post} />)) : null}
             </main>
             <Footer />
         </div >
