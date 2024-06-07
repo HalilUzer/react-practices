@@ -1,4 +1,7 @@
 import {createApi, fetchBaseQuery} from "@reduxjs/toolkit/query/react";
+import {format} from "date-fns";
+
+const datetimeFormatStr = 'MMMM dd, yyyy pp'
 
 export const postApi = createApi({
     reducerPath: 'postsApi',
@@ -29,7 +32,7 @@ export const postApi = createApi({
                     title: post.title,
                     body: post.body,
                     id: Math.ceil(Math.random() * 100).toString(),
-                    datetime: new Date()
+                    datetime: format(new Date(), datetimeFormatStr)
                 }
             }),
             invalidatesTags: ['Posts']
@@ -49,7 +52,7 @@ export const postApi = createApi({
             query: post => ({
                 url: `/posts/${post.id}`,
                 method: 'PUT',
-                body: {...post, datetime: new Date()}
+                body: {...post, datetime: format(new Date(), datetimeFormatStr)}
             }),
             invalidatesTags: ['Posts']
         }),

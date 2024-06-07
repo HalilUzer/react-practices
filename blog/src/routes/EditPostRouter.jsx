@@ -5,7 +5,7 @@ import {ClipLoader} from "react-spinners";
 import {MdOutlineDone} from "react-icons/md";
 import Footer from "../Footer";
 import {useGetPostQuery, useUpdatePostMutation} from "../features/posts/postApi";
-import {useParams} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 import SubmitButton from "../SubmitButton";
 
 export default function EditPostRouter() {
@@ -13,6 +13,7 @@ export default function EditPostRouter() {
     const [newPostBody, setNewPostBody] = useState('')
     const [isLoading, setIsLoading] = useState(false)
     const [isDone, setIsDone] = useState(false)
+    const navigate = useNavigate()
     const {id} = useParams()
 
     const {
@@ -37,6 +38,7 @@ export default function EditPostRouter() {
             updatePost({...post, title: newPostTitle, body: newPostBody})
             setIsDone(true)
             setIsLoading(false)
+            navigate('/')
         } catch (err) {
             console.log(err)
         }
