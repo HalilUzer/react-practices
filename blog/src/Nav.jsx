@@ -1,5 +1,4 @@
-import React, {useState} from 'react'
-import {useSelector} from 'react-redux'
+import React from 'react'
 import {Link} from 'react-router-dom'
 
 export default function Nav({keyword, setKeyword, type = ''}) {

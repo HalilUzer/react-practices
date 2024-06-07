@@ -1,8 +1,6 @@
 import React, {useEffect, useState} from "react";
 import Header from "../Header";
 import Nav from "../Nav";
-import {ClipLoader} from "react-spinners";
-import {MdOutlineDone} from "react-icons/md";
 import Footer from "../Footer";
 import {useGetPostQuery, useUpdatePostMutation} from "../features/posts/postApi";
 import {useNavigate, useParams} from "react-router-dom";
@@ -20,7 +18,7 @@ export default function EditPostRouter() {
         data: post
     } = useGetPostQuery(id)
 
-    const [updatePost, result] = useUpdatePostMutation()
+    const [updatePost] = useUpdatePostMutation()
 
 
     useEffect(() => {

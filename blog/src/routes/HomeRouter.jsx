@@ -1,8 +1,6 @@
 import React, { useCallback, useState } from 'react'
 import { useGetPostsQuery } from '../features/posts/postApi'
-import {useNavigate} from "react-router-dom";
 import Header from './../Header'
-import Post from '../Post'
 import Nav from './../Nav'
 import Footer from './../Footer'
 import PostLoadError from '../PostLoadError';
@@ -14,8 +12,6 @@ export default function HomeRouter() {
         data: posts,
         refetch,
         isLoading,
-        isFetching,
-        isError,
         error
     } = useGetPostsQuery()
 

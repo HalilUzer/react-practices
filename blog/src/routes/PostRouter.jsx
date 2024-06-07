@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React from 'react'
 import Header from '../Header'
 import Nav from '../Nav'
 import Footer from '../Footer'
@@ -16,8 +16,6 @@ export default function PostRouter() {
     const {
         data: post,
         isLoading,
-        isError,
-        isFetching,
         refetch,
         error
     } = useGetPostQuery(id)
@@ -30,7 +28,7 @@ export default function PostRouter() {
                 {error ? <PostLoadError refetch={refetch}/>
                     : isLoading ? <p>Loading...</p>
                         : post ?
-                            <Post  post={post} routerMode={true}/>
+                            <Post post={post} routerMode={true}/>
                             : <p>We couldn't found your post</p>}
             </main>
             <Footer/>
