@@ -10,7 +10,6 @@ import HomePagePost from "../HomePagePost";
 
 export default function HomeRouter() {
 
-
     const {
         data: posts,
         refetch,
@@ -20,11 +19,8 @@ export default function HomeRouter() {
         error
     } = useGetPostsQuery()
 
-
-
     const [keyword, setKeyword] = useState('')
     const filterPosts = useCallback((posts) => posts.filter(post => keyword === '' ? true : post.body.toLowerCase().includes(keyword.toLowerCase())), [keyword])
-
 
     return (
         <div className='HomePage'>

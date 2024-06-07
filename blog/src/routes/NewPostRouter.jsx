@@ -2,10 +2,8 @@ import React, {useState} from 'react'
 import Header from '../Header'
 import Nav from '../Nav'
 import Footer from '../Footer'
-import {useDispatch} from 'react-redux'
 import {useAddPostMutation} from '../features/posts/postApi'
-import {MdOutlineDone} from "react-icons/md";
-import {ClipLoader} from 'react-spinners'
+import SubmitButton from "../SubmitButton";
 
 export default function NewPostRouter() {
     const [newPostTitle, setNewPostTitle] = useState('');
@@ -39,8 +37,7 @@ export default function NewPostRouter() {
                     <input type="text" id="title" required onChange={e => setNewPostTitle(e.target.value)} autoFocus/>
                     <label htmlFor="post">Post:</label>
                     <textarea id="post" required rows={9} cols={10} onChange={e => setNewPostBody(e.target.value)}/>
-                    <button type="submit">{isLoading ? <ClipLoader size={25}/> : isDone ?
-                        <MdOutlineDone size={25}/> : "Submit"}</button>
+                    <SubmitButton isLoading={isLoading} isDone={isDone}/>
                 </form>
             </main>
             <Footer/>

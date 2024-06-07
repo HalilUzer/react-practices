@@ -5,7 +5,7 @@ export const postApi = createApi({
     baseQuery: fetchBaseQuery({
         baseUrl: 'http://localhost:3500'
     }),
-    tagTypes: ['Posts'],
+    tagTypes: ['Posts', 'Post'],
     endpoints: (builder) => ({
         getPosts: builder.query({
             query: () => '/posts',
@@ -17,6 +17,7 @@ export const postApi = createApi({
                 {
                     url: `/posts/${postId}`,
                     method: 'GET',
+                    providesTags: ['Posts']
                 })
         }),
 
@@ -47,8 +48,8 @@ export const postApi = createApi({
         updatePost: builder.mutation({
             query: post => ({
                 url: `/posts/${post.id}`,
-                method: 'PATCH',
-                body: post
+                method: 'PUT',
+                body: {...post, datetime: new Date()}
             }),
             invalidatesTags: ['Posts']
         }),
