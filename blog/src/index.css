@@ -54,13 +54,26 @@ body {
 }
 
 .Header {
-    text-align: left;
     background-color: #66d8f5;
     font-size: 1.5rem;
     padding: 1.5rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+.HeaderButtons {
+    width: 25%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.HeaderToggleContainer {
+
+}
+
+.HeaderToggle {
+
 }
 
 .Header svg {

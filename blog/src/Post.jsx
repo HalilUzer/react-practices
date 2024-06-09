@@ -7,7 +7,6 @@ import './index.css'
 
 export default function Post({post}) {
 
-
     const navigate = useNavigate();
     const [isModalOpen, setIsModalOpen] = useState(false);
 

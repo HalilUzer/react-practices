@@ -10,9 +10,13 @@ export default function Header() {
     return (
         <header className='Header'>
             <h1>React.Js Blog</h1>
-            {width < 768 ? <FaMobileAlt/> :
-                width < 992 ? <FaTabletAlt/> :
-                    <FaLaptop/>}
+            <div className='HeaderButtons'>
+                <label htmlFor="theme"></label>
+                <input type="checkbox" id="theme"/>
+                {width < 768 ? <FaMobileAlt/> :
+                    width < 992 ? <FaTabletAlt/> :
+                        <FaLaptop/>}
+            </div>
 
         </header>
     )
