@@ -17,13 +17,16 @@ html {
     --BUTTON-BORDER: 1px solid black;
     --BUTTON-BORDER-RADIUS: 10px;
     --BUTTON-PADDING: 0.75rem;
+    --LIGHT-THEME-BG: #efefef;
+    --DARK-THEME-BG: black;
+    --LIGHT-THEME-BUTTON-BG: white;
 }
 
 body {
     font-family: var(--FF);
     min-height: 100vh;
     display: flex;
-    background-color: #efefef;
+    background-color: var(--LIGHT-THEME-BG);
 }
 
 #root {
@@ -65,14 +68,32 @@ body {
 .HeaderButtons {
     width: 25%;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
-}
-.HeaderToggleContainer {
-
 }
 
 .HeaderToggle {
+    visibility: hidden;
+}
+
+.HeaderToggleLabel {
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.HeaderToggleLabel:before {
+    content: "";
+    height: 1rem;
+    width: 2rem;
+    border-radius: 1rem;
+    background-color: var(--LIGHT-THEME-BUTTON-BG);
+
+}
+
+.HeaderToggleLabel:after {
+    content: "";
 
 }
 
