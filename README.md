@@ -3,5 +3,5 @@ GIFs showcases every individual feauture in a project.
 
 |  Project | Description |
 | ------------- | ------------- |
-| blog  | Content   |
+| blog  | Simple blog application for writing articles  |
 | Content Cell  | Content Cell  |
