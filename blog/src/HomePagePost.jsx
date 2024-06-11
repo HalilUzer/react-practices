@@ -6,7 +6,7 @@ export default function HomePagePost({post}) {
     const navigate = useNavigate();
 
 
-    return <article className='Post' onClick={event => navigate(`/post/${post.id}`)}>
+    return <article className='Post' onClick={e => navigate(`/post/${post.id}`)}>
         <div className="header">
             <h2>{post.title}</h2>
             <p className='PostDate'>{post.datetime}</p>

@@ -1,7 +1,8 @@
-import React from 'react'
+import React, {useState} from 'react'
 import {Link} from 'react-router-dom'
 
 export default function Nav({keyword, setKeyword, type = ''}) {
+
     return (
         <nav className='Nav'>
             {type === 'search' && <form action="">
