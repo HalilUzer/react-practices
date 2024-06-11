@@ -39,6 +39,13 @@ export default function App() {
 
     const [isDark, setIsDark] = useState(window.matchMedia("(prefers-color-scheme: dark)").matches)
 
+    useEffect(() => {
+        if (isDark) {
+            document.body.classList.add('DarkMode')
+        } else {
+            document.body.classList.remove('DarkMode')
+        }
+    }, [isDark])
 
     return (
         <ThemeContext.Provider value={{isDark, setIsDark}}>

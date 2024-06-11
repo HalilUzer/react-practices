@@ -1,13 +1,15 @@
-import React, {useContext, useRef} from "react";
+import React, {useContext, useEffect, useRef} from "react";
 import {ThemeContext} from "./contexts/ThemeContext";
 
 export default function ThemeToggleButton() {
 
-    const themeContext = useRef(useContext(ThemeContext))
+    const themeContext = useContext(ThemeContext)
 
 
-    return (<div className="HeaderToggleContainer">
-        <input type="checkbox" id="theme" className="HeaderToggle" onClick={e => themeContext.current.theme === 'light' ? themeContext.current.theme = 'dark' : null}/>
-        <label htmlFor="theme" className="HeaderToggleLabel">Dark Mode</label>
-    </div>)
+    return (
+        <div className="HeaderToggleContainer">
+            <input type="checkbox" id="theme" className="HeaderToggle"
+                   onClick={e => themeContext.setIsDark(!themeContext.isDark)} value={themeContext.isDark}/>
+            <label htmlFor="theme" className="HeaderToggleLabel">Dark Mode</label>
+        </div>)
 }

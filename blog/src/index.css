@@ -328,3 +328,8 @@ body {
     border-radius: var(--BUTTON-BORDER-RADIUS);
     padding: var(--BUTTON-PADDING)
 }
+
+.DarkMode {
+    background-color: black;
+    color: white;
+}
