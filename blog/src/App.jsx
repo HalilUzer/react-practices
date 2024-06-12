@@ -8,7 +8,7 @@ import NewPostRouter from "./routes/NewPostRouter";
 import AboutRouter from "./routes/AboutRouter";
 import PostRouter from "./routes/PostRouter";
 import EditPostRouter from "./routes/EditPostRouter";
-import {ThemeContext} from "./contexts/ThemeContext";
+import {ThemeContext} from "./context/ThemeContext";
 
 
 const router = createBrowserRouter([
@@ -41,9 +41,9 @@ export default function App() {
 
     useEffect(() => {
         if (isDark) {
-            document.body.classList.add('DarkMode')
+            document.body.classList.add('BodyDarkMode')
         } else {
-            document.body.classList.remove('DarkMode')
+            document.body.classList.remove('BodyDarkMode')
         }
     }, [isDark])
 

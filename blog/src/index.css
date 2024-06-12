@@ -18,7 +18,7 @@ html {
     --BUTTON-BORDER-RADIUS: 10px;
     --BUTTON-PADDING: 0.75rem;
     --LIGHT-THEME-BG: #efefef;
-    --DARK-THEME-BG: black;
+    --DARK-THEME-BG: #333;;
     --LIGHT-THEME-BUTTON-BG: white;
 }
 
@@ -329,7 +329,6 @@ body {
     padding: var(--BUTTON-PADDING)
 }
 
-.DarkMode {
-    background-color: black;
-    color: white;
+.BodyDarkMode {
+    background-color: var(--DARK-THEME-BG);
 }
