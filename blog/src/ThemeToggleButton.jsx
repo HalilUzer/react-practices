@@ -7,9 +7,9 @@ export default function ThemeToggleButton() {
 
 
     return (
-        <div className="HeaderToggleContainer">
-            <input type="checkbox" id="theme" className="HeaderToggle"
+        <div className="flex items-center">
+            <input type="checkbox" id="theme" className="hidden"
                    onClick={e => themeContext.setIsDark(!themeContext.isDark)} value={themeContext.isDark}/>
-            <label htmlFor="theme" className="HeaderToggleLabel">Dark Mode</label>
+            <label htmlFor="theme" className="flex center size-6 cursor-pointer relative before:content-none before:h-3 before:w-3 rounded-xl">Dark Mode</label>
         </div>)
 }

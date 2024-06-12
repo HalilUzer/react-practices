@@ -10,7 +10,7 @@ export default function Header() {
     const navigate = useNavigate()
 
     return (
-        <header className='flex justify-between items-center bg-[#66d8f5] size-20 p-6 w-full'>
+        <header className='flex justify-between items-center bg-[#66d8f5] text-3xl p-6 w-full'>
             <h1>React.Js Blog</h1> 
             <div className={'flex w-1/3 justify-around items-center'}>
                 <ThemeToggleButton />

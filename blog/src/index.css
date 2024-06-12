@@ -76,23 +76,6 @@ body {
     align-items: center;
 }
 
-.HeaderToggleContainer {
-    display: flex;
-    align-items: center;
-}
-
-.HeaderToggle {
-    visibility: hidden;
-}
-
-.HeaderToggleLabel {
-    display: flex;
-    align-items: center;
-    font-size: 1.5rem;
-    cursor: pointer;
-    position: relative;
-}
-
 .HeaderToggleLabel:before {
     content: "";
     height: 1rem;
