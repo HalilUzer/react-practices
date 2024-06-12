@@ -144,7 +144,7 @@ body {
 
 .Nav li {
     margin: 1rem;
-    box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px;
+    box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
     transition: all .3s ease-in-out;
 }
 
