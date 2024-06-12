@@ -1,8 +1,7 @@
-import React from 'react'
 import {FaLaptop, FaTabletAlt, FaMobileAlt} from "react-icons/fa";
 import './index.css'
-import useWindowSize from "./hooks/useWindowSize";
-import ThemeToggleButton from "./ThemeToggleButton";
+import useWindowSize from "./hooks/useWindowSize.js";
+import ThemeToggleButton from "./ThemeToggleButton.jsx";
 
 export default function Header() {
 

@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { postApi } from "./postApi";
+import { postApi } from "./postApi.js";
 
 
 export const postsSlice = createSlice({

@@ -1,10 +1,10 @@
 import React, { useCallback, useState } from 'react'
-import { useGetPostsQuery } from '../features/posts/postApi'
-import Header from './../Header'
-import Nav from './../Nav'
-import Footer from './../Footer'
-import PostLoadError from '../PostLoadError';
-import HomePagePost from "../HomePagePost";
+import { useGetPostsQuery } from '../features/posts/postApi.js'
+import Header from '../Header.jsx'
+import Nav from '../Nav.jsx'
+import Footer from '../Footer.jsx'
+import PostLoadError from '../PostLoadError.jsx';
+import HomePagePost from "../HomePagePost.jsx";
 
 export default function HomeRouter() {
 

@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from "react";
-import Header from "../Header";
-import Nav from "../Nav";
-import Footer from "../Footer";
-import {useGetPostQuery, useUpdatePostMutation} from "../features/posts/postApi";
+import Header from "../Header.jsx";
+import Nav from "../Nav.jsx";
+import Footer from "../Footer.jsx";
+import {useGetPostQuery, useUpdatePostMutation} from "../features/posts/postApi.js";
 import {useNavigate, useParams} from "react-router-dom";
-import SubmitButton from "../SubmitButton";
+import SubmitButton from "../SubmitButton.jsx";
 
 export default function EditPostRouter() {
     const [newPostTitle, setNewPostTitle] = useState('')

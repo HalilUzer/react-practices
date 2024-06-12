@@ -1,5 +1,4 @@
-import React from 'react'
-import {useDeletePostMutation} from './features/posts/postApi';
+import {useDeletePostMutation} from './features/posts/postApi.js';
 import {useNavigate} from "react-router-dom";
 
 

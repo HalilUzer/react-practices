@@ -1,5 +1,5 @@
 import {useState} from "react";
-import DeletePostModal from './DeletePostModal';
+import DeletePostModal from './DeletePostModal.jsx';
 import {MdDelete} from "react-icons/md";
 import {CiSettings} from "react-icons/ci";
 import {useNavigate} from "react-router-dom";

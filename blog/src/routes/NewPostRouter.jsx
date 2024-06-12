@@ -1,9 +1,9 @@
 import React, {useState} from 'react'
-import Header from '../Header'
-import Nav from '../Nav'
-import Footer from '../Footer'
-import {useAddPostMutation} from '../features/posts/postApi'
-import SubmitButton from "../SubmitButton";
+import Header from '../Header.jsx'
+import Nav from '../Nav.jsx'
+import Footer from '../Footer.jsx'
+import {useAddPostMutation} from '../features/posts/postApi.js'
+import SubmitButton from "../SubmitButton.jsx";
 
 export default function NewPostRouter() {
     const [newPostTitle, setNewPostTitle] = useState('');
