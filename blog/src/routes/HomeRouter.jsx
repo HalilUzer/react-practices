@@ -1,7 +1,7 @@
 import React, { useCallback, useState } from 'react'
 import { useGetPostsQuery } from '../features/posts/postApi.js'
 import Header from '../Header.jsx'
-import Nav from '../Nav.jsx'
+import Nav from '../Navigation.jsx'
 import Footer from '../Footer.jsx'
 import PostLoadError from '../PostLoadError.jsx';
 import HomePagePost from "../HomePagePost.jsx";

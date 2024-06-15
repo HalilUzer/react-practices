@@ -1,6 +1,6 @@
 import React from 'react'
 import Header from '../Header.jsx'
-import Nav from '../Nav.jsx'
+import Nav from '../Navigation.jsx'
 import Footer from '../Footer.jsx'
 
 export default function AboutRouter() {
