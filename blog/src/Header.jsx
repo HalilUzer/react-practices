@@ -14,7 +14,7 @@ export default function Header() {
             <a href="" onClick={e => { e.preventDefault(); navigate('/') }}>
                 <h1>React.Js Blog</h1>
             </a>
-            <div className={'flex w-1/3 justify-around items-center'}>
+            <div className='flex w-1/3 justify-around items-center'>
                 <ThemeToggleButton />
                 {width < 768 ? <FaMobileAlt /> :
                     width < 992 ? <FaTabletAlt /> :

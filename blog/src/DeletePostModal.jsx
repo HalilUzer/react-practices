@@ -29,7 +29,7 @@ export default function DeletePostModal({ postId, isModalOpen, setIsModelOpen })
 
     return (
         <div className="">
-            <dialog className='flex flex-col justify-center fixed -translate-x-1/2 -translate-y-1/2 bg-white border-1 p-14 top-1/2 left-1/2 backdrop:bg-[rgba(0, 0, 0, 0.1)]' ref={dialogRef}>
+            <dialog className='flex flex-col justify-center fixed -translate-x-1/2 -translate-y-1/2 bg-white border-1 p-14 top-1/2 left-1/2 backdrop:bg-back/50' ref={dialogRef}>
                 <h2>Are You Sure?</h2>
                 <form action="" onSubmit={(e) => e.preventDefault()} className='flex justify-around items-center w-full'>
                     <button className='text-2xl text-white w-16 cursor-pointer border p-3 bg-green-600' onClick={handleDelete}>Yes</button>
