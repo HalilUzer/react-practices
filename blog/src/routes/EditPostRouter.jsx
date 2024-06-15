@@ -13,13 +13,12 @@ export default function EditPostRouter() {
     const [isDone, setIsDone] = useState(false)
     const navigate = useNavigate()
     const { id } = useParams()
-
+    
     const {
         data: post
     } = useGetPostQuery(id)
 
     const [updatePost] = useUpdatePostMutation()
-
 
     useEffect(() => {
         if (post) {
@@ -27,7 +26,6 @@ export default function EditPostRouter() {
             setNewPostTitle(post.title)
         }
     }, [post]);
-
 
     const handleSubmit = e => {
         e.preventDefault()

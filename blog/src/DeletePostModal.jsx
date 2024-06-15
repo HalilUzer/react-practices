@@ -1,27 +1,38 @@
-import {useDeletePostMutation} from './features/posts/postApi.js';
-import {useNavigate} from "react-router-dom";
+import { useEffect, useRef } from 'react';
+import { useDeletePostMutation } from './features/posts/postApi.js';
+import { useNavigate } from "react-router-dom";
 
 
-export default function DeletePostModal({postId, isModalOpen, setIsModelOpen}) {
+export default function DeletePostModal({ postId, isModalOpen, setIsModelOpen }) {
 
-
-
+    const dialogRef = useRef()
     const [deletePost] = useDeletePostMutation();
     const navigate = useNavigate();
+
+    useEffect(() => {
+
+        if (isModalOpen) {
+            dialogRef.current?.showModal()
+        }
+        else {
+            dialogRef.current?.close()
+        }
+    }, [isModalOpen])
+
     if (!isModalOpen) return null
 
 
 
     const handleDelete = (e) => {
         e.preventDefault();
-        deletePost({id: postId});
+        deletePost({ id: postId });
         setIsModelOpen(false);
         navigate('/');
     }
 
     return (
-        <div className="fixed bg-[rgba(0, 0, 0, 0.5)] top-0 left-0 w-full h-full z-20">
-            <dialog className='Modal'>
+        <div className="">
+            <dialog className='Modal' ref={dialogRef}>
                 <h2>Are You Sure?</h2>
                 <form action="" onSubmit={(e) => e.preventDefault()}>
                     <button className='AcceptButton' onClick={handleDelete}>Yes</button>

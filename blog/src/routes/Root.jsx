@@ -8,7 +8,7 @@ export default function Root() {
         <div className='flex flex-col shadow bg-white min-h-[100vh] w-full max-w-[800px]'>
             <Header />
             <Nav />
-            <main className="grow m-4">
+            <main className="grow">
                 <Outlet />
             </main>
             <Footer />

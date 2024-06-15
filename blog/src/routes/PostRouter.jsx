@@ -9,10 +9,7 @@ import { useParams } from "react-router-dom";
 
 
 export default function PostRouter() {
-
-
     const { id } = useParams()
-
     const {
         data: post,
         isLoading,

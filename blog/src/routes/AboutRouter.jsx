@@ -5,9 +5,9 @@ import Footer from '../Footer.jsx'
 
 export default function AboutRouter() {
   return (
-    <>
+    <div className='m-4'>
       <h2>About</h2>
-      <p className='m-4'>This is a blog.</p>
-    </>
+      <p>This is a blog.</p>
+    </div>
   )
 }

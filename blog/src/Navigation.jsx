@@ -4,9 +4,6 @@ import SearchBar from './SearchBar'
 
 export default function Nav({ keyword, setKeyword }) {
     const location = useLocation()
-
-    console.log(location)
-
     return (
         <nav className='flex space-x-0 bg-[#333] text-white p-3'>
             {location.pathname === '/' && <SearchBar keyword={keyword} setKeyword={setKeyword} />}
