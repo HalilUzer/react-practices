@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 export default function Nav({ keyword, setKeyword, type = '' }) {
 
     return (
-        <nav className='flex space-x-0 bg-[#333] text-white'>
+        <nav className='flex space-x-0 bg-[#333] text-white p-3'>
             {type === 'search' && <form action="" className='flex align-center ml-4'>
                 <label htmlFor="searchBar" className='absolute left-full'>Search Bar</label>
                 <input className='text-2xl outline-none' type="text" id="searchBar" placeholder='Search Posts' onChange={e => setKeyword(e.target.value)}

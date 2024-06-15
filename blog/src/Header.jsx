@@ -11,7 +11,9 @@ export default function Header() {
 
     return (
         <header className='flex justify-between items-center bg-[#66d8f5] text-3xl p-6 w-full'>
-            <h1>React.Js Blog</h1>
+            <a href="" onClick={e => { e.preventDefault(); navigate('/') }}>
+                <h1>React.Js Blog</h1>
+            </a>
             <div className={'flex w-1/3 justify-around items-center'}>
                 <ThemeToggleButton />
                 {width < 768 ? <FaMobileAlt /> :

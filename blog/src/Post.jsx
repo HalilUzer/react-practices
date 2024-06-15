@@ -11,23 +11,23 @@ export default function Post({post}) {
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     return (
-        <article className='Post' style={{borderBottom: "none", cursor: "default"}}>
-            <div className="header">
-                <div className='title'><h2>{post.title}</h2>
-                    <p className='PostDate'>{post.datetime}</p>
+        <article className='pt-8 px-4 pb-8 py-4' style={{borderBottom: "none", cursor: "default"}}>
+            <div className="flex items-center justify-between">
+                <div className='w-10/12'><h2>{post.title}</h2>
+                    <p className='mt-4 mb-4'>{post.datetime}</p>
                 </div>
                 <form action="" onSubmit={event => event.preventDefault()}>
                     <button type='submit' onClick={e => navigate(`/edit/${post.id}`)}>
                         <CiSettings/>
                     </button>
                     <button type='submit' onClick={e => setIsModalOpen(true)}>
-                        <MdDelete className='DeleteButton'/>
+                        <MdDelete className='text-red-600'/>
                     </button>
                 </form>
                 <DeletePostModal postId={post.id} isModalOpen={isModalOpen}
                                  setIsModelOpen={setIsModalOpen}/>
             </div>
-            <p className='Body'>{post.body}</p>
+            <p className='break-words'>{post.body}</p>
         </article>
     )
 
