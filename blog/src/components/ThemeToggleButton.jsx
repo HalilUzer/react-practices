@@ -6,12 +6,12 @@ export default function ThemeToggleButton() {
     const themeContext = useContext(ThemeContext)
 
     return (
-        <div className="flex items-center justify-center">
-            <input type="checkbox" id="theme" className="h-0 w-0 hidden"
+        <div className="">
+            <input type="checkbox" id="theme" className="peer h-0 w-0 hidden checked:translate-x-full"
                 onClick={e => themeContext.setIsDark(!themeContext.isDark)} value={themeContext.isDark} />
-            <label htmlFor="theme" className="flex relative bg-white w-20 h-8 cursor-pointer rounded-3xl justify-start items-center
-            after:absolute after:left-1 after:w-5 after:h-5 after:bg-black after:rounded-3xl
-            before:absolute before:left-1 before:w-5 before:h-5 before:bg-black before:rounded-3xl"></label>
+            <label htmlFor="theme" className="flex relative before:bg-white before:w-20 h-8 before:cursor-pointer before:rounded-3xl before:justify-start before:items-center
+            after:absolute after:w-5 after:h-5 after:bg-black after:rounded-3xl after:left-1 after:top-1.5
+            peer-checked:after:translate-x-full"></label>
         </div>)
 }
 
