@@ -1,15 +1,15 @@
 import { Provider } from "react-redux";
-import store from "./app/store.js";
+import store from "./config/reduxStore.js";
 import { createBrowserRouter, createRoutesFromElements, RouterProvider } from "react-router-dom";
 import React, { useEffect, useState } from "react";
-import HomeRouter from "./routes/HomeRouter.jsx";
-import ErrorRouter from "./routes/ErrorRouter.jsx";
-import NewPostRouter from "./routes/NewPostRouter.jsx";
-import AboutRouter from "./routes/AboutRouter.jsx";
-import PostRouter from "./routes/PostRouter.jsx";
-import EditPostRouter from "./routes/EditPostRouter.jsx";
+import HomeRouter from "./HomeRouter.jsx";
+import ErrorRouter from "./ErrorRouter.jsx";
+import NewPostRouter from "./NewPostRouter.jsx";
+import AboutRouter from "./AboutRouter.jsx";
+import PostRouter from ".s/PostRouter.jsx";
+import EditPostRouter from "./EditPostRouter.jsx";
 import { ThemeContext } from "./context/ThemeContext.js";
-import Root from "./routes/Root.jsx";
+import Root from "./Root.jsx";
 
 
 const router = createBrowserRouter([
@@ -32,12 +32,15 @@ const router = createBrowserRouter([
             },
             {
                 path: "/post/:id",
-                element: <PostRouter />
+                element: <PostRouter />,
+                children: [
+                    {
+                        path: "/post/:id/edit",
+                        element: <EditPostRouter />
+                    }
+                ]
             },
-            {
-                path: "/edit/:id",
-                element: <EditPostRouter />
-            }
+            
         ]
     },
 

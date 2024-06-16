@@ -17,7 +17,7 @@ export default function Post({post}) {
                     <p className='mt-4 mb-4'>{post.datetime}</p>
                 </div>
                 <form action="" onSubmit={e => e.preventDefault()}>
-                    <button type='submit' onClick={e => navigate(`/edit/${post.id}`)}>
+                    <button type='submit' onClick={e => navigate(`/post/${post.id}/edit`)}>
                         <CiSettings className="size-12"/>
                     </button>
                     <button type='submit' onClick={e => setIsModalOpen(true)}>

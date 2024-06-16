@@ -1,10 +1,10 @@
 import React from 'react'
-import Header from '../Header.jsx'
-import Nav from '../Navigation.jsx'
-import Footer from '../Footer.jsx'
+import Header from '../components/Header.jsx'
+import Nav from '../components/Navigation.jsx'
+import Footer from '../components/Footer.jsx'
 import { useGetPostQuery } from '../features/posts/postApi.js'
-import PostLoadError from '../PostLoadError.jsx'
-import Post from "../Post.jsx";
+import PostLoadError from '../components/PostLoadError.jsx'
+import Post from "../components/Post.jsx";
 import { useParams } from "react-router-dom";
 
 

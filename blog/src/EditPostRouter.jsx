@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import Header from "../Header.jsx";
-import Nav from "../Navigation.jsx";
-import Footer from "../Footer.jsx";
+import Header from "../components/Header.jsx";
+import Nav from "../components/Navigation.jsx";
+import Footer from "../components/Footer.jsx";
 import { useGetPostQuery, useUpdatePostMutation } from "../features/posts/postApi.js";
 import { useNavigate, useParams } from "react-router-dom";
-import SubmitButton from "../SubmitButton.jsx";
+import SubmitButton from "../components/SubmitButton.jsx";
 
 export default function EditPostRouter() {
     const [newPostTitle, setNewPostTitle] = useState('')
@@ -13,7 +13,7 @@ export default function EditPostRouter() {
     const [isDone, setIsDone] = useState(false)
     const navigate = useNavigate()
     const { id } = useParams()
-    
+
     const {
         data: post
     } = useGetPostQuery(id)
@@ -41,7 +41,6 @@ export default function EditPostRouter() {
     }
 
     return (
-
         <form className='PostForm' action="" onSubmit={handleSubmit}>
             <label htmlFor="title">Title:</label>
             <input type="text" id="title" required onChange={e => setNewPostTitle(e.target.value)} autoFocus

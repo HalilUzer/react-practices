@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useRef } from "react";
-import { ThemeContext } from "./context/ThemeContext.js";
+import { ThemeContext } from "../context/ThemeContext.js";
 
 export default function ThemeToggleButton() {
 

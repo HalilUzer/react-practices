@@ -1,7 +1,7 @@
 import React from 'react'
-import Header from '../Header.jsx'
-import Nav from '../Navigation.jsx'
-import Footer from '../Footer.jsx'
+import Header from '../components/Header.jsx'
+import Nav from '../components/Navigation.jsx'
+import Footer from '../components/Footer.jsx'
 
 export default function AboutRouter() {
   return (

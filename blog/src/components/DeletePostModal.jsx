@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import { useDeletePostMutation } from './features/posts/postApi.js';
+import { useDeletePostMutation } from '../features/posts/postApi.js';
 import { useNavigate } from "react-router-dom";
 
 
