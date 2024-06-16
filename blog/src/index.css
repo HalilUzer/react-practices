@@ -100,7 +100,7 @@ body {
     transition: transform 250ms ease-in-out;
 }
 
-.HeaderToggle:checked+.HeaderToggleLabel:after {
+.HeaderToggle:checked +.HeaderToggleLabel:after {
     transform: translateX(100%);
 }
 
