@@ -1,5 +1,5 @@
-import {createApi, fetchBaseQuery} from "@reduxjs/toolkit/query/react";
-import {format} from "date-fns";
+import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { format } from "date-fns";
 
 const datetimeFormatStr = 'MMMM dd, yyyy pp'
 
@@ -20,7 +20,6 @@ export const postApi = createApi({
                 {
                     url: `/posts/${postId}`,
                     method: 'GET',
-                    providesTags: ['Posts']
                 })
         }),
 
@@ -40,10 +39,10 @@ export const postApi = createApi({
 
 
         deletePost: builder.mutation({
-            query: ({id}) => ({
+            query: ({ id }) => ({
                 url: `/posts/${id}`,
                 method: 'DELETE',
-                body: {id: id.toString()}
+                body: { id: id.toString() }
             }),
             invalidatesTags: ['Posts']
         }),
@@ -52,7 +51,7 @@ export const postApi = createApi({
             query: post => ({
                 url: `/posts/${post.id}`,
                 method: 'PUT',
-                body: {...post, datetime: format(new Date(), datetimeFormatStr)}
+                body: { ...post, datetime: format(new Date(), datetimeFormatStr) }
             }),
             invalidatesTags: ['Posts']
         }),
