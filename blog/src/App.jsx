@@ -6,10 +6,10 @@ import HomeRouter from "./HomeRouter.jsx";
 import ErrorRouter from "./ErrorRouter.jsx";
 import NewPostRouter from "./NewPostRouter.jsx";
 import AboutRouter from "./AboutRouter.jsx";
-import PostRouter from ".s/PostRouter.jsx";
+import PostRouter from "./PostRouter.jsx";
 import EditPostRouter from "./EditPostRouter.jsx";
 import { ThemeContext } from "./context/ThemeContext.js";
-import Root from "./Root.jsx";
+import Root from "./RootRouter.jsx";
 
 
 const router = createBrowserRouter([
@@ -32,15 +32,14 @@ const router = createBrowserRouter([
             },
             {
                 path: "/post/:id",
-                element: <PostRouter />,
-                children: [
-                    {
-                        path: "/post/:id/edit",
-                        element: <EditPostRouter />
-                    }
-                ]
+                element: <PostRouter />
             },
-            
+            {
+
+                path: "/edit/:id",
+                element: <EditPostRouter />
+
+            }
         ]
     },
 

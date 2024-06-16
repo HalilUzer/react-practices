@@ -1,10 +1,7 @@
 import React from 'react'
-import Header from '../components/Header.jsx'
-import Nav from '../components/Navigation.jsx'
-import Footer from '../components/Footer.jsx'
-import { useGetPostQuery } from '../features/posts/postApi.js'
-import PostLoadError from '../components/PostLoadError.jsx'
-import Post from "../components/Post.jsx";
+import { useGetPostQuery } from './features/posts/postApi.js'
+import PostLoadError from './components/PostLoadError.jsx'
+import Post from "./components/Post.jsx";
 import { useParams } from "react-router-dom";
 
 
@@ -23,5 +20,6 @@ export default function PostRouter() {
                 : post ?
                     <Post post={post} routerMode={true} />
                     : <p> We couldn't found your post </p>
+        
     )
 }

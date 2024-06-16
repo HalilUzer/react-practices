@@ -1,8 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
 
 * {
     margin: 0;
@@ -33,6 +30,11 @@ body {
     display: flex;
     background-color: var(--LIGHT-THEME-BG);
 }
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 
 #root {
     flex-grow: 1;

@@ -1,7 +1,7 @@
 import React, { useCallback, useState } from 'react'
-import { useGetPostsQuery } from '../features/posts/postApi.js'
-import PostLoadError from '../components/PostLoadError.jsx';
-import HomePagePost from "../components/HomePagePost.jsx";
+import { useGetPostsQuery } from './features/posts/postApi.js'
+import PostLoadError from './components/PostLoadError.jsx';
+import HomePagePost from "./components/HomePagePost.jsx";
 
 export default function HomeRouter() {
     const {

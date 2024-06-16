@@ -1,5 +1,4 @@
 import { FaLaptop, FaTabletAlt, FaMobileAlt } from "react-icons/fa";
-import './index.css'
 import useWindowSize from "../hooks/useWindowSize.js";
 import ThemeToggleButton from "./ThemeToggleButton.jsx";
 import { useNavigate } from "react-router-dom";
@@ -20,7 +19,6 @@ export default function Header() {
                     width < 992 ? <FaTabletAlt /> :
                         <FaLaptop />}
             </div>
-
         </header>
     )
 }

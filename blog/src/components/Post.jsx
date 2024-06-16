@@ -3,7 +3,6 @@ import DeletePostModal from './DeletePostModal.jsx';
 import {MdDelete} from "react-icons/md";
 import {CiSettings} from "react-icons/ci";
 import {useNavigate} from "react-router-dom";
-import './index.css'
 
 export default function Post({post}) {
 
@@ -17,7 +16,7 @@ export default function Post({post}) {
                     <p className='mt-4 mb-4'>{post.datetime}</p>
                 </div>
                 <form action="" onSubmit={e => e.preventDefault()}>
-                    <button type='submit' onClick={e => navigate(`/post/${post.id}/edit`)}>
+                    <button type='submit' onClick={e => navigate(`/edit/${post.id}`)}>
                         <CiSettings className="size-12"/>
                     </button>
                     <button type='submit' onClick={e => setIsModalOpen(true)}>
