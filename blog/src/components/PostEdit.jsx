@@ -1,9 +1,9 @@
-import {useState} from 'react'
+import { useState } from 'react'
 import SubmitButton from "./SubmitButton";
 
-export default function PostEdit({ handleSubmit, isLoading, isDone }) {
+export default function PostEdit({ handleSubmit, isLoading, isDone, currentPost = null }) {
 
-    const [newPost, setNewPost] = useState({ title: '', body: '' })
+    const [newPost, setNewPost] = useState(currentPost ? currentPost : { title: '', body: '' })
 
 
     return (

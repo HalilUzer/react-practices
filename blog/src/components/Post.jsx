@@ -1,10 +1,10 @@
-import {useState} from "react";
+import { useState } from "react";
 import DeletePostModal from './DeletePostModal.jsx';
-import {MdDelete} from "react-icons/md";
-import {CiSettings} from "react-icons/ci";
-import {useNavigate} from "react-router-dom";
+import { MdDelete } from "react-icons/md";
+import { CiSettings } from "react-icons/ci";
+import { useNavigate } from "react-router-dom";
 
-export default function Post({post}) {
+export default function Post({ post }) {
 
     const navigate = useNavigate();
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -17,14 +17,14 @@ export default function Post({post}) {
                 </div>
                 <form action="" onSubmit={e => e.preventDefault()}>
                     <button type='submit' onClick={e => navigate(`/edit/${post.id}`)}>
-                        <CiSettings className="size-12"/>
+                        <CiSettings className="size-12" />
                     </button>
                     <button type='submit' onClick={e => setIsModalOpen(true)}>
-                        <MdDelete className='hover:text-red-600 size-12'/>
+                        <MdDelete className='hover:text-red-600 size-12' />
                     </button>
                 </form>
                 <DeletePostModal postId={post.id} isModalOpen={isModalOpen}
-                                 setIsModelOpen={setIsModalOpen}/>
+                    setIsModelOpen={setIsModalOpen} />
             </div>
             <p className='break-words'>{post.body}</p>
         </article>

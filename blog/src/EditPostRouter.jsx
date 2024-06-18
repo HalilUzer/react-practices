@@ -32,7 +32,6 @@ export default function EditPostRouter() {
     }
 
     return (
-        <PostEdit handleSubmit={handleSubmit} isDone={isDone} isLoading={isLoading} />
-
+        <PostEdit handleSubmit={handleSubmit} isDone={isDone} isLoading={isLoading} currentPost={post}/>
     )
 }
