@@ -23,6 +23,6 @@ export default function NewPostRouter() {
     }
 
     return (
-        <PostEdit handleSubmit={handleSubmit} isDone={isDone} isLoading={isLoading}/>
+        <PostEdit handleSubmit={handleSubmit} isDone={isDone} isLoading={isLoading} />
     )
 }

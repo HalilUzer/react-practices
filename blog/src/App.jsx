@@ -51,9 +51,9 @@ export default function App() {
 
     useEffect(() => {
         if (isDark) {
-            document.body.classList.add('BodyDarkMode')
+            document.body.classList.add('dark')
         } else {
-            document.body.classList.remove('BodyDarkMode')
+            document.body.classList.remove('dark')
         }
     }, [isDark])
 

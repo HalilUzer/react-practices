@@ -9,7 +9,7 @@ export default function Header() {
     const navigate = useNavigate()
 
     return (
-        <header className='flex justify-between items-center bg-[#66d8f5] text-3xl p-6 w-full'>
+        <header className='flex justify-between items-center bg-[#66d8f5] text-3xl p-6 w-full dark:bg-blue-950'>
             <a href="" onClick={e => { e.preventDefault(); navigate('/') }}>
                 <h1>React.Js Blog</h1>
             </a>

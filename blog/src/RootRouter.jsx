@@ -5,7 +5,7 @@ import Footer from "./components/Footer"
 
 export default function RootRouter() {
     return (
-        <div className='flex flex-col shadow bg-white min-h-[100vh] w-full max-w-[800px] m-auto'>
+        <div className='flex flex-col shadow bg-white min-h-[100vh] w-full max-w-[800px] m-auto dark:bg-gray-600 dark:text-white'>
             <Header />
             <Nav />
             <main className="grow">
