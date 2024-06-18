@@ -9,6 +9,8 @@ export default function NewPostRouter() {
     const [isDone, setIsDone] = useState(false)
     const [addPost] = useAddPostMutation()
 
+    const borderStyle = 'border border-black border-solid rounded-lg'
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
@@ -25,12 +27,11 @@ export default function NewPostRouter() {
     }
 
     return (
-
-        <form className='PostForm' action="" onSubmit={handleSubmit}>
-            <label htmlFor="title">Title:</label>
-            <input type="text" id="title" required onChange={e => setNewPostTitle(e.target.value)} autoFocus />
-            <label htmlFor="post">Post:</label>
-            <textarea id="post" required rows={9} cols={10} onChange={e => setNewPostBody(e.target.value)} />
+        <form className='flex flex-col p-3' action="" onSubmit={handleSubmit}>
+            <label htmlFor="title">Title</label>
+            <input type="text" id="title" required onChange={e => setNewPostTitle(e.target.value)} autoFocus className="border-2 border-black border-solid rounded-lg" />
+            <label htmlFor="post">Post</label>
+            <textarea id="post" required rows={9} cols={10} onChange={e => setNewPostBody(e.target.value)} className="border-2 border-black border-solid rounded-lg" />
             <SubmitButton isLoading={isLoading} isDone={isDone} />
         </form>
 
