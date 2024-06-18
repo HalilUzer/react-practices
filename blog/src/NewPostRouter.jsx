@@ -1,39 +1,28 @@
 import React, { useState } from 'react'
 import { useAddPostMutation } from './features/posts/postApi.js'
-import SubmitButton from "./components/SubmitButton.jsx";
+import PostEdit from './components/PostEdit.jsx';
+import { useNavigate } from 'react-router-dom';
 
 export default function NewPostRouter() {
-    const [newPostTitle, setNewPostTitle] = useState('');
-    const [newPostBody, setNewPostBody] = useState('');
     const [isLoading, setIsLoading] = useState(false);
     const [isDone, setIsDone] = useState(false)
     const [addPost] = useAddPostMutation()
+    const navigate = useNavigate()
 
-    const borderStyle = 'border border-black border-solid rounded-lg'
-
-    const handleSubmit = async (e) => {
+    const handleSubmit = async (e, newPost) => {
         e.preventDefault();
         try {
-            const addPostPromise = addPost({ title: newPostTitle, body: newPostBody })
+            const addPostPromise = addPost(newPost)
             setIsLoading(true)
             await addPostPromise;
-            setNewPostBody('')
-            setNewPostTitle('')
             setIsLoading(false)
             setIsDone(true)
+            navigate('/')
         } catch (error) {
-
         }
     }
 
     return (
-        <form className='flex flex-col p-3' action="" onSubmit={handleSubmit}>
-            <label htmlFor="title">Title</label>
-            <input type="text" id="title" required onChange={e => setNewPostTitle(e.target.value)} autoFocus className="border-2 border-black border-solid rounded-lg" />
-            <label htmlFor="post">Post</label>
-            <textarea id="post" required rows={9} cols={10} onChange={e => setNewPostBody(e.target.value)} className="border-2 border-black border-solid rounded-lg" />
-            <SubmitButton isLoading={isLoading} isDone={isDone} />
-        </form>
-
+        <PostEdit handleSubmit={handleSubmit} isDone={isDone} isLoading={isLoading}/>
     )
 }

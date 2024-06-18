@@ -53,7 +53,7 @@ export const postApi = createApi({
                 method: 'PUT',
                 body: { ...post, datetime: format(new Date(), datetimeFormatStr) }
             }),
-            invalidatesTags: ['Posts']
+            invalidatesTags: ['Posts', 'Post']
         }),
     })
 })
