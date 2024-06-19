@@ -18,7 +18,7 @@ export default function HomeRouter() {
         error ? (
             <RetryForm refetch={refetch} />
         ) :
-            isLoading ? (<p style={{ padding: '2rem' }}>Loading...</p>) :
-                posts ? (posts.length === 0 ? <p style={{ padding: '2rem' }}>No posts to display</p> : filterPosts(posts).map(post => <HomePagePost key={post.id} post={post} />)) : null
+            isLoading ? (<p className='p-8'>Loading...</p>) :
+                posts ? (posts.length === 0 ? <p className='p-8'>No posts to display</p> : filterPosts(posts).map(post => <HomePagePost key={post.id} post={post} />)) : null
     )
 }
