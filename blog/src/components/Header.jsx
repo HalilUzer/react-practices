@@ -1,6 +1,6 @@
-import { FaLaptop, FaTabletAlt, FaMobileAlt } from "react-icons/fa";
 import useWindowSize from "../hooks/useWindowSize.js";
 import ThemeToggleButton from "./ThemeToggleButton.jsx";
+import { FaLaptop, FaTabletAlt, FaMobileAlt } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 
 export default function Header() {

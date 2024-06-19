@@ -5,24 +5,22 @@ import SubmitButton from "./components/SubmitButton.jsx";
 import PostEditForm from "./components/PostEditForm.jsx";
 
 export default function EditPostRouter() {
-   
+
     const [isLoading, setIsLoading] = useState(false)
     const [isDone, setIsDone] = useState(false)
+    const [updatePost] = useUpdatePostMutation()
     const navigate = useNavigate()
-    const { id } = useParams()
 
+    const { id } = useParams()
     const {
         data: post
     } = useGetPostQuery(id)
-
-    const [updatePost] = useUpdatePostMutation()
-
 
     const handleSubmit = (e, newPost) => {
         e.preventDefault()
         try {
             setIsLoading(true)
-            updatePost({ ...post, ...newPost})
+            updatePost({ ...post, ...newPost })
             setIsDone(true)
             setIsLoading(false)
             navigate('/')
@@ -32,6 +30,6 @@ export default function EditPostRouter() {
     }
 
     return (
-        <PostEditForm handleSubmit={handleSubmit} isDone={isDone} isLoading={isLoading} currentPost={post}/>
+        <PostEditForm handleSubmit={handleSubmit} isDone={isDone} isLoading={isLoading} currentPost={post} />
     )
 }

@@ -13,7 +13,7 @@ export default function HomeRouter() {
     } = useGetPostsQuery()
 
     const [keyword] = useOutletContext();
-    
+
     const filterPosts = useCallback((posts) => posts.filter(post => keyword === '' ? true : post.body.toLowerCase().includes(keyword.toLowerCase())), [keyword])
 
     return (

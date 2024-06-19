@@ -11,9 +11,9 @@ export default function RootRouter() {
     return (
         <div className='flex flex-col shadow bg-white min-h-[100vh] w-full max-w-[800px] m-auto dark:bg-gray-600 dark:text-white'>
             <Header />
-            <Navigation keyword={keyword} setKeyword={setKeyword}/>
+            <Navigation keyword={keyword} setKeyword={setKeyword} />
             <main className="grow">
-                <Outlet context={[keyword]}/>
+                <Outlet context={[keyword]} />
             </main>
             <Footer />
         </div>

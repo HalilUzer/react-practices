@@ -22,7 +22,7 @@ html {
     --BUTTON-BORDER: 1px solid black;
     --BUTTON-BORDER-RADIUS: 10px;
     --BUTTON-PADDING: 0.75rem;
-    --LIGHT-THEME-BG: #efefef;
+    --BG: #efefef;
     --DARK-THEME-BG: #333;
     ;
     --LIGHT-THEME-BUTTON-BG: white;
@@ -30,9 +30,8 @@ html {
 
 body {
     font-family: var(--FF);
-    background-color: var(--LIGHT-THEME-BG);
+    background-color: var(--BG);
 }
-
 
 /*
 #root {

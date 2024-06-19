@@ -1,6 +1,6 @@
 import { Provider } from "react-redux";
 import store from "./config/reduxStore.js";
-import { createBrowserRouter, createRoutesFromElements, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import HomeRouter from "./HomeRouter.jsx";
 import ErrorRouter from "./ErrorRouter.jsx";
@@ -38,7 +38,6 @@ const router = createBrowserRouter([
 
                 path: "/edit/:id",
                 element: <EditPostRouter />
-
             }
         ]
     },
@@ -52,8 +51,10 @@ export default function App() {
     useEffect(() => {
         if (isDark) {
             document.body.classList.add('dark')
+            document.body.style.backgroundColor = 'black'
         } else {
             document.body.classList.remove('dark')
+            document.body.style.backgroundColor = '#efefef'
         }
     }, [isDark])
 
