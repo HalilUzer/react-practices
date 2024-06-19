@@ -1,6 +1,6 @@
 import React from 'react'
 import { useGetPostQuery } from './features/posts/postApi.js'
-import PostLoadError from './components/PostLoadError.jsx'
+import RetryForm from './components/RetryForm.jsx'
 import Post from "./components/Post.jsx";
 import { useParams } from "react-router-dom";
 
@@ -15,7 +15,7 @@ export default function PostRouter() {
     } = useGetPostQuery(id)
 
     return (
-        error ? <PostLoadError refetch={refetch} />
+        error ? <RetryForm refetch={refetch} />
             : isLoading ? <p>Loading...</p>
                 : post ?
                     <Post post={post} routerMode={true} />

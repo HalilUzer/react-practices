@@ -6,7 +6,7 @@ export default function ThemeToggleButton() {
     const themeContext = useContext(ThemeContext)
 
     return (
-        <div className="">
+        <div>
             <input type="checkbox" id="theme" className="peer h-0 w-0 hidden"
                 onClick={e => themeContext.setIsDark(!themeContext.isDark)} value={themeContext.isDark} />
             <label htmlFor="theme" className="flex relative before:bg-white before:w-20 h-8 before:cursor-pointer before:rounded-3xl before:justify-start before:items-center before:dark:bg-black

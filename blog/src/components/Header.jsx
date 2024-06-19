@@ -8,6 +8,7 @@ export default function Header() {
     const { width } = useWindowSize()
     const navigate = useNavigate()
 
+
     return (
         <header className='flex justify-between items-center bg-[#66d8f5] text-3xl p-6 w-full dark:bg-blue-950'>
             <a href="" onClick={e => { e.preventDefault(); navigate('/') }}>

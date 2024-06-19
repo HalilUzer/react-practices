@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from 'react'
 import { useGetPostsQuery } from './features/posts/postApi.js'
-import PostLoadError from './components/PostLoadError.jsx';
+import RetryForm from './components/RetryForm.jsx';
 import HomePagePost from "./components/HomePagePost.jsx";
 
 export default function HomeRouter() {
@@ -16,7 +16,7 @@ export default function HomeRouter() {
 
     return (
         error ? (
-            <PostLoadError refetch={refetch} />
+            <RetryForm refetch={refetch} />
         ) :
             isLoading ? (<p style={{ padding: '2rem' }}>Loading...</p>) :
                 posts ? (posts.length === 0 ? <p style={{ padding: '2rem' }}>No posts to display</p> : filterPosts(posts).map(post => <HomePagePost key={post.id} post={post} />)) : null

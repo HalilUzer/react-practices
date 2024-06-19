@@ -1,12 +1,11 @@
 import { useState } from 'react'
 import SubmitButton from "./SubmitButton";
-import { ClipLoader, MdOutlineDone } from 'react-spinners';
+import { ClipLoader } from 'react-spinners';
+import { MdOutlineDone } from 'react-icons/md';
 
-export default function PostEdit({ handleSubmit, isLoading, isDone, currentPost = null }) {
+export default function PostEditForm({ handleSubmit, isLoading, isDone, currentPost = null }) {
 
     const [newPost, setNewPost] = useState(currentPost ? currentPost : { title: '', body: '' })
-
-
     return (
         <form className='flex flex-col p-3' action="" onSubmit={e => handleSubmit(e, newPost)}>
             <label htmlFor="title">Title</label>

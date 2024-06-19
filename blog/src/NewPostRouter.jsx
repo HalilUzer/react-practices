@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useAddPostMutation } from './features/posts/postApi.js'
-import PostEdit from './components/PostEdit.jsx';
+import PostEditForm from './components/PostEditForm.jsx';
 import { useNavigate } from 'react-router-dom';
 
 export default function NewPostRouter() {
@@ -23,6 +23,6 @@ export default function NewPostRouter() {
     }
 
     return (
-        <PostEdit handleSubmit={handleSubmit} isDone={isDone} isLoading={isLoading} />
+        <PostEditForm handleSubmit={handleSubmit} isDone={isDone} isLoading={isLoading} />
     )
 }

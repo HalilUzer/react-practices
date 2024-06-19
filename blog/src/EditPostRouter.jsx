@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useGetPostQuery, useUpdatePostMutation } from "./features/posts/postApi.js";
 import { useNavigate, useParams } from "react-router-dom";
 import SubmitButton from "./components/SubmitButton.jsx";
-import PostEdit from "./components/PostEdit.jsx";
+import PostEditForm from "./components/PostEditForm.jsx";
 
 export default function EditPostRouter() {
    
@@ -32,6 +32,6 @@ export default function EditPostRouter() {
     }
 
     return (
-        <PostEdit handleSubmit={handleSubmit} isDone={isDone} isLoading={isLoading} currentPost={post}/>
+        <PostEditForm handleSubmit={handleSubmit} isDone={isDone} isLoading={isLoading} currentPost={post}/>
     )
 }
