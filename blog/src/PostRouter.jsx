@@ -1,11 +1,17 @@
-import React from 'react'
-import { useGetPostQuery } from './features/posts/postApi.js'
 import RetryForm from './components/RetryForm.jsx'
 import Post from "./components/Post.jsx";
-import { useParams } from "react-router-dom";
+import DeletePostModal from './components/DeletePostModal.jsx';
+import { useState, useEffect } from 'react';
+import { useGetPostQuery, useDeletePostMutation } from './features/posts/postApi.js'
+import { useNavigate, useParams } from "react-router-dom";
 
 
 export default function PostRouter() {
+
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [deletePost] = useDeletePostMutation();
+    const navigate = useNavigate()
+
     const { id } = useParams()
     const {
         data: post,
@@ -14,12 +20,24 @@ export default function PostRouter() {
         error
     } = useGetPostQuery(id)
 
+
+    const handleDelete = (e) => {
+        e.preventDefault();
+        deletePost({ id: post.id });
+        setIsModalOpen(false);
+        navigate('/');
+    }
+
     return (
         error ? <RetryForm refetch={refetch} />
             : isLoading ? <p>Loading...</p>
                 : post ?
-                    <Post post={post} routerMode={true} />
-                    : <p> We couldn't found your post </p>
-        
+                    <>
+                        <Post post={post} routerMode={true} setIsModalOpen={setIsModalOpen} />
+                        <DeletePostModal postId={post.id} isModalOpen={isModalOpen}
+                            setIsModelOpen={setIsModalOpen} handleDelete={handleDelete} />
+                    </>
+                    : <p> We couldnt find your post </p>
+
     )
 }

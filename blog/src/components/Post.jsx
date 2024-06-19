@@ -1,15 +1,12 @@
-import { useState } from "react";
-import DeletePostModal from './DeletePostModal.jsx';
 import { MdDelete } from "react-icons/md";
 import { CiSettings } from "react-icons/ci";
 import { useNavigate } from "react-router-dom";
 import SubmitButton from "./SubmitButton.jsx";
 
-export default function Post({ post }) {
+export default function Post({ post, setIsModalOpen }) {
 
     const navigate = useNavigate();
-    const [isModalOpen, setIsModalOpen] = useState(false);
-
+    
     return (
         <article className='pt-8 px-4 pb-8 py-4'>
             <div className="flex items-center justify-normal">
@@ -24,8 +21,7 @@ export default function Post({ post }) {
                         <MdDelete className='hover:text-red-600 size-12' onClick={e => setIsModalOpen(true)} />
                     </SubmitButton>
                 </form>
-                <DeletePostModal postId={post.id} isModalOpen={isModalOpen}
-                    setIsModelOpen={setIsModalOpen} />
+                
             </div>
             <p className='break-words'>{post.body}</p>
         </article>

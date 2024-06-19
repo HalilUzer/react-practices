@@ -14,7 +14,3 @@ export default function ThemeToggleButton() {
             peer-checked:after:translate-x-12 after:transition-all"></label>
         </div>)
 }
-
-/*"flex center size-6 cursor-pointer relative 
-            before:content-[''] before:h-3 before:w-3 before:border before:bg-white before:rounded-xl 
-            after:content-[''] after:h-[0.8rem] after:w[0.8-rem] after:bg-black after:rounded-xl text-sm"*/

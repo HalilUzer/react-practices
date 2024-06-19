@@ -1,13 +1,9 @@
-import { useEffect, useRef } from 'react';
-import { useDeletePostMutation } from '../features/posts/postApi.js';
-import { useNavigate } from "react-router-dom";
+import { useRef, useEffect } from 'react';
 
 
-export default function DeletePostModal({ postId, isModalOpen, setIsModelOpen }) {
+export default function DeletePostModal({ postId, isModalOpen, setIsModelOpen, handleDelete }) {
 
     const dialogRef = useRef()
-    const [deletePost] = useDeletePostMutation();
-    const navigate = useNavigate();
 
     useEffect(() => {
         if (isModalOpen) {
@@ -17,15 +13,8 @@ export default function DeletePostModal({ postId, isModalOpen, setIsModelOpen })
             dialogRef.current?.close()
         }
     }, [isModalOpen])
-
+    
     if (!isModalOpen) return null
-
-    const handleDelete = (e) => {
-        e.preventDefault();
-        deletePost({ id: postId });
-        setIsModelOpen(false);
-        navigate('/');
-    }
 
     return (
         <div className="">
