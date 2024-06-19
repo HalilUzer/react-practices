@@ -2,7 +2,7 @@ import React from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import SearchBar from './SearchBar'
 
-export default function Nav({ keyword, setKeyword }) {
+export default function Navigation({ keyword, setKeyword }) {
     const location = useLocation()
     return (
         <nav className='flex space-x-0 bg-[#333] text-white p-3 text-base'>
