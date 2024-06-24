@@ -8,7 +8,9 @@ export default {
   ],
   theme: {
     extend: {
-
+      colors: {
+        'dark-blue': '#002554'
+      }
     }
   },
   plugins: [],
