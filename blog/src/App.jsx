@@ -2,20 +2,20 @@ import { Provider } from "react-redux";
 import store from "./config/reduxStore.js";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import React, { useEffect, useState } from "react";
-import HomeRouter from "./HomeRouter.jsx";
-import ErrorRouter from "./ErrorRouter.jsx";
-import NewPostRouter from "./NewPostRouter.jsx";
-import AboutRouter from "./AboutRouter.jsx";
-import PostRouter from "./PostRouter.jsx";
-import EditPostRouter from "./EditPostRouter.jsx";
+import HomeRouter from "./routers/HomeRouter.jsx";
+import ErrorRouter from "./routers/ErrorRouter.jsx";
+import NewPostRouter from "./routers/NewPostRouter.jsx";
+import AboutRouter from "./routers/AboutRouter.jsx";
+import PostRouter from "./routers/PostRouter.jsx";
+import EditPostRouter from "./routers/EditPostRouter.jsx";
 import { ThemeContext } from "./context/ThemeContext.js";
-import Root from "./RootRouter.jsx";
+import RootRouter from "./routers/RootRouter.jsx";
 
 
 const router = createBrowserRouter([
     {
         path: "/",
-        element: <Root />,
+        element: <RootRouter />,
         errorElement: <ErrorRouter />,
         children: [
             {

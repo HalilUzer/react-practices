@@ -1,8 +1,8 @@
-import RetryForm from './components/RetryForm.jsx'
-import Post from "./components/Post.jsx";
-import DeletePostModal from './components/DeletePostModal.jsx';
+import RetryForm from '../components/RetryForm.jsx'
+import Post from "../components/Post.jsx";
+import DeletePostModal from '../components/DeletePostModal.jsx';
 import { useState, useEffect } from 'react';
-import { useGetPostQuery, useDeletePostMutation } from './features/posts/postApi.js'
+import { useGetPostQuery, useDeletePostMutation } from '../features/posts/postApi.js'
 import { useNavigate, useParams } from "react-router-dom";
 
 
