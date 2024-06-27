@@ -1,7 +1,7 @@
 import { Provider } from "react-redux";
 import store from "./config/reduxStore.js";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import HomeRouter from "./routers/HomeRouter.jsx";
 import ErrorRouter from "./routers/ErrorRouter.jsx";
 import NewPostRouter from "./routers/NewPostRouter.jsx";
@@ -48,15 +48,13 @@ export default function App() {
 
     const [isDark, setIsDark] = useState(window.matchMedia("(prefers-color-scheme: dark)").matches)
 
-    useEffect(() => {
-        if (isDark) {
-            document.body.classList.add('dark')
-            document.body.style.backgroundColor = 'black'
-        } else {
-            document.body.classList.remove('dark')
-            document.body.style.backgroundColor = '#efefef'
-        }
-    }, [isDark])
+    if (isDark) {
+        document.body.classList.add('dark')
+        document.body.style.backgroundColor = 'black'
+    } else {
+        document.body.classList.remove('dark')
+        document.body.style.backgroundColor = '#efefef'
+    }
 
     return (
         <ThemeContext.Provider value={{ isDark, setIsDark }}>

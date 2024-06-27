@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useGetPostQuery, useUpdatePostMutation } from "../features/posts/postApi.js";
 import { useNavigate, useParams } from "react-router-dom";
-import SubmitButton from "../components/SubmitButton.jsx";
 import PostEditForm from "../components/PostEditForm.jsx";
 
 export default function EditPostRouter() {
