@@ -5,7 +5,7 @@ import SubmitButton from "./SubmitButton.jsx";
 
 export default function Post({ post, setIsModalOpen }) {
     const navigate = useNavigate();
-    
+
     return (
         <article className='pt-8 px-4 pb-8 py-4'>
             <div className="flex items-center justify-normal">
@@ -13,14 +13,14 @@ export default function Post({ post, setIsModalOpen }) {
                     <p className='mt-4 mb-4'>{post.datetime}</p>
                 </div>
                 <form action="" className="flex justify-around grow" onSubmit={e => e.preventDefault()}>
-                    <SubmitButton>
-                        <CiSettings className="size-12" onClick={e => navigate(`/edit/${post.id}`)} />
+                    <SubmitButton onClick={e => navigate(`/edit/${post.id}`)}>
+                        <CiSettings className="size-12" />
                     </SubmitButton>
-                    <SubmitButton>
-                        <MdDelete className='hover:text-red-600 size-12' onClick={e => setIsModalOpen(true)} />
+                    <SubmitButton onClick={e => setIsModalOpen(true)}>
+                        <MdDelete className='group-hover:text-red-600 size-12' />
                     </SubmitButton>
                 </form>
-                
+
             </div>
             <p className='break-words'>{post.body}</p>
         </article>
