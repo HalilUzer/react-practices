@@ -2,9 +2,7 @@ import { useRef } from 'react';
 
 
 export default function DeletePostModal({ postId, isModalOpen, setIsModelOpen, handleDelete }) {
-
     const dialogRef = useRef()
-
 
     if (isModalOpen) {
         dialogRef.current?.showModal()
@@ -13,8 +11,6 @@ export default function DeletePostModal({ postId, isModalOpen, setIsModelOpen, h
         dialogRef.current?.close()
         return null
     }
-
-
 
     return (
         <div className="">

@@ -4,12 +4,10 @@ import { useNavigate, useParams } from "react-router-dom";
 import PostEditForm from "../components/PostEditForm.jsx";
 
 export default function EditPostRouter() {
-
     const [isLoading, setIsLoading] = useState(false)
     const [isDone, setIsDone] = useState(false)
     const [updatePost] = useUpdatePostMutation()
     const navigate = useNavigate()
-
     const { id } = useParams()
     const {
         data: post

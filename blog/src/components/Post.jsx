@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 import SubmitButton from "./SubmitButton.jsx";
 
 export default function Post({ post, setIsModalOpen }) {
-
     const navigate = useNavigate();
     
     return (

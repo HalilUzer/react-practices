@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 export default function HomePagePost({ post }) {
     const navigate = useNavigate();
+    
     return (
         <article className='pt-8 px-4 pb-8 py-4 cursor-pointer border-b-gray-500 border-b-2' onClick={e => navigate(`/post/${post.id}`)}>
             <div className="flex items-center justify-between">

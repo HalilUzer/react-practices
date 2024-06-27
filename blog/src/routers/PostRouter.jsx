@@ -11,7 +11,6 @@ export default function PostRouter() {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [deletePost] = useDeletePostMutation();
     const navigate = useNavigate()
-
     const { id } = useParams()
     const {
         data: post,
