@@ -11,10 +11,10 @@ export default function DeletePostModal({ postId, isModalOpen, setIsModelOpen, h
     }
     else {
         dialogRef.current?.close()
+        return null
     }
 
 
-    if (!isModalOpen) return null
 
     return (
         <div className="">
