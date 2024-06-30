@@ -1,4 +1,12 @@
-export default function SearchBar({ keyword, setKeyword }) {
+import React from "react"
+import { Dispatch, SetStateAction } from "react"
+
+type props = {
+    keyword: string,
+    setKeyword: Dispatch<SetStateAction<string>>
+}
+
+export default function SearchBar({ keyword, setKeyword } : props) {
     
     return (
         <form action="" className='flex align-center ml-4'>

@@ -1,5 +1,5 @@
 import { Link, useLocation } from 'react-router-dom'
-import SearchBar from './SearchBar'
+import SearchBar from './SearchBar.tsx'
 
 export default function Navigation({ keyword, setKeyword }) {
     const location = useLocation()
