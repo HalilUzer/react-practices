@@ -10,6 +10,7 @@ import AboutRouter from "./routers/AboutRouter.jsx";
 import PostRouter from "./routers/PostRouter.jsx";
 import EditPostRouter from "./routers/EditPostRouter.jsx";
 import RootRouter from "./routers/RootRouter.jsx";
+import SignUpRouter from "./routers/SignUpRouter.jsx";
 
 
 const router = createBrowserRouter([
@@ -41,6 +42,10 @@ const router = createBrowserRouter([
             }
         ]
     },
+    {
+        path: "/sign-up",
+        element: <SignUpRouter />
+    }
 
 ])
 
