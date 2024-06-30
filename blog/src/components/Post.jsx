@@ -1,7 +1,7 @@
 import { MdDelete } from "react-icons/md";
 import { CiSettings } from "react-icons/ci";
 import { useNavigate } from "react-router-dom";
-import SubmitButton from "./SubmitButton.jsx";
+import SubmitButton from "./SubmitButton.tsx";
 
 export default function Post({ post, setIsModalOpen }) {
     const navigate = useNavigate();

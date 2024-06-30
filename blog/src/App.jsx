@@ -1,6 +1,6 @@
 import { Provider } from "react-redux";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { ThemeContext } from "./context/ThemeContext.js";
+import { ThemeContext } from "./context/ThemeContext.ts";
 import React, { useState } from "react";
 import store from "./config/reduxStore.js";
 import HomeRouter from "./routers/HomeRouter.jsx";
