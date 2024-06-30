@@ -1,9 +1,19 @@
-import { useState } from 'react'
+import React, { MouseEvent, useState } from 'react'
 import { ClipLoader } from 'react-spinners';
 import { MdOutlineDone } from 'react-icons/md';
 import SubmitButton from "./SubmitButton";
+import { NewPost, Post } from '../features/posts/postApi';
 
-export default function PostEditForm({ handleSubmit, isLoading, isDone, currentPost = null }) {
+
+
+type props = {
+    handleSubmit: (e: MouseEvent<HTMLButtonElement>, newPost: NewPost) => void,
+    isLoading: boolean,
+    isDone: boolean,
+    currentPost?: Post | null
+}
+
+export default function PostEditForm({ handleSubmit, isLoading, isDone, currentPost = null }: props) {
     const [newPost, setNewPost] = useState(currentPost ? currentPost : { title: '', body: '' })
 
     return (

@@ -3,11 +3,16 @@ import { format } from "date-fns";
 
 const datetimeFormatStr = 'MMMM dd, yyyy pp'
 
-type Post = {
+export type Post = {
     id: number,
     title: string,
     body: string
     datetime : string
+}
+
+export type NewPost = {
+    title: string,
+    body: string
 }
 
 export const postApi = createApi({
@@ -31,7 +36,7 @@ export const postApi = createApi({
             providesTags: ['Post']
         }),
 
-        addPost: builder.mutation<void, Post>({
+        addPost: builder.mutation<void, NewPost>({
             query: post => ({
                 url: '/posts',
                 method: 'POST',
