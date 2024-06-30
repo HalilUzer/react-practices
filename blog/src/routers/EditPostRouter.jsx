@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useGetPostQuery, useUpdatePostMutation } from "../features/posts/postApi.js";
 import { useNavigate, useParams } from "react-router-dom";
 import PostEditForm from "../components/PostEditForm.jsx";
