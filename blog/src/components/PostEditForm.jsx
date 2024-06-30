@@ -1,7 +1,7 @@
 import { useState } from 'react'
-import SubmitButton from "./SubmitButton";
 import { ClipLoader } from 'react-spinners';
 import { MdOutlineDone } from 'react-icons/md';
+import SubmitButton from "./SubmitButton";
 
 export default function PostEditForm({ handleSubmit, isLoading, isDone, currentPost = null }) {
     const [newPost, setNewPost] = useState(currentPost ? currentPost : { title: '', body: '' })

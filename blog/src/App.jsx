@@ -1,14 +1,14 @@
 import { Provider } from "react-redux";
-import store from "./config/reduxStore.js";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { ThemeContext } from "./context/ThemeContext.js";
 import React, { useState } from "react";
+import store from "./config/reduxStore.js";
 import HomeRouter from "./routers/HomeRouter.jsx";
 import ErrorRouter from "./routers/ErrorRouter.jsx";
 import NewPostRouter from "./routers/NewPostRouter.jsx";
 import AboutRouter from "./routers/AboutRouter.jsx";
 import PostRouter from "./routers/PostRouter.jsx";
 import EditPostRouter from "./routers/EditPostRouter.jsx";
-import { ThemeContext } from "./context/ThemeContext.js";
 import RootRouter from "./routers/RootRouter.jsx";
 
 

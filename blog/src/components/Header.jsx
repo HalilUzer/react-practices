@@ -1,7 +1,7 @@
-import useWindowSize from "../hooks/useWindowSize.js";
-import ThemeToggleButton from "./ThemeToggleButton.jsx";
 import { FaLaptop, FaTabletAlt, FaMobileAlt } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import useWindowSize from "../hooks/useWindowSize.js";
+import ThemeToggleButton from "./ThemeToggleButton.jsx";
 
 export default function Header() {
     const { width } = useWindowSize()

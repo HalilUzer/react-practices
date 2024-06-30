@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { useAddPostMutation } from '../features/posts/postApi.js'
-import PostEditForm from '../components/PostEditForm.jsx';
 import { useNavigate } from 'react-router-dom';
+import PostEditForm from '../components/PostEditForm.jsx';
 
 export default function NewPostRouter() {
     const [isLoading, setIsLoading] = useState(false);

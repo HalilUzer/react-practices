@@ -1,8 +1,8 @@
-import React, { useCallback, useContext, useState } from 'react'
+import { useCallback } from 'react'
 import { useGetPostsQuery } from '../features/posts/postApi.js'
+import { useOutletContext } from 'react-router-dom';
 import RetryForm from '../components/RetryForm.jsx';
 import HomePagePost from "../components/HomePagePost.jsx";
-import { useOutletContext } from 'react-router-dom';
 
 export default function HomeRouter() {
     const {

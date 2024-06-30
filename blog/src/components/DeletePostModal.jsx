@@ -1,7 +1,7 @@
 import { useRef } from 'react';
 
 
-export default function DeletePostModal({ postId, isModalOpen, setIsModelOpen, handleDelete }) {
+export default function DeletePostModal({ isModalOpen, setIsModelOpen, handleDelete }) {
     const dialogRef = useRef()
 
     if (isModalOpen) {

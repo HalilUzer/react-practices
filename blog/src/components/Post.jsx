@@ -20,11 +20,8 @@ export default function Post({ post, setIsModalOpen }) {
                         <MdDelete className='group-hover:text-red-600 size-12' />
                     </SubmitButton>
                 </form>
-
             </div>
             <p className='break-words'>{post.body}</p>
         </article>
     )
-
-
 }

@@ -1,10 +1,9 @@
-import RetryForm from '../components/RetryForm.jsx'
-import Post from "../components/Post.jsx";
-import DeletePostModal from '../components/DeletePostModal.jsx';
 import { useState } from 'react';
 import { useGetPostQuery, useDeletePostMutation } from '../features/posts/postApi.js'
 import { useNavigate, useParams } from "react-router-dom";
-
+import RetryForm from '../components/RetryForm.jsx'
+import Post from "../components/Post.jsx";
+import DeletePostModal from '../components/DeletePostModal.jsx';
 
 export default function PostRouter() {
 
@@ -33,7 +32,7 @@ export default function PostRouter() {
                 : post ?
                     <>
                         <Post post={post} routerMode={true} setIsModalOpen={setIsModalOpen} />
-                        <DeletePostModal postId={post.id} isModalOpen={isModalOpen}
+                        <DeletePostModal isModalOpen={isModalOpen}
                             setIsModelOpen={setIsModalOpen} handleDelete={handleDelete} />
                     </>
                     : <p> We couldnt find your post </p>
