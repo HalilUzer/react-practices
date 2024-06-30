@@ -1,7 +1,11 @@
 import React from 'react'
 import SubmitButton from './SubmitButton';
 
-export default function RetryForm({ refetch }) {
+type props = {
+    refetch : any
+}
+
+export default function RetryForm({ refetch } : props) {
 
     return (
         <form className='p-12' action="" onSubmit={e => {e.preventDefault()}}>

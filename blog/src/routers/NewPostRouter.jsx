@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useAddPostMutation } from '../features/posts/postApi.js'
+import { useAddPostMutation } from '../features/posts/postApi.ts'
 import { useNavigate } from 'react-router-dom';
 import PostEditForm from '../components/PostEditForm.jsx';
 

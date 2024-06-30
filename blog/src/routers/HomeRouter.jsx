@@ -1,7 +1,7 @@
 import { useCallback } from 'react'
-import { useGetPostsQuery } from '../features/posts/postApi.js'
+import { useGetPostsQuery } from '../features/posts/postApi.ts'
 import { useOutletContext } from 'react-router-dom';
-import RetryForm from '../components/RetryForm.jsx';
+import RetryForm from '../components/RetryForm.tsx';
 import HomePagePost from "../components/HomePagePost.jsx";
 
 export default function HomeRouter() {

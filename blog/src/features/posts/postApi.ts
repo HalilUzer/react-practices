@@ -3,6 +3,13 @@ import { format } from "date-fns";
 
 const datetimeFormatStr = 'MMMM dd, yyyy pp'
 
+type Post = {
+    id: number,
+    title: string,
+    body: string
+    datetime : string
+}
+
 export const postApi = createApi({
     reducerPath: 'postsApi',
     baseQuery: fetchBaseQuery({
@@ -10,21 +17,21 @@ export const postApi = createApi({
     }),
     tagTypes: ['Posts', 'Post'],
     endpoints: (builder) => ({
-        getPosts: builder.query({
+        getPosts : builder.query<Post[], void>({
             query: () => '/posts',
             providesTags: ['Posts']
         }),
 
-        getPost: builder.query({
+        getPost: builder.query<Post, number>({
             query: postId => (
                 {
                     url: `/posts/${postId}`,
                     method: 'GET',
                 }),
-                providesTags: ['Post']
+            providesTags: ['Post']
         }),
 
-        addPost: builder.mutation({
+        addPost: builder.mutation<void, Post>({
             query: post => ({
                 url: '/posts',
                 method: 'POST',
@@ -39,8 +46,8 @@ export const postApi = createApi({
         }),
 
 
-        deletePost: builder.mutation({
-            query: ({ id }) => ({
+        deletePost: builder.mutation<void, number>({
+            query: id => ({
                 url: `/posts/${id}`,
                 method: 'DELETE',
                 body: { id: id.toString() }
@@ -48,7 +55,7 @@ export const postApi = createApi({
             invalidatesTags: ['Posts']
         }),
 
-        updatePost: builder.mutation({
+        updatePost: builder.mutation<void, Post>({
             query: post => ({
                 url: `/posts/${post.id}`,
                 method: 'PUT',
