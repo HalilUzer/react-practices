@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { NewPost, useAddPostMutation } from '../features/posts/postApi.ts'
 import { useNavigate } from 'react-router-dom';
 import { MouseEvent } from 'react';
-import PostEditForm from '../components/PostEditForm.js';
+import PostEditForm from '../components/PostEditForm.tsx';
 
 
 
