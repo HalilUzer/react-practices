@@ -6,14 +6,14 @@ import { NewPost, Post } from '../features/posts/postApi';
 
 
 
-type props = {
+type Props = {
     handleSubmit: (e: MouseEvent<HTMLButtonElement>, newPost: NewPost) => void,
     isLoading: boolean,
     isDone: boolean,
     currentPost?: Post | null
 }
 
-export default function PostEditForm({ handleSubmit, isLoading, isDone, currentPost = null }: props) {
+export default function PostEditForm({ handleSubmit, isLoading, isDone, currentPost = null }: Props) {
     const [newPost, setNewPost] = useState(currentPost ? currentPost : { title: '', body: '' })
 
     return (

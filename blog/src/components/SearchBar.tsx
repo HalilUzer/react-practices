@@ -1,12 +1,12 @@
 import React from "react"
 import { Dispatch, SetStateAction } from "react"
 
-type props = {
+type Props = {
     keyword: string,
     setKeyword: Dispatch<SetStateAction<string>>
 }
 
-export default function SearchBar({ keyword, setKeyword } : props) {
+export default function SearchBar({ keyword, setKeyword } : Props) {
     
     return (
         <form action="" className='flex align-center ml-4'>

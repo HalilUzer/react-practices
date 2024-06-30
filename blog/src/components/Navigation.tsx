@@ -1,9 +1,15 @@
 import { Link, useLocation } from 'react-router-dom'
 import SearchBar from './SearchBar.tsx'
+import React, { Dispatch, SetStateAction } from 'react'
 
-export default function Navigation({ keyword, setKeyword }) {
+type Props = {
+    keyword: string,
+    setKeyword: Dispatch<SetStateAction<string>>
+}
+
+export default function Navigation({ keyword, setKeyword }: Props) {
     const location = useLocation()
-    
+
     return (
         <nav className='flex space-x-0 bg-[#333] text-white p-3 text-base '>
             {location.pathname === '/' && <SearchBar keyword={keyword} setKeyword={setKeyword} />}

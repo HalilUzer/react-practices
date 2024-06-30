@@ -2,8 +2,16 @@ import { MdDelete } from "react-icons/md";
 import { CiSettings } from "react-icons/ci";
 import { useNavigate } from "react-router-dom";
 import SubmitButton from "./SubmitButton.tsx";
+import { Post } from "../features/posts/postApi.ts";
+import React, { SetStateAction, Dispatch } from "react";
 
-export default function Post({ post, setIsModalOpen }) {
+type Props = {
+    post: Post,
+    setIsModalOpen: Dispatch<SetStateAction<Boolean>>
+
+}
+
+export default function Post({ post, setIsModalOpen }: Props) {
     const navigate = useNavigate();
 
     return (
