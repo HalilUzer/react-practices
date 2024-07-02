@@ -1,7 +1,7 @@
 import React, { MouseEvent, useState } from 'react'
 import { ClipLoader } from 'react-spinners';
 import { MdOutlineDone } from 'react-icons/md';
-import SubmitButton from "./SubmitButton";
+import SubmitButton from "./buttons/SubmitButton";
 import { NewPost, Post } from '../features/posts/postApi';
 
 

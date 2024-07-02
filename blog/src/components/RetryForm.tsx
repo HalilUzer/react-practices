@@ -1,5 +1,5 @@
 import React from 'react'
-import SubmitButton from './SubmitButton';
+import SubmitButton from './buttons/SubmitButton';
 
 type Props = {
     refetch : any
