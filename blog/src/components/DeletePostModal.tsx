@@ -1,8 +1,14 @@
-import { useRef } from 'react';
+import React, { Dispatch, MouseEvent, SetStateAction, useRef } from 'react';
 
 
-export default function DeletePostModal({ isModalOpen, setIsModelOpen, handleDelete }) {
-    const dialogRef = useRef()
+type Props = {
+    isModalOpen: boolean,
+    setIsModalOpen: Dispatch<SetStateAction<boolean>>,
+    handleDelete: (e: MouseEvent<HTMLButtonElement>) => void
+}
+
+export default function DeletePostModal({ isModalOpen, setIsModalOpen, handleDelete }: Props) {
+    const dialogRef = useRef<HTMLDialogElement>(null)
 
     if (isModalOpen) {
         dialogRef.current?.showModal()
@@ -19,7 +25,7 @@ export default function DeletePostModal({ isModalOpen, setIsModelOpen, handleDel
             <h2 className='dark:text-white m-4'>Are You Sure?</h2>
             <form action="" onSubmit={(e) => e.preventDefault()} className='flex justify-around items-center w-full'>
                 <button className='text-2xl text-white w-16 cursor-pointer p-3 bg-green-600' onClick={handleDelete}>Yes</button>
-                <button className='text-2xl text-white w-16 cursor-pointer p-3 bg-red-600' onClick={e => setIsModelOpen(false)}>No</button>
+                <button className='text-2xl text-white w-16 cursor-pointer p-3 bg-red-600' onClick={e => setIsModalOpen(false)}>No</button>
             </form>
         </dialog>
     )
