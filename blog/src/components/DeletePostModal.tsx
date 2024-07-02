@@ -1,4 +1,6 @@
 import React, { Dispatch, MouseEvent, SetStateAction, useRef } from 'react';
+import Button from './buttons/Button';
+import DeleteButton from './buttons/DeleteButton';
 
 
 type Props = {
@@ -24,7 +26,12 @@ export default function DeletePostModal({ isModalOpen, setIsModalOpen, handleDel
             ref={dialogRef}>
             <h2 className='dark:text-white m-4'>Are You Sure?</h2>
             <form action="" onSubmit={(e) => e.preventDefault()} className='flex justify-around items-center w-full'>
-                <button className='text-2xl text-white w-16 cursor-pointer p-3 bg-green-600' onClick={handleDelete}>Yes</button>
+                <DeleteButton onClick={handleDelete}>
+                    Yes
+                </DeleteButton>
+                <Button onClick={e => setIsModalOpen(false)}>
+                    No
+                </Button>
                 <button className='text-2xl text-white w-16 cursor-pointer p-3 bg-red-600' onClick={e => setIsModalOpen(false)}>No</button>
             </form>
         </dialog>

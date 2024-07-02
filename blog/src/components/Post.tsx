@@ -1,9 +1,10 @@
 import { MdDelete } from "react-icons/md";
 import { CiSettings } from "react-icons/ci";
 import { useNavigate } from "react-router-dom";
-import SubmitButton from "./buttons/SubmitButton.tsx";
 import { Post as PostType } from "../features/posts/postApi.ts";
 import React, { SetStateAction, Dispatch } from "react";
+import Button from "./buttons/Button.tsx";
+import DeleteButton from "./buttons/DeleteButton.tsx";
 
 type Props = {
     post: PostType,
@@ -20,12 +21,12 @@ export default function Post({ post, setIsModalOpen }: Props) {
                     <p className='mt-4 mb-4'>{post.datetime}</p>
                 </div>
                 <form action="" className="flex justify-around grow" onSubmit={e => e.preventDefault()}>
-                    <SubmitButton onClick={e => navigate(`/edit/${post.id}`)}>
+                    <Button onClick={e => navigate(`/edit/${post.id}`)}>
                         <CiSettings className="size-12" />
-                    </SubmitButton>
-                    <SubmitButton onClick={e => setIsModalOpen(true)}>
-                        <MdDelete className='group-hover:text-red-600 size-12' />
-                    </SubmitButton>
+                    </Button>
+                    <DeleteButton onClick={e => setIsModalOpen(true)}>
+                        <MdDelete className='size-12' />
+                    </DeleteButton>
                 </form>
             </div>
             <p className='break-words'>{post.body}</p>

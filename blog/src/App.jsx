@@ -6,7 +6,7 @@ import store from "./config/reduxStore.js";
 import HomeRouter from "./routers/HomeRouter.jsx";
 import ErrorRouter from "./routers/ErrorRouter.jsx";
 import NewPostRouter from "./routers/NewPostRouter.tsx";
-import AboutRouter from "./routers/AboutRouter.jsx";
+import AboutRouter from "./routers/AboutRouter.tsx";
 import PostRouter from "./routers/PostRouter.jsx";
 import EditPostRouter from "./routers/EditPostRouter.jsx";
 import RootRouter from "./routers/RootRouter.jsx";
