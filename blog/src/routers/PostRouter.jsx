@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useGetPostQuery, useDeletePostMutation } from '../features/posts/postApi.ts'
 import { useNavigate, useParams } from "react-router-dom";
 import RetryForm from '../components/RetryForm.tsx'
-import Post from "../components/Post.jsx";
+import Post from "../components/Post.tsx";
 import DeletePostModal from '../components/DeletePostModal.jsx';
 
 export default function PostRouter() {
