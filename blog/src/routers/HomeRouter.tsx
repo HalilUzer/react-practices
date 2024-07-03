@@ -14,7 +14,7 @@ export default function HomeRouter() {
 
     const keyword = useOutletContext<string>();
 
-    const filterPosts = useCallback((posts : Post[]) => posts.filter(post => keyword === '' ? true : post.body.toLowerCase().includes(keyword.toLowerCase())), [keyword, posts])
+    const filterPosts = useCallback((posts: Post[]) => posts.filter(post => keyword === '' ? true : post.body.toLowerCase().includes(keyword.toLowerCase())), [keyword, posts])
 
     return (
         error ? (

@@ -1,12 +1,21 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import Input from './../components/inputs/Input.tsx'
 import Button from '../components/buttons/Button.tsx'
 
+const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
+const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
+
 export default function SignUpRouter() {
+
+    const [user,setUser] = useState({name: '', validName: false, userFocus: false})
+    const [pwd, setPwd] = useState({pwd: '', validPwd: false, pwdFocus: false})
+    const [matchPwd, setMatchPwd] = useState({matchPwd: '', validMatch: false, matchFocus: false})
+
+    
     return (
-        <main className='flex justify-center items-center w-full h-full dark:black dark:text-white'>
-            <form className='flex flex-col justify-center items-center p-5 bg-light-blue dark:bg-gray-600' action="">
+        <main className='flex justify-center items-center min-h-[100vh] w-full max-w-[300px] dark:black dark:text-white m-auto'>
+            <form className='flex flex-col justify-center items-center p-5 bg-light-blue dark:bg-gray-600 w-full' action="">
                 <h1 className='mr-auto font-bold text-lg'>Sign-Up</h1>
                 <label htmlFor="username" className='mr-auto'>Username:</label>
                 <Input id='username' required />
