@@ -1,20 +1,19 @@
 import React, { MouseEvent, useState } from 'react'
-import { ClipLoader } from 'react-spinners';
-import { MdOutlineDone } from 'react-icons/md';
+
 import Button from "./buttons/Button";
-import { NewPost, Post } from '../features/posts/postApi';
+import { Post } from '../features/posts/postApi';
 
 
 
 type Props = {
-    handleSubmit: (e: MouseEvent<HTMLButtonElement>, newPost: NewPost) => void,
+    handleSubmit: (e: MouseEvent<HTMLButtonElement>, newPost: Post) => void,
     isLoading: boolean,
     isDone: boolean,
     currentPost?: Post | null
 }
 
-export default function PostEditForm({ handleSubmit, isLoading, isDone, currentPost = null }: Props) {
-    const [newPost, setNewPost] = useState(currentPost ? currentPost : { title: '', body: '' })
+export default function PostEditForm({ handleSubmit, isLoading, isDone}: Props) {
+    const [newPost, setNewPost] = useState<Post>()
 
     return (
         <form className='flex flex-col p-3' action="" onSubmit={e => e.preventDefault()}>

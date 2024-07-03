@@ -8,7 +8,7 @@ import ErrorRouter from "./routers/ErrorRouter.jsx";
 import NewPostRouter from "./routers/NewPostRouter.tsx";
 import AboutRouter from "./routers/AboutRouter.tsx";
 import PostRouter from "./routers/PostRouter.jsx";
-import EditPostRouter from "./routers/EditPostRouter.jsx";
+import EditPostRouter from "./routers/EditPostRouter.tsx";
 import RootRouter from "./routers/RootRouter.jsx";
 import SignUpRouter from "./routers/SignUpRouter.jsx";
 
