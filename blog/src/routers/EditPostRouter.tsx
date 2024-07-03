@@ -4,6 +4,8 @@ import { useNavigate, useParams } from "react-router-dom";
 import { ClipLoader } from 'react-spinners';
 import { MdOutlineDone } from 'react-icons/md';
 import Button from "../components/buttons/Button.tsx";
+import Input from "../components/inputs/Input.tsx";
+import TextArea from "../components/inputs/TextArea.tsx";
 
 export default function EditPostRouter() {
     const navigate = useNavigate()
@@ -38,9 +40,9 @@ export default function EditPostRouter() {
     return (
         <form className='flex flex-col p-3' action="" onSubmit={e => e.preventDefault()}>
             <label htmlFor="title">Title:</label>
-            <input type="text" id="title" required onChange={e => setEditedPost({ ...editedPost, title: e.target.value })} autoFocus className="border border-black border-solid rounded-lg dark:bg-dark-blue " value={editedPost.title} />
+            <Input id="title" required onChange={e => setEditedPost({ ...editedPost, title: e.target.value })} value={editedPost.title} />
             <label htmlFor="post">Post:</label>
-            <textarea id="post" required rows={9} cols={10} onChange={e => setEditedPost({ ...editedPost, body: e.target.value })} className="border border-black border-solid rounded-lg mb-3 dark:bg-dark-blue" value={editedPost.body} />
+            <TextArea id="post" required onChange={e => setEditedPost({ ...editedPost, body: e.target.value })} value={editedPost.body} />
             <Button onClick={e => handleSubmit(e, editedPost)}>
                 {isLoading ? <ClipLoader size={25} /> : isDone ?
                     <MdOutlineDone size={25} /> : "Submit"}

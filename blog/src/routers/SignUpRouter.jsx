@@ -1,18 +1,24 @@
+import { Link } from 'react-router-dom'
 import React from 'react'
+import Input from './../components/inputs/Input.tsx'
+import Button from '../components/buttons/Button.tsx'
 
 export default function SignUpRouter() {
     return (
-        <main className='flex justify-center items-center min-h-[100vh]'>
-            <form className='flex flex-col justify-center items-center min-h-[50vh] ' action="">
-                <h2 className='mr-auto'>Sign-In</h2>
-                <div className=''>
-                    <label htmlFor="username" className='mr-auto'>Username:</label>
-                    <input type="text" id='username' required />
-                </div>
+        <main className='flex justify-center items-center min-h-[100vh] min-w-[50vw] dark:black dark:text-white'>
+            <form className='flex flex-col justify-center items-center p-5 bg-light-blue dark:bg-gray-600' action="">
+                <h1 className='mr-auto font-bold text-lg'>Sign-Up</h1>
+                <label htmlFor="username" className='mr-auto'>Username:</label>
+                <Input id='username' required />
                 <label htmlFor="password" className='mr-auto'>Password:</label>
-                <input type="password" id='password' required />
+                <Input id='password' type='password' required />
                 <label htmlFor="confirm_pwd" className='mr-auto'>Confirm Password:</label>
-                <input type="password" id='confirm_pwd' required />
+                <Input id='confirm_pwd' type='password' required />
+                <Button className='m-3'>
+                    Sign Up
+                </Button>
+                <p className='mr-auto'>Already Registered ?</p>
+                <Link className='underline mr-auto'>Sign-In</Link>
             </form>
         </main>
     )
