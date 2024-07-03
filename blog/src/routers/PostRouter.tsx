@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState, MouseEvent } from 'react';
 import { useGetPostQuery, useDeletePostMutation } from '../features/posts/postApi.ts'
 import { useNavigate, useParams } from "react-router-dom";
 import RetryForm from '../components/RetryForm.tsx'
@@ -16,12 +16,12 @@ export default function PostRouter() {
         isLoading,
         refetch,
         error
-    } = useGetPostQuery(id)
+    } = useGetPostQuery(Number(id))
 
 
-    const handleDelete = (e) => {
+    const handleDelete = (e: MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
-        deletePost({ id: post.id });
+        deletePost(Number(id));
         setIsModalOpen(false);
         navigate('/');
     }
@@ -31,9 +31,8 @@ export default function PostRouter() {
             : isLoading ? <p>Loading...</p>
                 : post ?
                     <>
-                        <Post post={post} routerMode={true} setIsModalOpen={setIsModalOpen} />
-                        <DeletePostModal isModalOpen={isModalOpen}
-                            setIsModelOpen={setIsModalOpen} handleDelete={handleDelete} />
+                        <Post post={post}  setIsModalOpen={setIsModalOpen} />
+                        <DeletePostModal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} handleDelete={handleDelete} />
                     </>
                     : <p> We couldnt find your post </p>
 

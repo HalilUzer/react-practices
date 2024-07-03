@@ -12,7 +12,7 @@ export default function RootRouter() {
             <Header />
             <Navigation keyword={keyword} setKeyword={setKeyword} />
             <main className="grow">
-                <Outlet context={[keyword]} />
+                <Outlet context={keyword} />
             </main>
             <Footer />
         </div>

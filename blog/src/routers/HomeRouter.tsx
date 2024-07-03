@@ -1,9 +1,9 @@
-import { useCallback } from 'react'
+import React, { useCallback } from 'react'
 import { useGetPostsQuery } from '../features/posts/postApi.ts'
 import { useOutletContext } from 'react-router-dom';
+import { Post } from '../features/posts/postApi.ts';
 import RetryForm from '../components/RetryForm.tsx';
 import HomePagePost from "../components/HomePagePost.tsx";
-
 export default function HomeRouter() {
     const {
         data: posts,
@@ -12,9 +12,9 @@ export default function HomeRouter() {
         error
     } = useGetPostsQuery()
 
-    const [keyword] = useOutletContext();
+    const keyword = useOutletContext<string>();
 
-    const filterPosts = useCallback((posts) => posts.filter(post => keyword === '' ? true : post.body.toLowerCase().includes(keyword.toLowerCase())), [keyword])
+    const filterPosts = useCallback((posts : Post[]) => posts.filter(post => keyword === '' ? true : post.body.toLowerCase().includes(keyword.toLowerCase())), [keyword, posts])
 
     return (
         error ? (

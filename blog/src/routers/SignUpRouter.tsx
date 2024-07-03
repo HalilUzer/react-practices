@@ -1,5 +1,5 @@
-import { Link } from 'react-router-dom'
 import React from 'react'
+import { Link } from 'react-router-dom'
 import Input from './../components/inputs/Input.tsx'
 import Button from '../components/buttons/Button.tsx'
 
@@ -18,7 +18,7 @@ export default function SignUpRouter() {
                     Sign Up
                 </Button>
                 <p className='mr-auto'>Already Registered ?</p>
-                <Link className='underline mr-auto'>Sign-In</Link>
+                <Link to={'/'} className='underline mr-auto'>Sign-In</Link>
             </form>
         </main>
     )

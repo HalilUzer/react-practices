@@ -8,7 +8,7 @@ import DeleteButton from "./buttons/DeleteButton.tsx";
 
 type Props = {
     post: PostType,
-    setIsModalOpen: Dispatch<SetStateAction<Boolean>>
+    setIsModalOpen: Dispatch<SetStateAction<boolean>>,
 }
 
 export default function Post({ post, setIsModalOpen }: Props) {
