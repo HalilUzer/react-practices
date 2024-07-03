@@ -2,15 +2,15 @@ import { Provider } from "react-redux";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { ThemeContext } from "./context/ThemeContext.ts";
 import React, { useState } from "react";
-import store from "./config/reduxStore.js";
+import store from "./config/reduxStore.ts";
 import HomeRouter from "./routers/HomeRouter.tsx";
 import ErrorRouter from "./routers/ErrorRouter.tsx";
 import NewPostRouter from "./routers/NewPostRouter.tsx";
 import AboutRouter from "./routers/AboutRouter.tsx";
 import PostRouter from "./routers/PostRouter.tsx";
 import EditPostRouter from "./routers/EditPostRouter.tsx";
-import RootRouter from "./routers/RootRouter.jsx";
-import SignUpRouter from "./routers/SignUpRouter.jsx";
+import RootRouter from "./routers/RootRouter.js";
+import SignUpRouter from "./routers/SignUpRouter.js";
 
 
 const router = createBrowserRouter([

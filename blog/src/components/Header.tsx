@@ -1,10 +1,11 @@
+import React from "react";
 import { FaLaptop, FaTabletAlt, FaMobileAlt } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
-import useWindowSize from "../hooks/useWindowSize.js";
+import useWindowSize from "../hooks/useWindowSize.ts";
 import ThemeToggleButton from "./ThemeToggleButton.tsx";
 
 export default function Header() {
-    const { width } = useWindowSize()
+    const sizes = useWindowSize()
     const navigate = useNavigate()
 
     return (
@@ -14,9 +15,9 @@ export default function Header() {
             </a>
             <div className='flex w-1/3 justify-around items-center'>
                 <ThemeToggleButton />
-                {width < 768 ? <FaMobileAlt /> :
-                    width < 992 ? <FaTabletAlt /> :
-                        <FaLaptop />}
+                {sizes?.width ? sizes?.width < 768 ? <FaMobileAlt /> :
+                    sizes?.width < 992 ? <FaTabletAlt /> :
+                        <FaLaptop /> : <FaLaptop />}
             </div>
         </header>
     )

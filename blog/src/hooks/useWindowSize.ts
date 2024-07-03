@@ -1,7 +1,7 @@
-import {useState, useEffect} from "react";
+import { useState, useEffect } from "react";
 
 const useWindowSize = () => {
-    const [windowsSize, setWindowsSize] = useState({width: undefined, height: undefined})
+    const [windowsSize, setWindowsSize] = useState<{ width: number, height: number }>()
 
     useEffect(() => {
         const handleResize = () => {
@@ -10,10 +10,9 @@ const useWindowSize = () => {
                 height: window.innerHeight
             })
         }
-
         handleResize();
         window.addEventListener("resize", handleResize);
-        
+
         return () => window.removeEventListener("resize", handleResize);;
     }, []);
 

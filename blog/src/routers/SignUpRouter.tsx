@@ -5,7 +5,7 @@ import Button from '../components/buttons/Button.tsx'
 
 export default function SignUpRouter() {
     return (
-        <main className='flex justify-center items-center min-h-[100vh] min-w-[50vw] dark:black dark:text-white'>
+        <main className='flex justify-center items-center w-full h-full dark:black dark:text-white'>
             <form className='flex flex-col justify-center items-center p-5 bg-light-blue dark:bg-gray-600' action="">
                 <h1 className='mr-auto font-bold text-lg'>Sign-Up</h1>
                 <label htmlFor="username" className='mr-auto'>Username:</label>
