@@ -37,9 +37,9 @@ export default function EditPostRouter() {
 
     return (
         <form className='flex flex-col p-3' action="" onSubmit={e => e.preventDefault()}>
-            <label htmlFor="title">Title</label>
+            <label htmlFor="title">Title:</label>
             <input type="text" id="title" required onChange={e => setEditedPost({ ...editedPost, title: e.target.value })} autoFocus className="border border-black border-solid rounded-lg dark:bg-dark-blue " value={editedPost.title} />
-            <label htmlFor="post">Post</label>
+            <label htmlFor="post">Post:</label>
             <textarea id="post" required rows={9} cols={10} onChange={e => setEditedPost({ ...editedPost, body: e.target.value })} className="border border-black border-solid rounded-lg mb-3 dark:bg-dark-blue" value={editedPost.body} />
             <Button onClick={e => handleSubmit(e, editedPost)}>
                 {isLoading ? <ClipLoader size={25} /> : isDone ?
