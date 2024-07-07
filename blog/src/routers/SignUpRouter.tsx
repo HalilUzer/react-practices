@@ -69,11 +69,17 @@ export default function SignUpRouter() {
                 <InputInfo condition={pwd.length !== 0 && !validPwd}>
                     8 to 24 characters.<br />
                     Must include uppercase and lowercase letters, a number and a special character.<br />
-                    Allowed special characters: {<PwdAllowedSpecialCharacters />}
+                    Allowed special characters: <PwdAllowedSpecialCharacters />
                 </InputInfo>
-                <label htmlFor="confirm_pwd" className='mr-auto'>Confirm Password:</label>
+                <label htmlFor="confirm_pwd" className='mr-auto'>
+                    Confirm Password:{matchPwd.length === 0 ? null : validPwd ?
+                        <FaCheck className='text-green-600 inline' /> : <FaTimes className='text-red-600 inline' />}
+                </label>
                 <Input id='confirm_pwd' type='password' required value={matchPwd} onChange={e => setMatchPwd(e.target.value)} />
-                <Button className='m-3'>
+                <InputInfo condition={matchFocus && !validMatch}>
+                    Must match the first password input field.
+                </InputInfo>
+                <Button className='m-3' disabled={!validMatch && !validPwd && !validUsername}>
                     Sign Up
                 </Button>
                 <p className='mr-auto'>Already Registered ?</p>
