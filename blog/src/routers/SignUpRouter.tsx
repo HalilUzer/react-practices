@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { FaTimes, FaCheck } from "react-icons/fa";
+import { FaTimes, FaCheck, FaInfoCircle } from "react-icons/fa";
 import Input from './../components/inputs/Input.tsx'
 import Button from '../components/buttons/Button.tsx'
 
@@ -46,7 +46,7 @@ export default function SignUpRouter() {
 
     return (
         <main className='flex justify-center items-center min-h-[100vh] w-full max-w-[300px] dark:black dark:text-white m-auto'>
-            <form className='flex flex-col justify-center items-center p-5 bg-light-blue dark:bg-gray-600 w-full' action="">
+            <form className='flex flex-col justify-center items-center p-5 bg-light-blue dark:bg-gray-600 w-full text-lg' action="">
                 <h1 className='mr-auto font-bold text-lg'>Sign-Up</h1>
                 <p ref={errRef}>{errMsg}</p>
                 <label htmlFor="username" className='mr-auto'>
@@ -54,7 +54,14 @@ export default function SignUpRouter() {
                         <FaCheck className='text-green-600 inline' /> : <FaTimes className='text-red-600 inline' />}
                 </label>
                 <Input id='username' required autoComplete='off' value={username} ref={userRef} onChange={e => setUsername(e.target.value)} autoFocus />
-                <label htmlFor="password" className='mr-auto'>Password:</label>
+                <p className={username.length !== 0 && !validUsername ? 'rounded-xl bg-black text-white mr-auto text-wrap mt-2 text-sm p-1' : 'hidden'}> 
+                    <FaInfoCircle  />
+                    4 to 24 characters. <br />
+                    Must begin with a letter. <br />
+                    Letters, numbers, underscores, hyphens allowed. </p>
+                <label htmlFor="password" className='mr-auto'>
+                    Password: {}
+                    </label>
                 <Input id='password' type='password' required value={pwd} onChange={e => setPwd(e.target.value)} />
                 <label htmlFor="confirm_pwd" className='mr-auto'>Confirm Password:</label>
                 <Input id='confirm_pwd' type='password' required value={matchPwd} onChange={e => setMatchPwd(e.target.value)} />
