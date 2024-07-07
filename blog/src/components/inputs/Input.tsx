@@ -7,6 +7,6 @@ interface Props extends InputHTMLAttributes<HTMLInputElement> {
 
 export default function Input({ className = '', type = 'text', ref = undefined ,...props }: Props) {
     return (
-        <input {...props} className={twMerge('border border-black border-solid rounded-lg dark:bg-dark-blue p-1', className)} type={type} ref={ref}/>
+        <input {...props} className={twMerge('border border-black border-solid rounded-lg dark:bg-dark-blue p-1', className)} type={type} ref={ref} />
     )
 }

@@ -79,7 +79,7 @@ export default function SignUpRouter() {
                 <InputInfo condition={matchFocus && !validMatch}>
                     Must match the first password input field.
                 </InputInfo>
-                <Button className='m-3' disabled={!validMatch && !validPwd && !validUsername}>
+                <Button className='m-3' disabled={!validMatch || !validPwd || !validUsername}>
                     Sign Up
                 </Button>
                 <p className='mr-auto'>Already Registered ?</p>
