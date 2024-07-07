@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom'
 import { FaTimes, FaCheck, FaInfoCircle } from "react-icons/fa";
 import Input from './../components/inputs/Input.tsx'
 import Button from '../components/buttons/Button.tsx'
+import InputInfo from '../components/InputInfo.tsx';
+import PwdAllowedSpecialCharacters from '../components/PwdAllowedSpecialCharacters.tsx';
 
 const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
@@ -54,15 +56,21 @@ export default function SignUpRouter() {
                         <FaCheck className='text-green-600 inline' /> : <FaTimes className='text-red-600 inline' />}
                 </label>
                 <Input id='username' required autoComplete='off' value={username} ref={userRef} onChange={e => setUsername(e.target.value)} autoFocus />
-                <p className={username.length !== 0 && !validUsername ? 'rounded-xl bg-black text-white mr-auto text-wrap mt-2 text-sm p-1' : 'hidden'}> 
-                    <FaInfoCircle  />
+                <InputInfo condition={username.length !== 0 && !validUsername} >
                     4 to 24 characters. <br />
                     Must begin with a letter. <br />
-                    Letters, numbers, underscores, hyphens allowed. </p>
+                    Letters, numbers, underscores, hyphens allowed.
+                </InputInfo>
                 <label htmlFor="password" className='mr-auto'>
-                    Password: {}
-                    </label>
+                    Password: {pwd.length === 0 ? null : validPwd ?
+                        <FaCheck className='text-green-600 inline' /> : <FaTimes className='text-red-600 inline' />}
+                </label>
                 <Input id='password' type='password' required value={pwd} onChange={e => setPwd(e.target.value)} />
+                <InputInfo condition={pwd.length !== 0 && !validPwd}>
+                    8 to 24 characters.<br />
+                    Must include uppercase and lowercase letters, a number and a special character.<br />
+                    Allowed special characters: {<PwdAllowedSpecialCharacters />}
+                </InputInfo>
                 <label htmlFor="confirm_pwd" className='mr-auto'>Confirm Password:</label>
                 <Input id='confirm_pwd' type='password' required value={matchPwd} onChange={e => setMatchPwd(e.target.value)} />
                 <Button className='m-3'>
