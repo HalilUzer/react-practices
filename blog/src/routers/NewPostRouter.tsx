@@ -1,7 +1,6 @@
-import React, { useState } from 'react'
+import React, { useState, MouseEvent } from 'react'
 import { NewPost, useAddPostMutation } from '../features/posts/postApi.ts'
 import { useNavigate } from 'react-router-dom';
-import { MouseEvent } from 'react';
 import { MdOutlineDone } from 'react-icons/md';
 import { ClipLoader } from 'react-spinners';
 import Button from '../components/buttons/Button.tsx';

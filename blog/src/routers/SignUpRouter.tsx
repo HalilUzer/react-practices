@@ -1,10 +1,11 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef, useState, MouseEvent } from 'react'
 import { Link } from 'react-router-dom'
-import { FaTimes, FaCheck, FaInfoCircle } from "react-icons/fa";
+import { FaTimes, FaCheck } from "react-icons/fa";
 import Input from './../components/inputs/Input.tsx'
 import Button from '../components/buttons/Button.tsx'
 import InputInfo from '../components/InputInfo.tsx';
 import PwdAllowedSpecialCharacters from '../components/PwdAllowedSpecialCharacters.tsx';
+import { NewUser, useRegisterUserMutation } from '../features/users/userApi.ts';
 
 const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
@@ -28,7 +29,11 @@ export default function SignUpRouter() {
     const [errMsg, setErrMsg] = useState('')
     const [success, setSuccess] = useState(false)
 
+    const [registerUser] = useRegisterUserMutation();
+
     userRef.current?.focus()
+
+
 
     useEffect(() => {
         setValidUsername(USER_REGEX.test(username))
@@ -44,7 +49,9 @@ export default function SignUpRouter() {
     }, [username, pwd, matchPwd])
 
 
-    const handleSubmit = () => {
+
+
+    const handleSubmit = (e : MouseEvent<HTMLButtonElement>, newUser : NewUser) => {
 
     }
 
