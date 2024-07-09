@@ -60,7 +60,7 @@ export default function SignUpRouter() {
                 setErrMsg('Invalid entry')
 
             }
-            await registerUser(newUser)
+            await registerUser(newUser).unwrap()
             setSuccess(true)
         }
         catch (err) {
