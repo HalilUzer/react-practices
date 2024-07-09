@@ -20,11 +20,11 @@ export const postApi = createApi({
     baseQuery: fetchBaseQuery({
         baseUrl: 'http://localhost:3500'
     }),
-    tagTypes: ['Posts', 'Post'],
+    tagTypes: ['posts', 'post'],
     endpoints: (builder) => ({
         getPosts: builder.query<Post[], void>({
             query: () => '/posts',
-            providesTags: ['Posts']
+            providesTags: ['posts']
         }),
 
         getPost: builder.query<Post, number>({
@@ -33,7 +33,7 @@ export const postApi = createApi({
                     url: `/posts/${postId}`,
                     method: 'GET',
                 }),
-            providesTags: ['Post']
+            providesTags: ['post']
         }),
 
         addPost: builder.mutation<void, NewPost>({
@@ -47,7 +47,7 @@ export const postApi = createApi({
                     datetime: format(new Date(), datetimeFormatStr)
                 }
             }),
-            invalidatesTags: ['Posts']
+            invalidatesTags: ['posts']
         }),
 
 
@@ -57,7 +57,7 @@ export const postApi = createApi({
                 method: 'DELETE',
                 body: { id: id.toString() }
             }),
-            invalidatesTags: ['Posts']
+            invalidatesTags: ['posts']
         }),
 
         updatePost: builder.mutation<void, Post>({
@@ -66,7 +66,7 @@ export const postApi = createApi({
                 method: 'PUT',
                 body: { ...post, datetime: format(new Date(), datetimeFormatStr) }
             }),
-            invalidatesTags: ['Posts', 'Post']
+            invalidatesTags: ['posts', 'post']
         }),
     })
 })

@@ -51,15 +51,15 @@ export default function SignUpRouter() {
 
 
 
-    const handleSubmit = async (e : MouseEvent<HTMLButtonElement>, newUser : NewUser) => {
-            e.preventDefault()
-            try {
-                const payload = await registerUser(newUser).unwrap()  
-                console.log(payload)
-            }
-            catch(err){
+    const handleSubmit = async (e: MouseEvent<HTMLButtonElement>, newUser: NewUser) => {
+        e.preventDefault()
+        try {
+            const payload = await registerUser(newUser).unwrap()
+            console.log(payload)
+        }
+        catch (err) {
 
-            }
+        }
     }
 
     return (
@@ -95,7 +95,7 @@ export default function SignUpRouter() {
                 <InputInfo condition={matchFocus && !validMatch}>
                     Must match the first password input field.
                 </InputInfo>
-                <Button className='m-3' disabled={!validMatch || !validPwd || !validUsername}>
+                <Button className='m-3' disabled={!validMatch || !validPwd || !validUsername} onClick={e => handleSubmit(e, { username, password: pwd })}>
                     Sign Up
                 </Button>
                 <p className='mr-auto'>Already Registered ?</p>

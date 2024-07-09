@@ -1,8 +1,14 @@
 {
-    "users": [
-        {
-            "username": "Halil",
-            "password": "Uzer"
-        }
-    ]
+  "users": [
+    {
+      "username": "Halil",
+      "password": "Uzer",
+      "id": "0664"
+    },
+    {
+      "id": "8c6e",
+      "username": "Halil",
+      "password": "Halil!12"
+    }
+  ]
 }
