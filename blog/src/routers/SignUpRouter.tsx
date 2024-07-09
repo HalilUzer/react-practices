@@ -44,11 +44,16 @@ export default function SignUpRouter() {
     }, [username, pwd, matchPwd])
 
 
+    const handleSubmit = () => {
+
+    }
+
+
 
 
     return (
         <main className='flex justify-center items-center min-h-[100vh] w-full max-w-[300px] dark:black dark:text-white m-auto'>
-            <form className='flex flex-col justify-center items-center p-5 bg-light-blue dark:bg-gray-600 w-full text-lg' action="">
+            <form className='flex flex-col justify-center items-center p-5 bg-light-blue dark:bg-gray-600 w-full text-lg' action="" onSubmit={e => e.preventDefault()}>
                 <h1 className='mr-auto font-bold text-lg'>Sign-Up</h1>
                 <p ref={errRef}>{errMsg}</p>
                 <label htmlFor="username" className='mr-auto'>
