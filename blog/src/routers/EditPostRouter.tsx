@@ -6,6 +6,7 @@ import { MdOutlineDone } from 'react-icons/md';
 import Button from "../components/buttons/Button.tsx";
 import Input from "../components/inputs/Input.tsx";
 import TextArea from "../components/inputs/TextArea.tsx";
+import ClipLoaderButton from "../components/buttons/ClipLoaderButton.tsx";
 
 export default function EditPostRouter() {
     const navigate = useNavigate()
@@ -43,10 +44,7 @@ export default function EditPostRouter() {
             <Input id="title" required onChange={e => setEditedPost({ ...editedPost, title: e.target.value })} value={editedPost.title} />
             <label htmlFor="post">Post:</label>
             <TextArea id="post" required onChange={e => setEditedPost({ ...editedPost, body: e.target.value })} value={editedPost.body} />
-            <Button onClick={e => handleSubmit(e, editedPost)}>
-                {isLoading ? <ClipLoader size={25} /> : isDone ?
-                    <MdOutlineDone size={25} /> : "Submit"}
-            </Button>
+            <ClipLoaderButton isDone={isDone} isLoading={isLoading} onClick={e => handleSubmit(e, editedPost)}>Submit</ClipLoaderButton>
         </form>
     )
 }

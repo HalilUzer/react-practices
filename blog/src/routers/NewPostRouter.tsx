@@ -6,6 +6,7 @@ import { ClipLoader } from 'react-spinners';
 import Button from '../components/buttons/Button.tsx';
 import Input from '../components/inputs/Input.tsx';
 import TextArea from '../components/inputs/TextArea.tsx';
+import ClipLoaderButton from '../components/buttons/ClipLoaderButton.tsx';
 
 
 
@@ -32,14 +33,17 @@ export default function NewPostRouter() {
 
     return (
         <form className='flex flex-col p-3' action="" onSubmit={e => e.preventDefault()}>
-            <label htmlFor="title">Title:</label>
-            <Input id='title' required onChange={e => setNewPost({ ...newPost, title: e.target.value })} value={newPost.title}/>
-            <label htmlFor="post">Post:</label>
-            <TextArea id='post' required rows={9} cols={10} onChange={e => setNewPost({ ...newPost, body: e.target.value })} value={newPost.body}/>
-            <Button onClick={e => handleSubmit(e, newPost!)}>
-                {isLoading ? <ClipLoader size={25} /> : isDone ?
-                    <MdOutlineDone size={25} /> : "Submit"}
-            </Button>
+            <label htmlFor="title">
+                Title:
+            </label>
+            <Input id='title' required onChange={e => setNewPost({ ...newPost, title: e.target.value })} value={newPost.title} />
+            <label htmlFor="post">
+                Post:
+            </label>
+            <TextArea id='post' required rows={9} cols={10} onChange={e => setNewPost({ ...newPost, body: e.target.value })} value={newPost.body} />
+            <ClipLoaderButton isDone={isDone} isLoading={isLoading} onClick={e => handleSubmit(e, newPost!)}>
+                Submit
+            </ClipLoaderButton>
         </form>
     )
 }
