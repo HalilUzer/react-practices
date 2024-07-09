@@ -51,15 +51,16 @@ export default function SignUpRouter() {
 
 
 
-    const handleSubmit = (e : MouseEvent<HTMLButtonElement>, newUser : NewUser) => {
+    const handleSubmit = async (e : MouseEvent<HTMLButtonElement>, newUser : NewUser) => {
             e.preventDefault()
             try {
-                registerUser(newUser)
+                const payload = await registerUser(newUser).unwrap()  
+                console.log(payload)
+            }
+            catch(err){
+
             }
     }
-
-
-
 
     return (
         <main className='flex justify-center items-center min-h-[100vh] w-full max-w-[300px] dark:black dark:text-white m-auto'>
@@ -87,7 +88,7 @@ export default function SignUpRouter() {
                     Allowed special characters: <PwdAllowedSpecialCharacters />
                 </InputInfo>
                 <label htmlFor="confirm_pwd" className='mr-auto'>
-                    Confirm Password:{matchPwd.length === 0 ? null : validPwd ?
+                    Confirm Password:{matchPwd.length === 0 ? null : validMatch ?
                         <FaCheck className='text-green-600 inline' /> : <FaTimes className='text-red-600 inline' />}
                 </label>
                 <Input id='confirm_pwd' type='password' required value={matchPwd} onChange={e => setMatchPwd(e.target.value)} />
