@@ -52,7 +52,10 @@ export default function SignUpRouter() {
 
 
     const handleSubmit = (e : MouseEvent<HTMLButtonElement>, newUser : NewUser) => {
-
+            e.preventDefault()
+            try {
+                registerUser(newUser)
+            }
     }
 
 
