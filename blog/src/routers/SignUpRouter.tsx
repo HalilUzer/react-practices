@@ -58,7 +58,6 @@ export default function SignUpRouter() {
             const v2 = PWD_REGEX.test(pwd)
             if (!v1 || !v2) {
                 setErrMsg('Invalid entry')
-
             }
             await registerUser(newUser).unwrap()
             setSuccess(true)
@@ -80,7 +79,8 @@ export default function SignUpRouter() {
                     </section>
                     :
                     <form className='flex flex-col justify-center items-center p-5 bg-light-blue dark:bg-gray-600 w-full text-lg' action="" onSubmit={e => e.preventDefault()}>
-                        <h1 className='mr-auto font-bold text-lg'>Sign-Up</h1>
+                        <h1 className='font-bold text-4xl'><Link to='/'>Blog</Link></h1>
+                        <h2 className='mr-auto font-bold text-lg'>Sign-Up</h2>
                         <p ref={errRef}>{errMsg}</p>
                         <label htmlFor="username" className='mr-auto'>
                             Username: {username.length === 0 ? null : validUsername ?
