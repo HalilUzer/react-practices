@@ -11,6 +11,7 @@ import PostRouter from "./routers/PostRouter.tsx";
 import EditPostRouter from "./routers/EditPostRouter.tsx";
 import RootRouter from "./routers/RootRouter.js";
 import SignUpRouter from "./routers/SignUpRouter.js";
+import UnauthorizedRouter from "./routers/UnauthorizedRouter.tsx";
 
 
 const router = createBrowserRouter([
@@ -39,6 +40,10 @@ const router = createBrowserRouter([
 
                 path: "/edit/:id",
                 element: <EditPostRouter />
+            },
+            {
+                path: "/unauthorized",
+                element: <UnauthorizedRouter />
             }
         ]
     },
