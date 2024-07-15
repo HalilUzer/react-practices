@@ -3,12 +3,16 @@
     {
       "username": "Halil",
       "password": "Uzer",
-      "id": "0664"
+      "id": "0664",
+      "role": "user",
+      "token": "ejfoqhyoa03"
     },
     {
       "id": "8c6e",
       "username": "Halil",
-      "password": "Halil!12"
+      "password": "Halil!12",
+      "role": "admin",
+      "token": "uf82nwefuka"
     }
   ]
 }

@@ -2,7 +2,13 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 export interface NewUser {
     username: string,
-    password: string
+    password: string,
+}
+
+export interface User {
+    username: string
+    roles: string[],
+    accessToken: string
 }
 
 export const userApi = createApi({
@@ -19,10 +25,21 @@ export const userApi = createApi({
                 body: { ...newUser }
             }),
             invalidatesTags: ['user']
+        }),
+
+        signIn: builder.query<User, NewUser>({
+            query: newUser => ({
+                url: '/users',
+                method: 'GET',
+                body: { ...newUser }
+            }),
+            providesTags: ['user']
         })
+
     })
 })
 
 export const {
-    useRegisterUserMutation
+    useRegisterUserMutation,
+    useSignInQuery
 } = userApi

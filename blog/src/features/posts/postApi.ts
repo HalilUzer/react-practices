@@ -50,7 +50,6 @@ export const postApi = createApi({
             invalidatesTags: ['posts']
         }),
 
-
         deletePost: builder.mutation<void, number>({
             query: id => ({
                 url: `/posts/${id}`,
