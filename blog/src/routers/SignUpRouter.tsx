@@ -5,7 +5,7 @@ import Input from './../components/inputs/Input.tsx'
 import Button from '../components/buttons/Button.tsx'
 import InputInfo from '../components/InputInfo.tsx';
 import PwdAllowedSpecialCharacters from '../components/PwdAllowedSpecialCharacters.tsx';
-import { NewUser, useRegisterUserMutation } from '../features/user/userApi.ts';
+import { NewUser,  useSignUpMutation } from '../features/user/userApi.ts';
 
 const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
@@ -29,7 +29,7 @@ export default function SignUpRouter() {
     const [errMsg, setErrMsg] = useState('')
     const [success, setSuccess] = useState(false)
 
-    const [registerUser] = useRegisterUserMutation();
+    const [registerUser] = useSignUpMutation();
 
     userRef.current?.focus()
 

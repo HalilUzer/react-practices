@@ -18,7 +18,7 @@ export const userApi = createApi({
     }),
     tagTypes: ['user'],
     endpoints: (builder) => ({
-        registerUser: builder.mutation<void, NewUser>({
+        signUp: builder.mutation<void, NewUser>({
             query: newUser => ({
                 url: '/users',
                 method: 'POST',
@@ -40,6 +40,6 @@ export const userApi = createApi({
 })
 
 export const {
-    useRegisterUserMutation,
+    useSignUpMutation,
     useSignInQuery
 } = userApi

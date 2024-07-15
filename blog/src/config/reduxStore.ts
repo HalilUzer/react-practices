@@ -3,6 +3,7 @@ import { postApi } from "../features/posts/postApi.ts";
 import postsReducer from '../features/posts/postsSlice.ts'
 import { userApi } from "../features/user/userApi.ts";
 
+
 export default configureStore({
     reducer: {
         [postApi.reducerPath]: postApi.reducer,

@@ -1,19 +1,20 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { User } from "./userApi";
+import { stat } from "fs";
 
 const initialState: User = {
     accessToken: '',
-    roles: [],
-    username: ''
+    username: '',
+    roles: []
 }
 
-export const userApiSlice = createSlice({
+export const userSlice = createSlice({
     name: 'user',
     initialState,
     reducers: {
-        setUser(user: User){
+        setAccessToken: (state, action) => {
+            action.payload
             
         }
     }
-
 })
