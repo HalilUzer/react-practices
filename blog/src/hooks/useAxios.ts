@@ -30,7 +30,7 @@ const useAxios = (configObj: AxiosRequestConfig) => {
         return () => controller.abort();
     }, [reload]);
 
-    return [response, error, loading, refetch]
+    return {response, error, loading, refetch}
 
 }
 

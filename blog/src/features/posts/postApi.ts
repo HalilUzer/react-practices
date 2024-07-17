@@ -1,5 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { format } from "date-fns";
+import { baseUrl } from "../../config/urls";
 
 const datetimeFormatStr = 'MMMM dd, yyyy pp'
 
@@ -18,7 +19,7 @@ export interface NewPost {
 export const postApi = createApi({
     reducerPath: 'postsApi',
     baseQuery: fetchBaseQuery({
-        baseUrl: 'http://localhost:3500'
+        baseUrl
     }),
     tagTypes: ['posts', 'post'],
     endpoints: (builder) => ({
