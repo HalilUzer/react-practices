@@ -2,10 +2,16 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { USER_REGEX, PWD_REGEX } from '../config/regex'
 import Input from '../components/inputs/Input'
+import Button from '../components/buttons/Button'
 
 export default function SignInRouter() {
     const [username, setUsername] = useState('')
+    const [validUsernmae, setValidUsername] = useState(false)
     const [password, setPassword] = useState('')
+
+    const handleSignIn = (username: string, password: string) => {
+
+    }
 
     return (
         <main className='flex justify-center items-center min-h-[100vh] w-full max-w-[300px] dark:black dark:text-white m-auto'>
@@ -16,6 +22,9 @@ export default function SignInRouter() {
                 <Input id='username' required autoComplete='off' value={username} onChange={e => setUsername(e.target.value)} autoFocus />
                 <label htmlFor="password">Password:</label>
                 <Input id='password' required autoComplete='off' value={password} onChange={e => setPassword(e.target.value)} />
+                <Button className='m-3'>
+                    Sign Up
+                </Button>
             </form>
         </main>
     )

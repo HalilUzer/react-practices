@@ -12,6 +12,7 @@ import EditPostRouter from "./routers/EditPostRouter.tsx";
 import RootRouter from "./routers/RootRouter.js";
 import SignUpRouter from "./routers/SignUpRouter.js";
 import UnauthorizedRouter from "./routers/UnauthorizedRouter.tsx";
+import SignInRouter from "./routers/SignInRouter.tsx";
 
 
 const router = createBrowserRouter([
@@ -50,6 +51,10 @@ const router = createBrowserRouter([
     {
         path: "/sign-up",
         element: <SignUpRouter />
+    },
+    {
+        path: "/sign-in",
+        element: <SignInRouter />
     }
 
 ])

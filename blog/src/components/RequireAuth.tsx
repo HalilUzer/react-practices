@@ -9,10 +9,8 @@ interface Props {
 }
 
 export default function RequireAuth({ allowedRoles }: Props) {
-
-  const {} = useSignInQuery({})
-
   const location = useLocation()
+  
 
   return (
     <div></div>
