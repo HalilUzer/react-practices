@@ -1,4 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { setUser } from "./userSlice";
+import { useDispatch } from "react-redux";
 
 export interface NewUser {
     username: string,
@@ -10,6 +12,8 @@ export interface User {
     roles: string[],
     accessToken: string
 }
+
+const dispatch = useDispatch()
 
 export const userApi = createApi({
     reducerPath: 'userApi',
@@ -33,7 +37,11 @@ export const userApi = createApi({
                 method: 'GET',
                 body: { ...newUser }
             }),
-            providesTags: ['user']
+            providesTags: ['user'],
+            transformResponse: (response: User, meta, arg) => {
+                dispatch(setUser(response))
+                return response
+            }
         })
 
     })

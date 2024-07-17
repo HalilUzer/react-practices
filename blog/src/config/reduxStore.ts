@@ -1,7 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { postApi } from "../features/posts/postApi.ts";
-import postsReducer from '../features/posts/postsSlice.ts'
 import { userApi } from "../features/user/userApi.ts";
+import postsReducer from '../features/posts/postsSlice.ts'
+import userReducer from '../features/user/userSlice.ts'
 
 
 export default configureStore({
@@ -9,6 +10,7 @@ export default configureStore({
         [postApi.reducerPath]: postApi.reducer,
         [userApi.reducerPath]: userApi.reducer,
         posts: postsReducer,
+        user: userReducer
     },
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware()
