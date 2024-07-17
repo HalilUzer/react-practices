@@ -1,4 +1,12 @@
 {
+  "posts": [
+    {
+      "id": "61",
+      "title": "asd",
+      "body": "asd ",
+      "datetime": "June 19, 2024 12:29:13 PM"
+    }
+  ],
   "users": [
     {
       "username": "Halil",

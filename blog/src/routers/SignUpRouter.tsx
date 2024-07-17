@@ -1,14 +1,13 @@
 import React, { useEffect, useRef, useState, MouseEvent } from 'react'
 import { Link } from 'react-router-dom'
 import { FaTimes, FaCheck } from "react-icons/fa";
+import { USER_REGEX, PWD_REGEX } from '../config/regex.ts';
+import { NewUser, useSignUpMutation } from '../features/user/userApi.ts';
 import Input from './../components/inputs/Input.tsx'
 import Button from '../components/buttons/Button.tsx'
 import InputInfo from '../components/InputInfo.tsx';
 import PwdAllowedSpecialCharacters from '../components/PwdAllowedSpecialCharacters.tsx';
-import { NewUser,  useSignUpMutation } from '../features/user/userApi.ts';
 
-const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
-const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 
 export default function SignUpRouter() {
     const userRef = useRef<HTMLInputElement>(null)
@@ -16,11 +15,9 @@ export default function SignUpRouter() {
 
     const [username, setUsername] = useState('')
     const [validUsername, setValidUsername] = useState(false)
-    const [userFocus, setUserFocus] = useState(false)
 
     const [pwd, setPwd] = useState('')
     const [validPwd, setValidPwd] = useState(false)
-    const [pwdFocus, setPwdFocus] = useState(false)
 
     const [matchPwd, setMatchPwd] = useState('')
     const [validMatch, setValidMatch] = useState(false)
@@ -29,11 +26,9 @@ export default function SignUpRouter() {
     const [errMsg, setErrMsg] = useState('')
     const [success, setSuccess] = useState(false)
 
-    const [registerUser] = useSignUpMutation();
+    const [signUp] = useSignUpMutation();
 
     userRef.current?.focus()
-
-
 
     useEffect(() => {
         setValidUsername(USER_REGEX.test(username))
@@ -48,9 +43,6 @@ export default function SignUpRouter() {
         setErrMsg('')
     }, [username, pwd, matchPwd])
 
-
-
-
     const handleSubmit = async (e: MouseEvent<HTMLButtonElement>, newUser: NewUser) => {
         e.preventDefault()
         try {
@@ -59,7 +51,7 @@ export default function SignUpRouter() {
             if (!v1 || !v2) {
                 setErrMsg('Invalid entry')
             }
-            await registerUser(newUser).unwrap()
+            await signUp(newUser).unwrap()
             setSuccess(true)
         }
         catch (err) {

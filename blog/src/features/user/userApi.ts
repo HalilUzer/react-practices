@@ -2,6 +2,8 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { setUser } from "./userSlice";
 import { useDispatch } from "react-redux";
 
+const dispatch = useDispatch()
+
 export interface NewUser {
     username: string,
     password: string,
@@ -13,12 +15,10 @@ export interface User {
     accessToken: string
 }
 
-const dispatch = useDispatch()
-
 export const userApi = createApi({
     reducerPath: 'userApi',
     baseQuery: fetchBaseQuery({
-        baseUrl: 'http://localhost:3400'
+        baseUrl: 'http://localhost:3500'
     }),
     tagTypes: ['user'],
     endpoints: (builder) => ({
@@ -43,7 +43,6 @@ export const userApi = createApi({
                 return response
             }
         })
-
     })
 })
 
