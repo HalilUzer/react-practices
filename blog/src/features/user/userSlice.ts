@@ -1,6 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { User } from "./userApi";
-import { stat } from "fs";
 
 const initialState: User = {
     accessToken: '',
