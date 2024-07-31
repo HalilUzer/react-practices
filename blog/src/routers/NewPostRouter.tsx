@@ -1,9 +1,6 @@
 import React, { useState, MouseEvent } from 'react'
 import { NewPost, useAddPostMutation } from '../features/posts/postApi.ts'
 import { useNavigate } from 'react-router-dom';
-import { MdOutlineDone } from 'react-icons/md';
-import { ClipLoader } from 'react-spinners';
-import Button from '../components/buttons/Button.tsx';
 import Input from '../components/inputs/Input.tsx';
 import TextArea from '../components/inputs/TextArea.tsx';
 import ClipLoaderButton from '../components/buttons/ClipLoaderButton.tsx';

@@ -7,7 +7,7 @@ import axios from 'axios'
 import { BASE_URL } from '../config/urls'
 import { useDispatch } from 'react-redux'
 import { setUser } from '../features/user/userSlice'
-import { User } from '../features/user/userApi'
+import { User } from '../features/user/userSlice'
 
 
 
@@ -22,7 +22,7 @@ export default function SignInRouter() {
         try {
                 const response = await axios.get(BASE_URL,{data: {username, password}});
                 const user : User = response.data;
-                dispatch(setUser(user));
+                dispatch(setUser(user))
         }
         catch(e){
             console.log(e);

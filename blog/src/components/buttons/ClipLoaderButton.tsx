@@ -11,7 +11,8 @@ interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
 
 export default function ClipLoaderButton({ isLoading, isDone, children, ...props }: Props) {
     return (
-        <Button {...props} >
+        <Button
+         {...props} >
             {isLoading ? <ClipLoader size={25} /> : isDone ?
                 <MdOutlineDone size={25} /> : children}
         </Button>

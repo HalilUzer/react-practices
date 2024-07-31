@@ -1,8 +1,8 @@
 import React, { useEffect, useRef, useState, MouseEvent } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { FaTimes, FaCheck } from "react-icons/fa";
 import { USER_REGEX, PWD_REGEX } from '../config/regex.ts';
-import { NewUser, useSignUpMutation } from '../features/user/userApi.ts';
+import { NewUser } from '../features/user/userSlice.ts';
 import { BASE_URL } from '../config/urls.ts';
 import Input from './../components/inputs/Input.tsx'
 import Button from '../components/buttons/Button.tsx'
@@ -15,6 +15,8 @@ import axios from 'axios';
 export default function SignUpRouter() {
     const userRef = useRef<HTMLInputElement>(null)
     const errRef = useRef(null)
+
+    const navigate = useNavigate()
 
     const [username, setUsername] = useState('')
     const [validUsername, setValidUsername] = useState(false)
@@ -64,10 +66,10 @@ export default function SignUpRouter() {
         <main className='flex justify-center items-center min-h-[100vh] w-full max-w-[300px] dark:black dark:text-white m-auto'>
             {
                 success ?
-                    <section>
+                    <section className='flex flex-col justify-center items-center bg-light-blue w-32 h-32'>
                         <h1>Success!</h1>
                         <p>
-                            <a href="#">Sign In</a>
+                            <Button><a href="#" onClick={() => navigate('/')}>Go to Home</a></Button>
                         </p>
                     </section>
                     :

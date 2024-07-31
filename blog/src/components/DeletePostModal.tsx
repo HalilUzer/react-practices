@@ -22,7 +22,7 @@ export default function DeletePostModal({ isModalOpen, setIsModalOpen, handleDel
 
     return (
         <dialog
-            className='flex flex-col justify-center fixed -translate-x-1/2 -translate-y-1/2 bg-gray-200 border-1 p-14 top-1/2 left-1/2 backdrop:bg-black/50 dark:bg-dark-blue'
+            className='flex flex-col justify-center fixed border border-black -translate-x-1/2 -translate-y-1/2 bg-gray-200 border-1 p-14 top-1/2 left-1/2 backdrop:bg-black/50 dark:bg-gray-700'
             ref={dialogRef}>
             <h2 className='dark:text-white m-4'>Are You Sure?</h2>
             <form action="" onSubmit={(e) => e.preventDefault()} className='flex justify-around items-center w-full'>
@@ -32,7 +32,6 @@ export default function DeletePostModal({ isModalOpen, setIsModalOpen, handleDel
                 <Button onClick={e => setIsModalOpen(false)}>
                     No
                 </Button>
-                <button className='text-2xl text-white w-16 cursor-pointer p-3 bg-red-600' onClick={e => setIsModalOpen(false)}>No</button>
             </form>
         </dialog>
     )

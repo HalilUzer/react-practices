@@ -1,5 +1,16 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { User } from "./userApi";
+
+
+export interface NewUser {
+    username: string,
+    password: string,
+}
+
+export interface User {
+    username: string
+    roles: string[],
+    accessToken: string
+}
 
 const initialState: User = {
     accessToken: '',
