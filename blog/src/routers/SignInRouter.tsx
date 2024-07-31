@@ -3,14 +3,30 @@ import { Link } from 'react-router-dom'
 import { USER_REGEX, PWD_REGEX } from '../config/regex'
 import Input from '../components/inputs/Input'
 import Button from '../components/buttons/Button'
+import axios from 'axios'
+import { BASE_URL } from '../config/urls'
+import { useDispatch } from 'react-redux'
+import { setUser } from '../features/user/userSlice'
+import { User } from '../features/user/userApi'
+
+
 
 export default function SignInRouter() {
-    const [username, setUsername] = useState('')
-    const [validUsernmae, setValidUsername] = useState(false)
-    const [password, setPassword] = useState('')
+    const [username, setUsername] = useState('');
+    const [validUsername, setValidUsername] = useState(false);
+    const [password, setPassword] = useState('');
+    const dispatch = useDispatch();
+ 
 
-    const handleSignIn = (username: string, password: string) => {
-
+    const handleSignIn = async () => {
+        try {
+                const response = await axios.get(BASE_URL,{data: {username, password}});
+                const user : User = response.data;
+                dispatch(setUser(user));
+        }
+        catch(e){
+            console.log(e);
+        }
     }
 
     return (
@@ -22,7 +38,7 @@ export default function SignInRouter() {
                 <Input id='username' required autoComplete='off' value={username} onChange={e => setUsername(e.target.value)} autoFocus />
                 <label htmlFor="password">Password:</label>
                 <Input id='password' required autoComplete='off' value={password} onChange={e => setPassword(e.target.value)} />
-                <Button className='m-3'>
+                <Button className='m-3' onClick={e => handleSignIn()}>
                     Sign Up
                 </Button>
             </form>

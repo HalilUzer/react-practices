@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { FaTimes, FaCheck } from "react-icons/fa";
 import { USER_REGEX, PWD_REGEX } from '../config/regex.ts';
 import { NewUser, useSignUpMutation } from '../features/user/userApi.ts';
-import { baseUrl } from '../config/urls.ts';
+import { BASE_URL } from '../config/urls.ts';
 import Input from './../components/inputs/Input.tsx'
 import Button from '../components/buttons/Button.tsx'
 import InputInfo from '../components/InputInfo.tsx';
@@ -52,7 +52,7 @@ export default function SignUpRouter() {
             if (!v1 || !v2) {
                 setErrMsg('Invalid entry')
             }
-            await axios.post(`${baseUrl}/users`, { ...newUser })
+            await axios.post(`${BASE_URL}/users`, { ...newUser })
             setSuccess(true)
         }
         catch (err) {
