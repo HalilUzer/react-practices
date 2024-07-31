@@ -13,6 +13,7 @@ import RootRouter from "./routers/RootRouter.js";
 import SignUpRouter from "./routers/SignUpRouter.js";
 import UnauthorizedRouter from "./routers/UnauthorizedRouter.tsx";
 import SignInRouter from "./routers/SignInRouter.tsx";
+import RequireAuth from "./components/RequireAuth.tsx";
 
 
 const router = createBrowserRouter([
@@ -27,7 +28,9 @@ const router = createBrowserRouter([
             },
             {
                 path: "/post",
-                element: <NewPostRouter />
+                element: <RequireAuth allowedRoles={['user']}>
+                    <NewPostRouter />
+                </RequireAuth>
             },
             {
                 path: "/about",

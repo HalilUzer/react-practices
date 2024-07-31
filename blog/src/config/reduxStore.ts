@@ -5,7 +5,7 @@ import postsReducer from '../features/posts/postsSlice.ts'
 import userReducer from '../features/user/userSlice.ts'
 
 
-export default configureStore({
+const store =  configureStore({
     reducer: {
         [postApi.reducerPath]: postApi.reducer,
 
@@ -16,3 +16,9 @@ export default configureStore({
         getDefaultMiddleware()
             .concat(postApi.middleware)
 })
+
+export default store;
+
+export type RootState = ReturnType<typeof store.getState>
+
+export type AppDispatch = typeof store.dispatch

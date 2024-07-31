@@ -12,10 +12,15 @@ export interface User {
     accessToken: string
 }
 
-const initialState: User = {
+export interface UserRedux extends User{
+    isLoggedIn: boolean
+}
+
+const initialState : UserRedux = {
     accessToken: '',
     username: '',
-    roles: []
+    roles: [],
+    isLoggedIn: false
 }
 
 export const userSlice = createSlice({
@@ -35,12 +40,11 @@ export const userSlice = createSlice({
         },
 
         setUser: (state, action: PayloadAction<User>) => {
-            state = action.payload
+            state = {...action.payload, isLoggedIn: true}
         }
     }
 })
 
 
 export const { setUser, setAccessToken, setRoles, setUsername } = userSlice.actions
-
 export default userSlice.reducer
