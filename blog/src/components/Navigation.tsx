@@ -9,6 +9,7 @@ type Props = {
 
 export default function Navigation({ keyword, setKeyword }: Props) {
     const location = useLocation()
+    
 
     return (
         <nav className='flex space-x-0 bg-[#333] text-white p-3 text-base '>

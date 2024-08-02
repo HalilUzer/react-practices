@@ -2,13 +2,14 @@ import React, { useEffect, useRef, useState, MouseEvent } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { FaTimes, FaCheck } from "react-icons/fa";
 import { USER_REGEX, PWD_REGEX } from '../config/regex.ts';
-import { NewUser } from '../features/user/userSlice.ts';
+import { NewUser, User } from '../features/user/userSlice.ts';
 import { BASE_URL } from '../config/urls.ts';
 import Input from './../components/inputs/Input.tsx'
 import Button from '../components/buttons/Button.tsx'
 import InputInfo from '../components/InputInfo.tsx';
 import PwdAllowedSpecialCharacters from '../components/PwdAllowedSpecialCharacters.tsx';
 import axios from '../config/axios.ts';
+import { AxiosResponse } from 'axios';
 
 
 
@@ -54,11 +55,17 @@ export default function SignUpRouter() {
             if (!v1 || !v2) {
                 setErrMsg('Invalid entry')
             }
-            const response = await axios.post('/users',
+
+            const data: User = {
+                ...newUser,
+                id: Math.ceil(Math.random() * 100).toString(),
+                accessToken: Math.random().toString(36).substring(2, 7),
+                roles: ['user']
+            }
+            const response = await axios.post<User>('/users',
                 {
                     ...newUser,
-                    id: Math.ceil(Math.random() * 100).toString(),
-                    accessToken: Math.random().toString(36).substring(2, 7)
+
                 })
             console.log(response)
             setSuccess(true)

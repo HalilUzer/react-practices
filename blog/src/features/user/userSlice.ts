@@ -7,16 +7,18 @@ export interface NewUser {
 }
 
 export interface User {
-    username: string
+    username: string,
+    id: string,
     roles: string[],
     accessToken: string
 }
 
-export interface UserRedux extends User{
+export interface UserRedux extends User {
     isLoggedIn: boolean
 }
 
-const initialState : UserRedux = {
+const initialState: UserRedux = {
+    id: '',
     accessToken: '',
     username: '',
     roles: [],
@@ -41,8 +43,8 @@ export const userSlice = createSlice({
 
         setUser: (state, action: PayloadAction<User>) => {
 
-            const user : User = action.payload;
-            state = {username: user.username, accessToken: user.accessToken, roles:user.roles, isLoggedIn: true}
+            const user: User = action.payload;
+            state = { ...user, isLoggedIn: true }
             console.log(state)
         }
     }

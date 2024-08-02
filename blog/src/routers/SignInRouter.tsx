@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { USER_REGEX, PWD_REGEX } from '../config/regex'
 import Input from '../components/inputs/Input'
 import Button from '../components/buttons/Button'
@@ -12,17 +12,18 @@ import { User } from '../features/user/userSlice'
 
 export default function SignInRouter() {
     const [username, setUsername] = useState('');
-    const [validUsername, setValidUsername] = useState(false);
     const [password, setPassword] = useState('');
     const dispatch = useDispatch();
+    const navigate = useNavigate()
 
 
     const handleSignIn = async () => {
         try {
-            const response = await axios.get('/users', { data: { username, password } });
+            const response = await axios.get(`/users?username=${username}&password=${password}`, { data: { username, password } });
             const user: User = response.data[0];
             console.log(response.data)
             dispatch(setUser(user))
+            navigate('/');
         }
         catch (e) {
             console.log(e);
