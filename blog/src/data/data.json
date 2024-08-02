@@ -12,35 +12,8 @@
       "username": "Halil",
       "password": "Uzer",
       "id": "0664",
-      "role": "user",
-      "token": "ejfoqhyoa03"
-    },
-    {
-      "id": "8c6e",
-      "username": "Halil",
-      "password": "Halil!12",
-      "role": "admin",
-      "token": "uf82nwefuka"
-    },
-    {
-      "id": "8b21",
-      "username": "halil",
-      "password": "Halil123!"
-    },
-    {
-      "id": "1e73",
-      "username": "halil",
-      "password": "Uzer!123"
-    },
-    {
-      "id": "e74a",
-      "username": "Halil",
-      "password": "Halil!123"
-    },
-    {
-      "id": "615d",
-      "username": "Halil",
-      "password": "Halil!123"
+      "roles": ["user"],
+      "accessToken": "ejfoqhyoa03"
     }
   ]
 }

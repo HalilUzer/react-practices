@@ -8,8 +8,8 @@ import Input from './../components/inputs/Input.tsx'
 import Button from '../components/buttons/Button.tsx'
 import InputInfo from '../components/InputInfo.tsx';
 import PwdAllowedSpecialCharacters from '../components/PwdAllowedSpecialCharacters.tsx';
+import axios from '../config/axios.ts';
 
-import axios from 'axios';
 
 
 export default function SignUpRouter() {
@@ -54,7 +54,8 @@ export default function SignUpRouter() {
             if (!v1 || !v2) {
                 setErrMsg('Invalid entry')
             }
-            await axios.post(`${BASE_URL}/users`, { ...newUser })
+            const response = await axios.post('/users', { ...newUser })
+            console.log(response)
             setSuccess(true)
         }
         catch (err) {
