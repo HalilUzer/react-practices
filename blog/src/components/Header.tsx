@@ -3,10 +3,15 @@ import { FaLaptop, FaTabletAlt, FaMobileAlt } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import useWindowSize from "../hooks/useWindowSize.ts";
 import ThemeToggleButton from "./ThemeToggleButton.tsx";
+import { useAppSelector } from "../hooks/reduxHooks.ts";
 
 export default function Header() {
     const sizes = useWindowSize()
     const navigate = useNavigate()
+    const isLoggedIn = useAppSelector(state => state.user.isLoggedIn);
+    const username = useAppSelector(state => state.user.username)
+
+    console.log(username)
 
     return (
         <header className='flex justify-between items-center bg-[#66d8f5] text-3xl p-6 w-full dark:bg-dark-blue'>
@@ -14,7 +19,10 @@ export default function Header() {
                 <h1>Blog</h1>
             </a>
             <div className='flex w-1/3 justify-around items-center'>
-                <ThemeToggleButton />
+                <div>
+                    <ThemeToggleButton />
+                    {isLoggedIn && <p>Welcome {username}!</p>}
+                </div>
                 {sizes?.width ? sizes?.width < 768 ? <FaMobileAlt /> :
                     sizes?.width < 992 ? <FaTabletAlt /> :
                         <FaLaptop /> : <FaLaptop />}

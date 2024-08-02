@@ -42,10 +42,9 @@ export const userSlice = createSlice({
         },
 
         setUser: (state, action: PayloadAction<User>) => {
-
             const user: User = action.payload;
-            state = { ...user, isLoggedIn: true }
-            console.log(state)
+            state = { username: user.username, accessToken: user.accessToken, id: user.id, roles: user.roles, isLoggedIn: true }
+            return state;
         }
     }
 })

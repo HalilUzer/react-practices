@@ -1,9 +1,6 @@
 import React, { useState, MouseEvent } from "react";
 import { Post, useGetPostQuery, useUpdatePostMutation } from "../features/posts/postApi.ts";
 import { useNavigate, useParams } from "react-router-dom";
-import { ClipLoader } from 'react-spinners';
-import { MdOutlineDone } from 'react-icons/md';
-import Button from "../components/buttons/Button.tsx";
 import Input from "../components/inputs/Input.tsx";
 import TextArea from "../components/inputs/TextArea.tsx";
 import ClipLoaderButton from "../components/buttons/ClipLoaderButton.tsx";

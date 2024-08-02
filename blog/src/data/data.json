@@ -9,9 +9,13 @@
   ],
   "users": [
     {
-      "id": "199e",
+      "id": "15",
       "username": "Halil",
-      "password": "Halil!123"
+      "password": "Halil!123",
+      "accessToken": "vdxc3",
+      "roles": [
+        "user"
+      ]
     }
   ]
 }

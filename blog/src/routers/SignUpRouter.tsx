@@ -9,8 +9,6 @@ import Button from '../components/buttons/Button.tsx'
 import InputInfo from '../components/InputInfo.tsx';
 import PwdAllowedSpecialCharacters from '../components/PwdAllowedSpecialCharacters.tsx';
 import axios from '../config/axios.ts';
-import { AxiosResponse } from 'axios';
-
 
 
 export default function SignUpRouter() {
@@ -62,12 +60,7 @@ export default function SignUpRouter() {
                 accessToken: Math.random().toString(36).substring(2, 7),
                 roles: ['user']
             }
-            const response = await axios.post<User>('/users',
-                {
-                    ...newUser,
-
-                })
-            console.log(response)
+            const response = await axios.post<User>('/users', data)
             setSuccess(true)
         }
         catch (err) {
