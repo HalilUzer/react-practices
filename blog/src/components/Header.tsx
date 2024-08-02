@@ -11,18 +11,14 @@ export default function Header() {
     const isLoggedIn = useAppSelector(state => state.user.isLoggedIn);
     const username = useAppSelector(state => state.user.username)
 
-    console.log(username)
-
     return (
         <header className='flex justify-between items-center bg-[#66d8f5] text-3xl p-6 w-full dark:bg-dark-blue'>
             <a href="" onClick={e => { e.preventDefault(); navigate('/') }}>
                 <h1>Blog</h1>
             </a>
+            {isLoggedIn && <p>Welcome {username}!</p>}
             <div className='flex w-1/3 justify-around items-center'>
-                <div>
-                    <ThemeToggleButton />
-                    {isLoggedIn && <p>Welcome {username}!</p>}
-                </div>
+                <ThemeToggleButton />
                 {sizes?.width ? sizes?.width < 768 ? <FaMobileAlt /> :
                     sizes?.width < 992 ? <FaTabletAlt /> :
                         <FaLaptop /> : <FaLaptop />}
