@@ -20,7 +20,7 @@ export default function SignInRouter() {
 
     const handleSignIn = async () => {
         try {
-            const response : AxiosResponse = await axios.get('/users', { data: { username, password } });
+            const response = await axios.get('/users', { data: { username, password } });
             const user: User = response.data[0];
             console.log(response.data)
             dispatch(setUser(user))
@@ -40,7 +40,7 @@ export default function SignInRouter() {
                 <label htmlFor="password">Password:</label>
                 <Input id='password' required autoComplete='off' value={password} onChange={e => setPassword(e.target.value)} type='password' />
                 <Button className='m-3' onClick={e => handleSignIn()}>
-                    Sign Up
+                    Sign In
                 </Button>
             </form>
         </main>

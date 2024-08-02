@@ -54,7 +54,12 @@ export default function SignUpRouter() {
             if (!v1 || !v2) {
                 setErrMsg('Invalid entry')
             }
-            const response = await axios.post('/users', { ...newUser })
+            const response = await axios.post('/users',
+                {
+                    ...newUser,
+                    id: Math.ceil(Math.random() * 100).toString(),
+                    accessToken: Math.random().toString(36).substring(2, 7)
+                })
             console.log(response)
             setSuccess(true)
         }
