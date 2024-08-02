@@ -7,7 +7,6 @@ import axios from '../config/axios'
 import { useDispatch } from 'react-redux'
 import { setUser } from '../features/user/userSlice'
 import { User } from '../features/user/userSlice'
-import { AxiosResponse } from 'axios'
 
 
 
