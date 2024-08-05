@@ -28,6 +28,7 @@ export default function NewPostRouter() {
         }
     }
 
+
     return (
         <form className='flex flex-col p-3' action="" onSubmit={e => e.preventDefault()}>
             <label htmlFor="title">

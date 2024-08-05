@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState, MouseEvent } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { FaTimes, FaCheck } from "react-icons/fa";
 import { USER_REGEX, PWD_REGEX } from '../config/regex.ts';
-import { NewUser, User } from '../features/user/userSlice.ts';
+import { NewUser, Role, User } from '../features/user/userSlice.ts';
 import { BASE_URL } from '../config/urls.ts';
 import Input from './../components/inputs/Input.tsx'
 import Button from '../components/buttons/Button.tsx'
@@ -58,7 +58,7 @@ export default function SignUpRouter() {
                 ...newUser,
                 id: Math.ceil(Math.random() * 100).toString(),
                 accessToken: Math.random().toString(36).substring(2, 7),
-                roles: ['user']
+                roles: [Role.USER]
             }
             const response = await axios.post<User>('/users', data)
             setSuccess(true)

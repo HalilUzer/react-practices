@@ -1,7 +1,8 @@
+import React, { useState } from "react";
 import { Provider } from "react-redux";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { ThemeContext } from "./contexts/ThemeContext.ts";
-import React, { useState } from "react";
+import { Role } from "./features/user/userSlice.ts";
 import store from "./config/reduxStore.ts";
 import HomeRouter from "./routers/HomeRouter.tsx";
 import ErrorRouter from "./routers/ErrorRouter.tsx";
@@ -16,6 +17,7 @@ import SignInRouter from "./routers/SignInRouter.tsx";
 import RequireAuth from "./components/RequireAuth.tsx";
 
 
+
 const router = createBrowserRouter([
     {
         path: "/",
@@ -28,7 +30,8 @@ const router = createBrowserRouter([
             },
             {
                 path: "/post",
-                element: <RequireAuth allowedRoles={['user']}>
+                element:
+                    <RequireAuth allowedRoles={[Role.USER]}>
                         <NewPostRouter />
                     </RequireAuth>
             },
@@ -41,9 +44,11 @@ const router = createBrowserRouter([
                 element: <PostRouter />
             },
             {
-
                 path: "/edit/:id",
-                element: <EditPostRouter />
+                element:
+                    <RequireAuth allowedRoles={[Role.USER]}>
+                        <EditPostRouter />
+                    </RequireAuth>
             },
             {
                 path: "/unauthorized",

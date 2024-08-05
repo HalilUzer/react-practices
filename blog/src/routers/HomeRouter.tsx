@@ -5,6 +5,7 @@ import { Post } from '../features/posts/postApi.ts';
 import RetryForm from '../components/RetryForm.tsx';
 import HomePagePost from "../components/HomePagePost.tsx";
 export default function HomeRouter() {
+    
     const {
         data: posts,
         refetch,
@@ -13,7 +14,6 @@ export default function HomeRouter() {
     } = useGetPostsQuery()
 
     const keyword = useOutletContext<string>();
-
     const filterPosts = useCallback((posts: Post[]) => posts.filter(post => keyword === '' ? true : post.body.toLowerCase().includes(keyword.toLowerCase())), [keyword, posts])
 
     return (

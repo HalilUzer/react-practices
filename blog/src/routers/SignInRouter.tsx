@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { setUser } from '../features/user/userSlice'
+import { Role, setUser } from '../features/user/userSlice'
 import { User } from '../features/user/userSlice'
 import { useAppDispatch } from '../hooks/reduxHooks'
 import Input from '../components/inputs/Input'
@@ -13,11 +13,13 @@ export default function SignInRouter() {
     const dispatch = useAppDispatch();
     const navigate = useNavigate()
 
-
     const handleSignIn = async () => {
         try {
             const response = await axios.get(`/users?username=${username}&password=${password}`, { data: { username, password } });
-            const user: User = response.data[0];
+            const data = response.data[0];
+            const roles : Role[] = [];
+            data.roles.forEach((role : string) => roles.push(Role[role as keyof typeof Role]))
+            const user : User = {...data, roles};
             dispatch(setUser(user))
             navigate('/');
         }

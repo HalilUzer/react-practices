@@ -1,6 +1,10 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 
+export enum Role {
+    USER
+}
+
 export interface NewUser {
     username: string,
     password: string,
@@ -9,7 +13,7 @@ export interface NewUser {
 export interface User {
     username: string,
     id: string,
-    roles: string[],
+    roles: Role[],
     accessToken: string
 }
 
@@ -37,7 +41,7 @@ export const userSlice = createSlice({
             state.username = action.payload
         },
 
-        setRoles: (state, action: PayloadAction<string[]>) => {
+        setRoles: (state, action: PayloadAction<Role[]>) => {
             state.roles = action.payload
         },
 

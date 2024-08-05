@@ -15,12 +15,11 @@ export default function EditPostRouter() {
     if (!post) {
         navigate('/')
     }
-
+    
     const [editedPost, setEditedPost] = useState(post!);
     const [isLoading, setIsLoading] = useState(false)
     const [isDone, setIsDone] = useState(false)
     const [updatePost] = useUpdatePostMutation()
-
 
     const handleSubmit = (e: MouseEvent<HTMLButtonElement>, newPost: Post) => {
         e.preventDefault()
