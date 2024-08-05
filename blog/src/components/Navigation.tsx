@@ -1,8 +1,6 @@
 import { Link, useLocation } from 'react-router-dom'
 import React, { Dispatch, SetStateAction } from 'react'
 import SearchBar from './SearchBar.tsx'
-import { useSelector } from 'react-redux'
-import { UserRedux } from '../features/user/userSlice.ts'
 import { useAppSelector } from '../hooks/reduxHooks.ts'
 
 type Props = {

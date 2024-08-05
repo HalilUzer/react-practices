@@ -3,8 +3,6 @@ import { Navigate } from 'react-router-dom';
 import { useAppSelector } from '../hooks/reduxHooks';
 import { Role } from '../features/user/userSlice';
 
-
-
 interface Props {
   allowedRoles: Role[],
   children: ReactNode

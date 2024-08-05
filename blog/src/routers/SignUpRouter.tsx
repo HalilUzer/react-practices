@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { FaTimes, FaCheck } from "react-icons/fa";
 import { USER_REGEX, PWD_REGEX } from '../config/regex.ts';
 import { NewUser, Role, User } from '../features/user/userSlice.ts';
-import { BASE_URL } from '../config/urls.ts';
+import { BASE_URL } from '../config/consts.ts';
 import Input from './../components/inputs/Input.tsx'
 import Button from '../components/buttons/Button.tsx'
 import InputInfo from '../components/InputInfo.tsx';

@@ -1,9 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { postApi } from "../features/posts/postApi.ts";
-
 import postsReducer from '../features/posts/postsSlice.ts'
 import userReducer from '../features/user/userSlice.ts'
-
 
 const store = configureStore({
     reducer: {
