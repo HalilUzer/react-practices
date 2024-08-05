@@ -5,7 +5,6 @@ import { Post } from '../features/posts/postApi.ts';
 import RetryForm from '../components/RetryForm.tsx';
 import HomePagePost from "../components/HomePagePost.tsx";
 export default function HomeRouter() {
-    
     const {
         data: posts,
         refetch,

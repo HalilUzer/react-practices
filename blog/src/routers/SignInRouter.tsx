@@ -1,32 +1,13 @@
 import React, { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
-import { Role, setUser } from '../features/user/userSlice'
-import { User } from '../features/user/userSlice'
-import { useAppDispatch } from '../hooks/reduxHooks'
+import { Link } from 'react-router-dom'
 import Input from '../components/inputs/Input'
 import Button from '../components/buttons/Button'
-import axios from '../config/axios'
+import useSignIn  from '../hooks/useSignIn'
 
 export default function SignInRouter() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const dispatch = useAppDispatch();
-    const navigate = useNavigate()
-
-    const handleSignIn = async () => {
-        try {
-            const response = await axios.get(`/users?username=${username}&password=${password}`, { data: { username, password } });
-            const data = response.data[0];
-            const roles : Role[] = [];
-            data.roles.forEach((role : string) => roles.push(Role[role as keyof typeof Role]))
-            const user : User = {...data, roles};
-            dispatch(setUser(user))
-            navigate('/');
-        }
-        catch (e) {
-            console.log(e);
-        }
-    }
+    const handleSignIn = useSignIn()
 
     return (
         <main className='flex justify-center items-center min-h-[100vh] w-full max-w-[300px] dark:black dark:text-white m-auto'>
@@ -37,7 +18,7 @@ export default function SignInRouter() {
                 <Input id='username' required autoComplete='off' value={username} onChange={e => setUsername(e.target.value)} autoFocus />
                 <label htmlFor="password">Password:</label>
                 <Input id='password' required autoComplete='off' value={password} onChange={e => setPassword(e.target.value)} type='password' />
-                <Button className='m-3' onClick={e => handleSignIn()}>
+                <Button className='m-3' onClick={e => handleSignIn(username, password)}>
                     Sign In
                 </Button>
             </form>

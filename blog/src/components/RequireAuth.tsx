@@ -12,6 +12,7 @@ export default function RequireAuth({ children, allowedRoles }: Props) {
   const user = useAppSelector((state) => state.user)
 
   console.log(user)
+
   return (
     user.isLoggedIn ?
       user.roles.find(role => allowedRoles.includes(role)) ?

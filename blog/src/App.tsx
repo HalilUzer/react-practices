@@ -15,6 +15,7 @@ import SignUpRouter from "./routers/SignUpRouter.js";
 import UnauthorizedRouter from "./routers/UnauthorizedRouter.tsx";
 import SignInRouter from "./routers/SignInRouter.tsx";
 import RequireAuth from "./components/RequireAuth.tsx";
+import NotFoundRouter from "./routers/NotFoundRouter.tsx";
 
 
 
@@ -49,10 +50,6 @@ const router = createBrowserRouter([
                     <RequireAuth allowedRoles={[Role.USER]}>
                         <EditPostRouter />
                     </RequireAuth>
-            },
-            {
-                path: "/unauthorized",
-                element: <UnauthorizedRouter />
             }
         ]
     },
@@ -63,6 +60,14 @@ const router = createBrowserRouter([
     {
         path: "/sign-in",
         element: <SignInRouter />
+    },
+    {
+        path: "/unauthorized",
+        element: <UnauthorizedRouter />
+    },
+    {
+        path: "/404",
+        element: <NotFoundRouter />
     }
 
 ])

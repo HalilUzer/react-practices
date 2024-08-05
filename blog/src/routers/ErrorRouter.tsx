@@ -1,7 +1,6 @@
 import React from "react"
 
 export default function ErrorRouter() {
-
     return (
         <div id="error-page" className='grid min-h-screen place-content-center'>
             <h1>Oops!</h1>

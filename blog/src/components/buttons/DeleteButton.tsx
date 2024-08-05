@@ -8,7 +8,6 @@ interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 export default function DeleteButton({ children, className = '', type = 'submit', ...props }: Props) {
-
     return (
         <Button 
         {...props} 

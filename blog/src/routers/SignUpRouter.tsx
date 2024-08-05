@@ -1,14 +1,13 @@
 import React, { useEffect, useRef, useState, MouseEvent } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { FaTimes, FaCheck } from "react-icons/fa";
-import { USER_REGEX, PWD_REGEX } from '../config/regex.ts';
-import { NewUser, Role, User } from '../features/user/userSlice.ts';
-import { BASE_URL } from '../config/consts.ts';
+import { USER_REGEX, PWD_REGEX } from '../config/consts.ts';
 import Input from './../components/inputs/Input.tsx'
 import Button from '../components/buttons/Button.tsx'
 import InputInfo from '../components/InputInfo.tsx';
 import PwdAllowedSpecialCharacters from '../components/PwdAllowedSpecialCharacters.tsx';
-import axios from '../config/axios.ts';
+import useSignUp from '../hooks/useSignUp.ts';
+;
 
 
 export default function SignUpRouter() {
@@ -27,8 +26,7 @@ export default function SignUpRouter() {
     const [validMatch, setValidMatch] = useState(false)
     const [matchFocus, setMatchFocus] = useState(false)
 
-    const [errMsg, setErrMsg] = useState('')
-    const [success, setSuccess] = useState(false)
+    const { handleSignUp, errMsg, success, setErrMsg } = useSignUp()
 
     userRef.current?.focus()
 
@@ -45,28 +43,7 @@ export default function SignUpRouter() {
         setErrMsg('')
     }, [username, pwd, matchPwd])
 
-    const handleSignUp = async (e: MouseEvent<HTMLButtonElement>, newUser: NewUser) => {
-        e.preventDefault()
-        try {
-            const v1 = USER_REGEX.test(username)
-            const v2 = PWD_REGEX.test(pwd)
-            if (!v1 || !v2) {
-                setErrMsg('Invalid entry')
-            }
 
-            const data: User = {
-                ...newUser,
-                id: Math.ceil(Math.random() * 100).toString(),
-                accessToken: Math.random().toString(36).substring(2, 7),
-                roles: [Role.USER]
-            }
-            const response = await axios.post<User>('/users', data)
-            setSuccess(true)
-        }
-        catch (err) {
-            console.log(err)
-        }
-    }
 
     return (
         <main className='flex justify-center items-center min-h-[100vh] w-full max-w-[300px] dark:black dark:text-white m-auto'>
@@ -83,6 +60,7 @@ export default function SignUpRouter() {
                         <h1 className='font-bold text-4xl'><Link to='/'>Blog</Link></h1>
                         <h2 className='mr-auto font-bold text-lg'>Sign-Up</h2>
                         <p ref={errRef}>{errMsg}</p>
+
                         <label htmlFor="username" className='mr-auto'>
                             Username: {username.length === 0 ? null : validUsername ?
                                 <FaCheck className='text-green-600 inline' /> : <FaTimes className='text-red-600 inline' />}
@@ -93,6 +71,7 @@ export default function SignUpRouter() {
                             Must begin with a letter. <br />
                             Letters, numbers, underscores, hyphens allowed.
                         </InputInfo>
+
                         <label htmlFor="password" className='mr-auto'>
                             Password: {pwd.length === 0 ? null : validPwd ?
                                 <FaCheck className='text-green-600 inline' /> : <FaTimes className='text-red-600 inline' />}
@@ -103,6 +82,7 @@ export default function SignUpRouter() {
                             Must include uppercase and lowercase letters, a number and a special character.<br />
                             Allowed special characters: <PwdAllowedSpecialCharacters />
                         </InputInfo>
+
                         <label htmlFor="confirm_pwd" className='mr-auto'>
                             Confirm Password:{matchPwd.length === 0 ? null : validMatch ?
                                 <FaCheck className='text-green-600 inline' /> : <FaTimes className='text-red-600 inline' />}
@@ -111,6 +91,7 @@ export default function SignUpRouter() {
                         <InputInfo condition={matchFocus && !validMatch}>
                             Must match the first password input field.
                         </InputInfo>
+
                         <Button className='m-3' disabled={!validMatch || !validPwd || !validUsername} onClick={e => handleSignUp(e, { username, password: pwd })}>
                             Sign Up
                         </Button>

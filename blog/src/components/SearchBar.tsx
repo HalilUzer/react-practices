@@ -7,7 +7,6 @@ type Props = {
 }
 
 export default function SearchBar({ keyword, setKeyword } : Props) {
-    
     return (
         <form action="" className='flex align-center ml-4'>
             <label htmlFor="searchBar" className='absolute left-full'>Search Bar</label>

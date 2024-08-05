@@ -7,7 +7,6 @@ interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 export default function Button({ children, className = '', type = 'submit', ...props }: Props) {
-
     return (
         <button
             {...props}

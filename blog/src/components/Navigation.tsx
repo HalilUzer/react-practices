@@ -17,10 +17,11 @@ export default function Navigation({ keyword, setKeyword }: Props) {
             {location.pathname === '/' && <SearchBar keyword={keyword} setKeyword={setKeyword} />}
             <ul className={'flex justify-evenly list-none flex-grow'}>
                 <li className='m-4 shadow-[rgba(0, 0, 0, 0.06)_0_2px_4px] hover:shadow-[rgba(0, 0, 0, 0.06)_0_2px_4px transition-all'><Link className='text' to={"/"}>Home</Link></li>
-                <li className='m-4 shadow-[rgba(0, 0, 0, 0.06)_0_2px_4px] hover:shadow-[rgba(0, 0, 0, 0.06)_0_2px_4px transition-all'><Link to={"/post"}>New Post</Link></li>
                 <li className='m-4 shadow-[rgba(0, 0, 0, 0.06)_0_2px_4px] hover:shadow-[rgba(0, 0, 0, 0.06)_0_2px_4px transition-all'><Link to={"/about"}>About</Link></li>
+                {isLoggedIn && <li className='m-4 shadow-[rgba(0, 0, 0, 0.06)_0_2px_4px] hover:shadow-[rgba(0, 0, 0, 0.06)_0_2px_4px transition-all'><Link to={"/post"}>New Post</Link></li>}
                 {!isLoggedIn && <li className='m-4 shadow-[rgba(0, 0, 0, 0.06)_0_2px_4px] hover:shadow-[rgba(0, 0, 0, 0.06)_0_2px_4px transition-all'><Link to={"/sign-up"}>Sign Up</Link></li>}
                 {!isLoggedIn && <li className='m-4 shadow-[rgba(0, 0, 0, 0.06)_0_2px_4px] hover:shadow-[rgba(0, 0, 0, 0.06)_0_2px_4px transition-all'><Link to={"/sign-in"}>Sign In</Link></li>}
+                {isLoggedIn && <li className='m-4 shadow-[rgba(0, 0, 0, 0.06)_0_2px_4px] hover:shadow-[rgba(0, 0, 0, 0.06)_0_2px_4px transition-all'><a>Log Out</a></li>}
             </ul>
         </nav>
     )

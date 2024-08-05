@@ -8,12 +8,13 @@ import ClipLoaderButton from "../components/buttons/ClipLoaderButton.tsx";
 export default function EditPostRouter() {
     const navigate = useNavigate()
     const { id } = useParams()
+
     const {
         data: post
     } = useGetPostQuery(Number(id))
 
     if (!post) {
-        navigate('/')
+        navigate('/404')
     }
     
     const [editedPost, setEditedPost] = useState(post!);
