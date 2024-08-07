@@ -31,8 +31,8 @@ export function useSignUp(){
     const [errMsg, setErrMsg] = useState('')
     const [success, setSuccess] = useState(false)
     
-    const handleSignUp = async (e: MouseEvent<HTMLButtonElement>, newUser: NewUser) => {
-        e.preventDefault()
+    const handleSignUp = async (newUser: NewUser) => {
+
         try {
             const v1 = USER_REGEX.test(newUser.username)
             const v2 = PWD_REGEX.test(newUser.password)
@@ -55,4 +55,11 @@ export function useSignUp(){
     }
 
     return {handleSignUp, errMsg, success, setErrMsg, setSuccess}
+}
+
+export function useLogOut(){
+    
+    const logOut = async () => {
+
+    }
 }

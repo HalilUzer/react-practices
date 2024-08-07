@@ -50,10 +50,15 @@ export const userSlice = createSlice({
             const user: User = action.payload;
             state = { username: user.username, accessToken: user.accessToken, id: user.id, roles: user.roles, isLoggedIn: true }
             return state;
+        },
+
+        logOut(state, action: PayloadAction<void>) {
+            state = initialState;
+            return state;
         }
     },
 })
 
 
-export const { setUser, setAccessToken, setRoles, setUsername } = userSlice.actions
+export const { setUser, setAccessToken, setRoles, setUsername, logOut } = userSlice.actions
 export default userSlice.reducer

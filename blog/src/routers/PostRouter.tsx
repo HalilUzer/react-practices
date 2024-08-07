@@ -1,10 +1,10 @@
-import React, { useState, MouseEvent } from 'react';
-import { useGetPostQuery, useDeletePostMutation } from '../features/posts/postApi.ts'
+import React, { useState } from 'react';
+import { useGetPostQuery } from '../features/posts/postApi.ts'
 import { useNavigate, useParams } from "react-router-dom";
+import { usePostDelete } from '../hooks/postHooks.ts';
 import RetryForm from '../components/RetryForm.tsx'
 import Post from "../components/Post.tsx";
 import DeletePostModal from '../components/DeletePostModal.tsx';
-import { usePostDelete } from '../hooks/postHooks.ts';
 
 export default function PostRouter() {
     const [isModalOpen, setIsModalOpen] = useState(false);

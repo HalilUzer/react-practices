@@ -90,7 +90,7 @@ export default function SignUpRouter() {
                             Must match the first password input field.
                         </InputInfo>
 
-                        <Button className='m-3' disabled={!validMatch || !validPwd || !validUsername} onClick={e => handleSignUp(e, { username, password: pwd })}>
+                        <Button className='m-3' disabled={!validMatch || !validPwd || !validUsername} onClick={e => handleSignUp({ username, password: pwd })}>
                             Sign Up
                         </Button>
                         <p className='mr-auto'>Already Registered ?</p>

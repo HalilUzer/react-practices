@@ -1,10 +1,10 @@
-import React, { useState, MouseEvent } from "react";
-import { Post, useGetPostQuery, useUpdatePostMutation } from "../features/posts/postApi.ts";
+import React, { useState } from "react";
+import { useGetPostQuery } from "../features/posts/postApi.ts";
 import { useNavigate, useParams } from "react-router-dom";
+import { useEditPost } from "../hooks/postHooks.ts";
 import Input from "../components/inputs/Input.tsx";
 import TextArea from "../components/inputs/TextArea.tsx";
 import ClipLoaderButton from "../components/buttons/ClipLoaderButton.tsx";
-import { useEditPost } from "../hooks/postHooks.ts";
 
 export default function EditPostRouter() {
     const navigate = useNavigate()
