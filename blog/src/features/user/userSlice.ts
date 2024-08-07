@@ -1,4 +1,5 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice, PayloadAction, SerializedError } from "@reduxjs/toolkit";
+import axios from "../../config/axios";
 
 
 export enum Role {
@@ -50,7 +51,7 @@ export const userSlice = createSlice({
             state = { username: user.username, accessToken: user.accessToken, id: user.id, roles: user.roles, isLoggedIn: true }
             return state;
         }
-    }
+    },
 })
 
 

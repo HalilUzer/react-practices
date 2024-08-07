@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { Post } from "../features/posts/postApi";
 
-type Props = {
+interface Props {
     post: Post
 }
 

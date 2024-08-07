@@ -40,7 +40,7 @@ export default function EditPostRouter() {
             <label htmlFor="title">Title:</label>
             <Input id="title" required onChange={e => setEditedPost({ ...editedPost, title: e.target.value })} value={editedPost.title} />
             <label htmlFor="post">Post:</label>
-            <TextArea id="post" required onChange={e => setEditedPost({ ...editedPost, body: e.target.value })} value={editedPost.body} />
+            <TextArea id="post" required rows={9} cols={12} onChange={e => setEditedPost({ ...editedPost, body: e.target.value })} value={editedPost.body} />
             <ClipLoaderButton isDone={isDone} isLoading={isLoading} onClick={e => handleSubmit(e, editedPost)}>Submit</ClipLoaderButton>
         </form>
     )

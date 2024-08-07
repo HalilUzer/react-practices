@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import Input from '../components/inputs/Input'
 import Button from '../components/buttons/Button'
-import useSignIn  from '../hooks/useSignIn'
+import { useSignIn } from '../hooks/userHooks'
 
 export default function SignInRouter() {
     const [username, setUsername] = useState('');

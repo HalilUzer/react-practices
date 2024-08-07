@@ -1,7 +1,6 @@
 import React from "react"
 
 export default function AboutRouter() {
-  
   return (
     <div className='m-4'>
       <h2>About</h2>

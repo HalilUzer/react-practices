@@ -3,9 +3,7 @@ import { NewPost } from '../features/posts/postApi.ts'
 import Input from '../components/inputs/Input.tsx';
 import TextArea from '../components/inputs/TextArea.tsx';
 import ClipLoaderButton from '../components/buttons/ClipLoaderButton.tsx';
-import usePostSubmit from '../hooks/usePostSubmit.ts';
-
-
+import { usePostSubmit } from '../hooks/postHooks.ts';
 
 export default function NewPostRouter() {
     const [newPost, setNewPost] = useState<NewPost>({ title: '', body: '' });

@@ -6,9 +6,7 @@ import Input from './../components/inputs/Input.tsx'
 import Button from '../components/buttons/Button.tsx'
 import InputInfo from '../components/InputInfo.tsx';
 import PwdAllowedSpecialCharacters from '../components/PwdAllowedSpecialCharacters.tsx';
-import useSignUp from '../hooks/useSignUp.ts';
-;
-
+import { useSignUp } from '../hooks/userHooks.ts';
 
 export default function SignUpRouter() {
     const userRef = useRef<HTMLInputElement>(null)

@@ -6,7 +6,7 @@ import React, { SetStateAction, Dispatch } from "react";
 import Button from "./buttons/Button.tsx";
 import DeleteButton from "./buttons/DeleteButton.tsx";
 
-type Props = {
+interface Props {
     post: PostType,
     setIsModalOpen: Dispatch<SetStateAction<boolean>>,
 }

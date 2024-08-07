@@ -12,7 +12,7 @@ export default function DeleteButton({ children, className = '', type = 'submit'
         <Button 
         {...props} 
         type={type} 
-        className={twMerge('bg-red-600 dark:bg-dark-blue dark:hover:bg-black', className)}>
+        className={twMerge('bg-red-600 hover:bg-red-700 dark:bg-dark-blue dark:hover:bg-black', className)}>
             {children}
         </Button>
     )

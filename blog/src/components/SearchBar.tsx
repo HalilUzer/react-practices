@@ -1,7 +1,7 @@
 import React from "react"
 import { Dispatch, SetStateAction } from "react"
 
-type Props = {
+interface Props {
     keyword: string,
     setKeyword: Dispatch<SetStateAction<string>>
 }

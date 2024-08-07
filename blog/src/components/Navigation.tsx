@@ -3,7 +3,7 @@ import React, { Dispatch, SetStateAction } from 'react'
 import SearchBar from './SearchBar.tsx'
 import { useAppSelector } from '../hooks/reduxHooks.ts'
 
-type Props = {
+interface Props {
     keyword: string,
     setKeyword: Dispatch<SetStateAction<string>>
 }
