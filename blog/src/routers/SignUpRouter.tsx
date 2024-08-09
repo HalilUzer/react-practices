@@ -17,7 +17,6 @@ const schema = z.object({
     email: z.string().email(),
     password: z.string().min(1).regex(PWD_REGEX),
     passwordConfirmation: z.string().
-    
 }).refine(data => data.password === data.passwordConfirmation, { message: 'Password dont match', path: ['confirmPassword'] })
 
 
