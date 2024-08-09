@@ -7,46 +7,62 @@ import Button from '../components/buttons/Button.tsx'
 import InputInfo from '../components/InputInfo.tsx';
 import PwdAllowedSpecialCharacters from '../components/PwdAllowedSpecialCharacters.tsx';
 import { useSignUp } from '../hooks/userHooks.ts';
+import { SubmitHandler, useForm } from 'react-hook-form';
+import { z } from 'zod';
+import { Role, User } from '../features/user/userSlice.ts';
+import axios from '../config/axios.ts';
+
+const schema = z.object({
+    username: z.string().min(4).max(24).regex(USER_REGEX),
+    password: z.string().min(1).regex(PWD_REGEX),
+    email: z.string().email()
+})
+
+
+type FormFields = z.infer<typeof schema>
 
 export default function SignUpRouter() {
     const userRef = useRef<HTMLInputElement>(null)
     const errRef = useRef(null)
-
     const navigate = useNavigate()
 
-    const [username, setUsername] = useState('')
-    const [validUsername, setValidUsername] = useState(false)
-
-    const [pwd, setPwd] = useState('')
-    const [validPwd, setValidPwd] = useState(false)
-
-    const [matchPwd, setMatchPwd] = useState('')
-    const [validMatch, setValidMatch] = useState(false)
-    const [matchFocus, setMatchFocus] = useState(false)
-
-    const { handleSignUp, errMsg, success, setErrMsg } = useSignUp()
+    const {
+        register,
+        handleSubmit,
+        formState: { errors, isSubmitted, isValid }
+    } = useForm<FormFields>(
+        {
+            defaultValues: {
+                username: '',
+                password: '',
+                email: ''
+            },
+        })
 
     userRef.current?.focus()
+    const onSubmit: SubmitHandler<FormFields> = async (data) => {
 
-    useEffect(() => {
-        setValidUsername(USER_REGEX.test(username))
-    }, [username])
+        try {
+            const user: User = {
+                ...data,
+                id: Math.ceil(Math.random() * 100).toString(),
+                accessToken: Math.random().toString(36).substring(2, 7),
+                roles: [Role.USER]
+            }
+            await axios.post<User>('/users', user)
+        }
+        catch (err) {
+            console.log(err)
+        }
+    }
 
-    useEffect(() => {
-        setValidPwd(PWD_REGEX.test(pwd))
-        setValidMatch(pwd === matchPwd)
-    }, [pwd, matchPwd])
-
-    useEffect(() => {
-        setErrMsg('')
-    }, [username, pwd, matchPwd])
 
 
 
     return (
         <main className='flex justify-center items-center min-h-[100vh] w-full max-w-[300px] dark:black dark:text-white m-auto'>
             {
-                success ?
+                isSubmitted ?
                     <section className='flex flex-col justify-center items-center bg-light-blue w-32 h-32'>
                         <h1>Success!</h1>
                         <p>
@@ -57,19 +73,15 @@ export default function SignUpRouter() {
                     <form className='flex flex-col justify-center items-center p-5 bg-light-blue dark:bg-gray-600 w-full text-lg' action="" onSubmit={e => e.preventDefault()}>
                         <h1 className='font-bold text-4xl'><Link to='/'>Blog</Link></h1>
                         <h2 className='mr-auto font-bold text-lg'>Sign-Up</h2>
-                        <p ref={errRef}>{errMsg}</p>
-
+                        <p ref={errRef}>{errors.root?.message}</p>
                         <label htmlFor="username" className='mr-auto'>
-                            Username: {username.length === 0 ? null : validUsername ?
-                                <FaCheck className='text-green-600 inline' /> : <FaTimes className='text-red-600 inline' />}
+                            Username: {errors.username?.message ?
+                                <FaTimes className='text-red-600 inline' /> : <FaCheck className='text-green-600 inline' />}
                         </label>
-                        <Input id='username' required autoComplete='off' value={username} ref={userRef} onChange={e => setUsername(e.target.value)} autoFocus />
-                        <InputInfo condition={username.length !== 0 && !validUsername} >
-                            4 to 24 characters. <br />
-                            Must begin with a letter. <br />
-                            Letters, numbers, underscores, hyphens allowed.
-                        </InputInfo>
-
+                        <Input register={register} name='username' id='username' autoComplete='off' autoFocus />
+                        {errors.username && <InputInfo>
+                            {errors.username?.message}
+                        </InputInfo>}
                         <label htmlFor="password" className='mr-auto'>
                             Password: {pwd.length === 0 ? null : validPwd ?
                                 <FaCheck className='text-green-600 inline' /> : <FaTimes className='text-red-600 inline' />}
@@ -90,7 +102,7 @@ export default function SignUpRouter() {
                             Must match the first password input field.
                         </InputInfo>
 
-                        <Button className='m-3' disabled={!validMatch || !validPwd || !validUsername} onClick={e => handleSignUp({ username, password: pwd })}>
+                        <Button className='m-3' disabled={isValid} onClick={ }>
                             Sign Up
                         </Button>
                         <p className='mr-auto'>Already Registered ?</p>

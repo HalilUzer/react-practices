@@ -3,12 +3,11 @@ import { FaInfoCircle } from 'react-icons/fa'
 
 interface Props {
     children: ReactNode
-    condition: boolean
 }
 
-export default function InputInfo({ children, condition }: Props) {
+export default function InputInfo({ children }: Props) {
     return (
-        <p className={condition ? 'rounded-xl bg-black text-white mr-auto text-wrap mt-2 text-sm p-1' : 'hidden'}>
+        <p className={'rounded-xl bg-black text-white mr-auto text-wrap mt-2 text-sm p-1'}>
             {<FaInfoCircle />}
             {children}
         </p>
