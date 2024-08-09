@@ -14,7 +14,7 @@ export default function NewPostRouter() {
             <label htmlFor="title">
                 Title:
             </label>
-            <Input id='title' required onChange={e => setNewPost({ ...newPost, title: e.target.value })} value={newPost.title} />
+            
             <label htmlFor="post">
                 Post:
             </label>

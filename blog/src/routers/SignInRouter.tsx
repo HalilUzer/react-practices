@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import Input from '../components/inputs/Input'
 import Button from '../components/buttons/Button'
 import { useSignIn } from '../hooks/userHooks'
 
@@ -15,9 +14,9 @@ export default function SignInRouter() {
                 <h1 className='font-bold text-4xl'><Link to='/'>Blog</Link></h1>
                 <h2 className='mr-auto font-bold text-lg'>Sign-In</h2>
                 <label htmlFor="username">Username:</label>
-                <Input id='username' required autoComplete='off' value={username} onChange={e => setUsername(e.target.value)} autoFocus />
+                <input id='username' required autoComplete='off' value={username} onChange={e => setUsername(e.target.value)} autoFocus />
                 <label htmlFor="password">Password:</label>
-                <Input id='password' required autoComplete='off' value={password} onChange={e => setPassword(e.target.value)} type='password' />
+                <input id='password' required autoComplete='off' value={password} onChange={e => setPassword(e.target.value)} type='password' />
                 <Button className='m-3' onClick={e => handleSignIn(username, password)}>
                     Sign In
                 </Button>
