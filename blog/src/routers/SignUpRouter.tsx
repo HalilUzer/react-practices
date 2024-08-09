@@ -14,9 +14,11 @@ import axios from '../config/axios.ts';
 
 const schema = z.object({
     username: z.string().min(4).max(24).regex(USER_REGEX),
+    email: z.string().email(),
     password: z.string().min(1).regex(PWD_REGEX),
-    email: z.string().email()
-})
+    passwordConfirmation: z.string().
+    
+}).refine(data => data.password === data.passwordConfirmation, { message: 'Password dont match', path: ['confirmPassword'] })
 
 
 type FormFields = z.infer<typeof schema>
@@ -57,8 +59,6 @@ export default function SignUpRouter() {
     }
 
 
-
-
     return (
         <main className='flex justify-center items-center min-h-[100vh] w-full max-w-[300px] dark:black dark:text-white m-auto'>
             {
@@ -70,29 +70,33 @@ export default function SignUpRouter() {
                         </p>
                     </section>
                     :
-                    <form className='flex flex-col justify-center items-center p-5 bg-light-blue dark:bg-gray-600 w-full text-lg' action="" onSubmit={e => e.preventDefault()}>
+                    <form className='flex flex-col justify-center items-center p-5 bg-light-blue dark:bg-gray-600 w-full text-lg' onSubmit={handleSubmit(onSubmit)}>
                         <h1 className='font-bold text-4xl'><Link to='/'>Blog</Link></h1>
                         <h2 className='mr-auto font-bold text-lg'>Sign-Up</h2>
                         <p ref={errRef}>{errors.root?.message}</p>
+
                         <label htmlFor="username" className='mr-auto'>
-                            Username: {errors.username?.message ?
-                                <FaTimes className='text-red-600 inline' /> : <FaCheck className='text-green-600 inline' />}
+                            Username: {!errors.username ?
+                                <FaCheck className='text-green-600 inline' /> : <FaTimes className='text-red-600 inline' />}
                         </label>
                         <Input register={register} name='username' id='username' autoComplete='off' autoFocus />
                         {errors.username && <InputInfo>
-                            {errors.username?.message}
+                            4 to 24 characters. <br />
+                            Must begin with a letter. <br />
+                            Letters, numbers, underscores, hyphens allowed.
                         </InputInfo>}
+
                         <label htmlFor="password" className='mr-auto'>
-                            Password: {pwd.length === 0 ? null : validPwd ?
+                            Password: {!errors.password ?
                                 <FaCheck className='text-green-600 inline' /> : <FaTimes className='text-red-600 inline' />}
                         </label>
-                        <Input id='password' type='password' required value={pwd} onChange={e => setPwd(e.target.value)} />
-                        <InputInfo condition={pwd.length !== 0 && !validPwd}>
+                        <Input register={register} name='password' id='password' type='password' />
+                        {errors.password && <InputInfo>
                             8 to 24 characters.<br />
                             Must include uppercase and lowercase letters, a number and a special character.<br />
                             Allowed special characters: <PwdAllowedSpecialCharacters />
                         </InputInfo>
-
+                        }
                         <label htmlFor="confirm_pwd" className='mr-auto'>
                             Confirm Password:{matchPwd.length === 0 ? null : validMatch ?
                                 <FaCheck className='text-green-600 inline' /> : <FaTimes className='text-red-600 inline' />}
@@ -102,7 +106,7 @@ export default function SignUpRouter() {
                             Must match the first password input field.
                         </InputInfo>
 
-                        <Button className='m-3' disabled={isValid} onClick={ }>
+                        <Button className='m-3' disabled={isValid} type='submit'>
                             Sign Up
                         </Button>
                         <p className='mr-auto'>Already Registered ?</p>
