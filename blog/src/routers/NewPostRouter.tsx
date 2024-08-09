@@ -19,7 +19,7 @@ export default function NewPostRouter() {
                 Post:
             </label>
             <TextArea id='post' required rows={9} cols={10} onChange={e => setNewPost({ ...newPost, body: e.target.value })} value={newPost.body} />
-            <ClipLoaderButton isDone={isDone} isLoading={isLoading} onClick={e => handlePostSubmit(newPost!)}>
+            <ClipLoaderButton isDone={isDone} isSubmitted={isLoading} onClick={e => handlePostSubmit(newPost!)}>
                 Submit
             </ClipLoaderButton>
         </form>

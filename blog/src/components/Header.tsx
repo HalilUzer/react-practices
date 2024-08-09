@@ -17,7 +17,7 @@ export default function Header() {
             <a href="" onClick={e => { e.preventDefault(); navigate('/') }}>
                 <h1>Blog</h1>
             </a>
-            {isLoggedIn && <p>Welcome {username}!</p>}
+            {isLoggedIn && <p className="text-2xl">Welcome {username}!</p>}
             <div className='flex w-1/3 justify-around items-center'>
                 <ThemeToggleButton />
                 {sizes?.width ? sizes?.width < 768 ? <FaMobileAlt /> :

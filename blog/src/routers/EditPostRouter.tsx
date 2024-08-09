@@ -1,14 +1,26 @@
-import React, { useState } from "react";
-import { useGetPostQuery } from "../features/posts/postApi.ts";
+import React from "react";
+import { useGetPostQuery, useUpdatePostMutation } from "../features/posts/postApi.ts";
 import { useNavigate, useParams } from "react-router-dom";
-import { useEditPost } from "../hooks/postHooks.ts";
+import { zodResolver } from '@hookform/resolvers/zod'
 import Input from "../components/inputs/Input.tsx";
 import TextArea from "../components/inputs/TextArea.tsx";
 import ClipLoaderButton from "../components/buttons/ClipLoaderButton.tsx";
+import z from 'zod';
+import { SubmitHandler, useForm } from "react-hook-form";
+
+
+const schema = z.object({
+    title: z.string(),
+    body: z.string()
+})
+
+type FormFields = z.infer<typeof schema>
+
 
 export default function EditPostRouter() {
     const navigate = useNavigate()
     const { id } = useParams()
+    const [updatePost] = useUpdatePostMutation()
 
     const {
         data: post
@@ -18,17 +30,37 @@ export default function EditPostRouter() {
         navigate('/404')
     }
 
-    const [editedPost, setEditedPost] = useState(post!); 
-    const {editPost, isDone, isLoading} = useEditPost()
- 
+    console.log(post)
+
+    const {
+        register,
+        handleSubmit,
+        setError,
+        formState: { errors, isSubmitted, isLoading }
+    } = useForm<FormFields>({
+        defaultValues: {
+            title: post?.title,
+            body: post?.title
+        },
+        resolver: zodResolver(schema)
+    });
+
+    const onSubmit: SubmitHandler<FormFields> = async (data) => {
+        try {
+            updatePost({ ...post!, ...data })
+            navigate('/')
+        } catch (err) {
+            console.log(err)
+        }
+    }
 
     return (
-        <form className='flex flex-col p-3' action="" onSubmit={e => e.preventDefault()}>
+        <form className='flex flex-col p-3' onSubmit={handleSubmit(onSubmit)}>
             <label htmlFor="title">Title:</label>
-            <Input id="title" required onChange={e => setEditedPost({ ...editedPost, title: e.target.value })} value={editedPost.title} />
+            <Input {...register('title')} id="title" />
             <label htmlFor="post">Post:</label>
-            <TextArea id="post" required rows={9} cols={12} onChange={e => setEditedPost({ ...editedPost, body: e.target.value })} value={editedPost.body} />
-            <ClipLoaderButton isDone={isDone} isLoading={isLoading} onClick={e => editPost(editedPost)}>Submit</ClipLoaderButton>
+            <TextArea {...register('body')} id="post" rows={9} cols={12} />
+            <ClipLoaderButton isDone={isSubmitted} isSubmitted={isLoading}>Save</ClipLoaderButton>
         </form>
     )
 }

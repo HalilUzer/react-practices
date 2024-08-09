@@ -3,7 +3,7 @@ import Button from './buttons/Button';
 import DeleteButton from './buttons/DeleteButton';
 
 
-interface Props {
+interface Props  {
     isModalOpen: boolean,
     setIsModalOpen: Dispatch<SetStateAction<boolean>>,
     handleDelete: (e: MouseEvent<HTMLButtonElement>) => void

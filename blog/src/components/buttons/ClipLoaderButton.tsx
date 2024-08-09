@@ -5,15 +5,15 @@ import { MdOutlineDone } from 'react-icons/md'
 
 interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
     children: ReactNode,
-    isLoading: boolean,
+    isSubmitted: boolean,
     isDone: boolean
 }
 
-export default function ClipLoaderButton({ isLoading, isDone, children, ...props }: Props) {
+export default function ClipLoaderButton({ isSubmitted: isSubmitted, isDone, children, ...props }: Props) {
     return (
         <Button
          {...props} >
-            {isLoading ? <ClipLoader size={25} /> : isDone ?
+            {isSubmitted ? <ClipLoader size={25} /> : isDone ?
                 <MdOutlineDone size={25} /> : children}
         </Button>
     )
