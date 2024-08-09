@@ -54,7 +54,7 @@ export default function EditPostRouter() {
             <label htmlFor="title">Title:</label>
             <Input register={register} name="title" id="title" />
             <label htmlFor="post">Body:</label>
-            <TextArea id="body" rows={9} cols={12} />
+            <TextArea register={register} name="body" id="body" rows={9} cols={12} />
             <ClipLoaderButton isDone={isSubmitted} isSubmitted={isLoading}>Save</ClipLoaderButton>
         </form>
     )
