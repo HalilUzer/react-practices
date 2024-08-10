@@ -1,11 +1,11 @@
 import React, { SetStateAction, Dispatch } from "react";
-import Button from "./buttons/Button.tsx";
-import DeleteButton from "./buttons/DeleteButton.tsx";
 import { MdDelete } from "react-icons/md";
 import { CiSettings } from "react-icons/ci";
 import { useNavigate } from "react-router-dom";
 import { Post as PostType } from "../features/posts/postApi.ts";
 import { useAppSelector } from "../hooks/reduxHooks.ts";
+import Button from "./buttons/Button.tsx";
+import DeleteButton from "./buttons/DeleteButton.tsx";
 
 interface Props {
     post: PostType,

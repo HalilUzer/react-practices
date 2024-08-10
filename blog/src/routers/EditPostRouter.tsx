@@ -2,11 +2,11 @@ import React from "react";
 import { useGetPostQuery, useUpdatePostMutation } from "../features/posts/postApi.ts";
 import { useNavigate, useParams } from "react-router-dom";
 import { zodResolver } from '@hookform/resolvers/zod'
+import { SubmitHandler, useForm } from "react-hook-form";
 import Input from "../components/inputs/Input.tsx";
 import TextArea from "../components/inputs/TextArea.tsx";
 import ClipLoaderButton from "../components/buttons/ClipLoaderButton.tsx";
 import z from 'zod';
-import { SubmitHandler, useForm } from "react-hook-form";
 
 const schema = z.object({
     title: z.string(),

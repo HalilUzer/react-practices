@@ -1,5 +1,5 @@
 import React from "react"
-import type { ReactNode, MouseEventHandler, ButtonHTMLAttributes } from "react"
+import type { ReactNode, ButtonHTMLAttributes } from "react"
 import { twMerge } from "tailwind-merge"
 
 interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {

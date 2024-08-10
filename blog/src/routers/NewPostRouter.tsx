@@ -1,11 +1,11 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useAddPostMutation } from '../features/posts/postApi.ts'
+import { SubmitHandler, useForm } from 'react-hook-form';
+import { z } from 'zod';
+import { zodResolver } from '@hookform/resolvers/zod';
 import Input from '../components/inputs/Input.tsx';
 import TextArea from '../components/inputs/TextArea.tsx';
 import ClipLoaderButton from '../components/buttons/ClipLoaderButton.tsx';
-import { SubmitHandler, useForm } from 'react-hook-form';
-import { date, z } from 'zod';
-import { zodResolver } from '@hookform/resolvers/zod';
 
 const schema = z.object({
     title: z.string(),

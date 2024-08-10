@@ -1,16 +1,15 @@
-import React, { useEffect, useRef, useState, MouseEvent } from 'react'
+import React, { useRef} from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { FaTimes, FaCheck } from "react-icons/fa";
 import { USER_REGEX, PWD_REGEX } from '../config/consts.ts';
-import Input from './../components/inputs/Input.tsx'
-import Button from '../components/buttons/Button.tsx'
-import InputInfo from '../components/InputInfo.tsx';
-import PwdAllowedSpecialCharacters from '../components/PwdAllowedSpecialCharacters.tsx';
-import { useSignUp } from '../hooks/userHooks.ts';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { Role, User } from '../features/user/userSlice.ts';
 import axios from '../config/axios.ts';
+import Input from './../components/inputs/Input.tsx'
+import Button from '../components/buttons/Button.tsx'
+import InputInfo from '../components/InputInfo.tsx';
+import PwdAllowedSpecialCharacters from '../components/PwdAllowedSpecialCharacters.tsx';
 
 const schema = z.object({
     username: z.string().min(4).max(24).regex(USER_REGEX),

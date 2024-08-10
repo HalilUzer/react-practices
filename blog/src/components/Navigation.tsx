@@ -1,7 +1,7 @@
 import React, { Dispatch, SetStateAction } from 'react'
-import SearchBar from './SearchBar.tsx'
 import { Link, useLocation } from 'react-router-dom'
 import { useAppSelector } from '../hooks/reduxHooks.ts'
+import SearchBar from './SearchBar.tsx'
 
 interface Props {
     keyword: string,

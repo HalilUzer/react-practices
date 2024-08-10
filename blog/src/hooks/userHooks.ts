@@ -2,7 +2,7 @@ import axios from "../config/axios";
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch } from "./reduxHooks";
 import { NewUser, Role, setUser, User } from "../features/user/userSlice";
-import { useState, MouseEvent } from "react";
+import { useState } from "react";
 import { PWD_REGEX, USER_REGEX } from "../config/consts";
 
 export function useSignIn() {
