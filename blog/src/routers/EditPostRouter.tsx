@@ -9,8 +9,8 @@ import ClipLoaderButton from "../components/buttons/ClipLoaderButton.tsx";
 import z from 'zod';
 
 const schema = z.object({
-    title: z.string(),
-    body: z.string()
+    title: z.string().min(1, 'Title cant be empty'),
+    body: z.string().min(1, 'Body cant be empty')
 })
 
 type FormFields = z.infer<typeof schema>
@@ -27,15 +27,18 @@ export default function EditPostRouter() {
         navigate('/404')
     }
 
+
+    console.log(post)
+
     const {
         register,
         handleSubmit,
         setError,
-        formState: { errors, isSubmitted, isLoading }
+        formState: { errors, isSubmitted, isLoading, isValid }
     } = useForm<FormFields>({
         defaultValues: {
             title: post?.title,
-            body: post?.title
+            body: post?.body
         },
         resolver: zodResolver(schema)
     });
@@ -55,7 +58,7 @@ export default function EditPostRouter() {
             <Input register={register} name="title" id="title" />
             <label htmlFor="post">Body:</label>
             <TextArea register={register} name="body" id="body" rows={9} cols={12} />
-            <ClipLoaderButton isSubmitted={isSubmitted} isSubmitting={isLoading} type="submit">Save</ClipLoaderButton>
+            <ClipLoaderButton isSubmitted={isSubmitted} isSubmitting={isLoading} disabled={!isValid} type="submit">Save</ClipLoaderButton>
         </form>
     )
 }

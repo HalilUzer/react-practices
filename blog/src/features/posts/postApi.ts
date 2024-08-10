@@ -20,20 +20,23 @@ export const postApi = createApi({
     baseQuery: fetchBaseQuery({
         baseUrl: BASE_URL
     }),
-    tagTypes: ['posts', 'post'],
+    tagTypes: ['posts'],
     endpoints: (builder) => ({
         getPosts: builder.query<Post[], void>({
             query: () => '/posts',
-            providesTags: ['posts']
+            providesTags: (result, error, arg) =>
+                result
+                    ? [...result.map(({ id }) => ({ type: 'posts' as const, id })), 'posts']
+                    : ['posts'],
         }),
 
         getPost: builder.query<Post, number>({
-            query: postId => (
+            query: id => (
                 {
-                    url: `/posts/${postId}`,
+                    url: `/posts/${id}`,
                     method: 'GET',
                 }),
-            providesTags: ['post']
+            providesTags: (result, error, arg) => [{ type: 'posts', id: arg }],
         }),
 
         addPost: builder.mutation<void, NewPost>({
@@ -56,7 +59,7 @@ export const postApi = createApi({
                 method: 'DELETE',
                 body: { id: id.toString() }
             }),
-            invalidatesTags: ['posts']
+            invalidatesTags: (result, error, arg) => [{ type: 'posts', id: arg }],
         }),
 
         updatePost: builder.mutation<void, Post>({
@@ -65,7 +68,7 @@ export const postApi = createApi({
                 method: 'PUT',
                 body: { ...post, datetime: format(new Date(), DATETIME_FORMAT) }
             }),
-            invalidatesTags: ['posts', 'post']
+            invalidatesTags: (result, error, arg) => [{ type: 'posts', id: arg.id }],
         }),
     })
 })
