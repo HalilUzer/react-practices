@@ -15,10 +15,9 @@ import axios from '../config/axios.ts';
 const schema = z.object({
     username: z.string().min(4).max(24).regex(USER_REGEX),
     email: z.string().email(),
-    password: z.string().min(1).regex(PWD_REGEX),
-    passwordConfirmation: z.string().
+    password: z.string().min(8).max(24).regex(PWD_REGEX),
+    passwordConfirmation: z.string()
 }).refine(data => data.password === data.passwordConfirmation, { message: 'Password dont match', path: ['confirmPassword'] })
-
 
 type FormFields = z.infer<typeof schema>
 
@@ -42,10 +41,9 @@ export default function SignUpRouter() {
 
     userRef.current?.focus()
     const onSubmit: SubmitHandler<FormFields> = async (data) => {
-
         try {
             const user: User = {
-                ...data,
+                username: data.username as string,
                 id: Math.ceil(Math.random() * 100).toString(),
                 accessToken: Math.random().toString(36).substring(2, 7),
                 roles: [Role.USER]
@@ -79,31 +77,35 @@ export default function SignUpRouter() {
                                 <FaCheck className='text-green-600 inline' /> : <FaTimes className='text-red-600 inline' />}
                         </label>
                         <Input register={register} name='username' id='username' autoComplete='off' autoFocus />
-                        {errors.username && <InputInfo>
-                            4 to 24 characters. <br />
-                            Must begin with a letter. <br />
-                            Letters, numbers, underscores, hyphens allowed.
-                        </InputInfo>}
+                        {errors.username &&
+                            <InputInfo>
+                                4 to 24 characters. <br />
+                                Must begin with a letter. <br />
+                                Letters, numbers, underscores, hyphens allowed.
+                            </InputInfo>}
 
                         <label htmlFor="password" className='mr-auto'>
                             Password: {!errors.password ?
                                 <FaCheck className='text-green-600 inline' /> : <FaTimes className='text-red-600 inline' />}
                         </label>
                         <Input register={register} name='password' id='password' type='password' />
-                        {errors.password && <InputInfo>
-                            8 to 24 characters.<br />
-                            Must include uppercase and lowercase letters, a number and a special character.<br />
-                            Allowed special characters: <PwdAllowedSpecialCharacters />
-                        </InputInfo>
+                        {errors.password &&
+                            <InputInfo>
+                                8 to 24 characters.<br />
+                                Must include uppercase and lowercase letters, a number and a special character.<br />
+                                Allowed special characters: <PwdAllowedSpecialCharacters />
+                            </InputInfo>
                         }
+
                         <label htmlFor="confirm_pwd" className='mr-auto'>
-                            Confirm Password:{matchPwd.length === 0 ? null : validMatch ?
+                            Confirm Password:{!errors.passwordConfirmation ?
                                 <FaCheck className='text-green-600 inline' /> : <FaTimes className='text-red-600 inline' />}
                         </label>
-                        <Input id='confirm_pwd' type='password' required value={matchPwd} onChange={e => setMatchPwd(e.target.value)} />
-                        <InputInfo condition={matchFocus && !validMatch}>
-                            Must match the first password input field.
-                        </InputInfo>
+                        <Input register={register} id='confirm_pwd' type='password' name='passwordConfirmation' />
+                        {errors.passwordConfirmation &&
+                            <InputInfo>
+                                Must match the first password input field.
+                            </InputInfo>}
 
                         <Button className='m-3' disabled={isValid} type='submit'>
                             Sign Up
