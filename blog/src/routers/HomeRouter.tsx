@@ -14,13 +14,15 @@ export default function HomeRouter() {
     } = useGetPostsQuery()
 
     const keyword = useOutletContext<string>();
-    const filterPosts = useCallback((posts: Post[]) => posts.filter(post => keyword === '' ? true : post.body.toLowerCase().includes(keyword.toLowerCase())), [keyword, posts])
+    const filterPosts = useCallback((posts: Post[]) => posts.filter(post => keyword === '' ? true :
+        post.body.toLowerCase().includes(keyword.toLowerCase())), [keyword, posts])
 
     return (
         error ? (
             <RetryForm refetch={refetch} />
         ) :
             isLoading ? (<p className='p-8'>Loading...</p>) :
-                posts ? (posts.length === 0 ? <p className='p-8'>No posts to display</p> : filterPosts(posts).map(post => <HomePagePost key={post.id} post={post} />)) : null
+                posts ? (posts.length === 0 ? <p className='p-8'>No posts to display</p> :
+                    filterPosts(posts).map(post => <HomePagePost key={post.id} post={post} />)) : null
     )
 }

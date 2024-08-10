@@ -55,7 +55,6 @@ export default function SignUpRouter() {
         }
     }
 
-
     return (
         <main className='flex justify-center items-center min-h-[100vh] w-full max-w-[300px] dark:black dark:text-white m-auto'>
             {

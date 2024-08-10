@@ -11,8 +11,6 @@ export default function PostRouter() {
     const navigate = useNavigate()
     const { id } = useParams()
 
-    console.log(id)
-
     if (!id) {
         navigate('/404')
     }

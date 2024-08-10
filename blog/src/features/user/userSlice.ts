@@ -1,5 +1,4 @@
-import { createAsyncThunk, createSlice, PayloadAction, SerializedError } from "@reduxjs/toolkit";
-import axios from "../../config/axios";
+import {  createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 
 export enum Role {

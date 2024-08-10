@@ -52,7 +52,7 @@ export default function NewPostRouter() {
                 Body:
             </label>
             <TextArea register={register} id='body' name='body' rows={9} cols={10} />
-            <ClipLoaderButton isSubmitting={isSubmitting} isSubmitted={isSubmitted}>
+            <ClipLoaderButton isSubmitting={isSubmitting} isSubmitted={isSubmitted} type='submit'>
                 Submit
             </ClipLoaderButton>
         </form>
