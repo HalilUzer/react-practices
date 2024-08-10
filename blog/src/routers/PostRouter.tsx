@@ -11,11 +11,12 @@ export default function PostRouter() {
     const navigate = useNavigate()
     const { id } = useParams()
 
+
     if (!id) {
         navigate('/404')
     }
 
-    const handlePostDelete = usePostDelete(isModalOpen, setIsModalOpen, id!)
+
     const {
         data: post,
         isLoading,
@@ -30,7 +31,7 @@ export default function PostRouter() {
                 : post ?
                     <>
                         <Post post={post} setIsModalOpen={setIsModalOpen} />
-                        <DeletePostModal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} handleDelete={handlePostDelete} />
+                        <DeletePostModal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} postId={id!} />
                     </>
                     : <p> We couldnt find your post </p>
 
