@@ -48,6 +48,7 @@ export const postApi = createApi({
                     body: post.body,
                     id: Math.ceil(Math.random() * 100).toString(),
                     datetime: format(new Date(), DATETIME_FORMAT),
+                
                 }
             }),
             invalidatesTags: ['posts']

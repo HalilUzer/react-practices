@@ -24,7 +24,6 @@ export default function PostRouter() {
 
     const handleDelete = usePostDelete(isModalOpen, setIsModalOpen, id!)
 
-
     return (
         error ? <RetryForm refetch={refetch} />
             : isLoading ? <p>Loading...</p>

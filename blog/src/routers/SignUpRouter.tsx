@@ -1,4 +1,4 @@
-import React, { useRef} from 'react'
+import React, { useRef } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { FaTimes, FaCheck } from "react-icons/fa";
 import { USER_REGEX, PWD_REGEX } from '../config/consts.ts';
@@ -8,12 +8,12 @@ import { Role, User } from '../features/user/userSlice.ts';
 import axios from '../config/axios.ts';
 import Input from './../components/inputs/Input.tsx'
 import Button from '../components/buttons/Button.tsx'
-import InputInfo from '../components/InputInfo.tsx';
-import PwdAllowedSpecialCharacters from '../components/PwdAllowedSpecialCharacters.tsx';
+import ErrorParagraph from '../components/ErrorParagraph.tsx';
+import ClipLoaderButton from '../components/buttons/ClipLoaderButton.tsx';
 
 const schema = z.object({
     username: z.string().min(4).max(24).regex(USER_REGEX),
-    email: z.string().email(),
+    email: z.string().min(1).email(),
     password: z.string().min(8).max(24).regex(PWD_REGEX),
     passwordConfirmation: z.string()
 }).refine(data => data.password === data.passwordConfirmation, { message: 'Password dont match', path: ['confirmPassword'] })
@@ -28,7 +28,7 @@ export default function SignUpRouter() {
     const {
         register,
         handleSubmit,
-        formState: { errors, isSubmitted, isValid }
+        formState: { errors, isSubmitSuccessful, isValid, isSubmitting }
     } = useForm<FormFields>(
         {
             defaultValues: {
@@ -57,7 +57,7 @@ export default function SignUpRouter() {
     return (
         <main className='flex justify-center items-center min-h-[100vh] w-full max-w-[300px] dark:black dark:text-white m-auto'>
             {
-                isSubmitted ?
+                isSubmitSuccessful ?
                     <section className='flex flex-col justify-center items-center bg-light-blue w-32 h-32'>
                         <h1>Success!</h1>
                         <p>
@@ -75,39 +75,24 @@ export default function SignUpRouter() {
                                 <FaCheck className='text-green-600 inline' /> : <FaTimes className='text-red-600 inline' />}
                         </label>
                         <Input register={register} name='username' id='username' autoComplete='off' autoFocus />
-                        {errors.username &&
-                            <InputInfo>
-                                4 to 24 characters. <br />
-                                Must begin with a letter. <br />
-                                Letters, numbers, underscores, hyphens allowed.
-                            </InputInfo>}
+                        {errors.username && <ErrorParagraph>{errors.username.message}</ErrorParagraph>}
 
                         <label htmlFor="password" className='mr-auto'>
                             Password: {!errors.password ?
                                 <FaCheck className='text-green-600 inline' /> : <FaTimes className='text-red-600 inline' />}
                         </label>
                         <Input register={register} name='password' id='password' type='password' />
-                        {errors.password &&
-                            <InputInfo>
-                                8 to 24 characters.<br />
-                                Must include uppercase and lowercase letters, a number and a special character.<br />
-                                Allowed special characters: <PwdAllowedSpecialCharacters />
-                            </InputInfo>
-                        }
+                        {errors.password && <ErrorParagraph>{errors.password.message}</ErrorParagraph>}
 
                         <label htmlFor="confirm_pwd" className='mr-auto'>
                             Confirm Password:{!errors.passwordConfirmation ?
                                 <FaCheck className='text-green-600 inline' /> : <FaTimes className='text-red-600 inline' />}
                         </label>
                         <Input register={register} id='confirm_pwd' type='password' name='passwordConfirmation' />
-                        {errors.passwordConfirmation &&
-                            <InputInfo>
-                                Must match the first password input field.
-                            </InputInfo>}
-
-                        <Button className='m-3' disabled={isValid} type='submit'>
+                        {errors.passwordConfirmation && <ErrorParagraph>{errors.passwordConfirmation.message}</ErrorParagraph>}
+                        <ClipLoaderButton className='m-3' disabled={isValid} isSubmitted={isSubmitSuccessful} isSubmitting={isSubmitting} type='submit'>
                             Sign Up
-                        </Button>
+                        </ClipLoaderButton>
                         <p className='mr-auto'>Already Registered ?</p>
                         <Link to={'/'} className='underline mr-auto'>Sign-In</Link>
                     </form>

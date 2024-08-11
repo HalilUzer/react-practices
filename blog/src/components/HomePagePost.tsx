@@ -6,9 +6,8 @@ interface Props {
     post: Post
 }
 
-export default function HomePagePost({ post } : Props) {
+export default function HomePagePost({ post }: Props) {
     const navigate = useNavigate();
-    console.log(post)
 
     return (
         <article className='pt-8 px-4 pb-8 py-4 cursor-pointer border-b-gray-500 border-b-2' onClick={e => navigate(`/post/${post.id}`)}>
