@@ -57,7 +57,7 @@ export default function EditPostRouter() {
             <label htmlFor="post">Body:</label>
             <TextArea register={register} name="body" id="body" rows={9} cols={12} />
             {errors.body && <ErrorParagraph>{errors.body.message}</ErrorParagraph>}
-            <ClipLoaderButton isSubmitted={isSubmitSuccessful} isSubmitting={isSubmitting} disabled={disabled} type="submit">Save</ClipLoaderButton>
+            <ClipLoaderButton isSubmitted={isSubmitSuccessful} isSubmitting={isSubmitting} disabled={disabled} type="submit" className="mt-2">Save</ClipLoaderButton>
             {errors.root && <ErrorParagraph>{errors.root.message}</ErrorParagraph>}
         </form>
     )
