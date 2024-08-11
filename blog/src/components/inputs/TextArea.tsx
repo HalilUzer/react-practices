@@ -12,6 +12,6 @@ export default function TextArea<T extends FieldValues>({ register, name, classN
         <textarea
             {...(register ? register(name) : {})}
             {...props}
-            className={twMerge('border border-black border-solid rounded-lg mb-3 dark:bg-dark-blue p-1', className)} />
+            className={twMerge('border border-black border-solid rounded-lg dark:bg-dark-blue p-1', className)} />
     )
 }

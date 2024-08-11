@@ -7,7 +7,7 @@ import Input from "../components/inputs/Input.tsx";
 import TextArea from "../components/inputs/TextArea.tsx";
 import ClipLoaderButton from "../components/buttons/ClipLoaderButton.tsx";
 import z from 'zod';
-
+import ErrorParagraph from "../components/ErrorParagraph.tsx";
 const schema = z.object({
     title: z.string().min(1, 'Title cant be empty'),
     body: z.string().min(1, 'Body cant be empty')
@@ -27,14 +27,11 @@ export default function EditPostRouter() {
         navigate('/404')
     }
 
-
-    console.log(post)
-
     const {
         register,
         handleSubmit,
         setError,
-        formState: { errors, isSubmitted, isLoading, isValid }
+        formState: { errors, isSubmitting, disabled, isSubmitSuccessful }
     } = useForm<FormFields>({
         defaultValues: {
             title: post?.title,
@@ -56,9 +53,12 @@ export default function EditPostRouter() {
         <form className='flex flex-col p-3' onSubmit={handleSubmit(onSubmit)}>
             <label htmlFor="title">Title:</label>
             <Input register={register} name="title" id="title" />
+            {errors.title && <ErrorParagraph>{errors.title.message}</ErrorParagraph>}
             <label htmlFor="post">Body:</label>
             <TextArea register={register} name="body" id="body" rows={9} cols={12} />
-            <ClipLoaderButton isSubmitted={isSubmitted} isSubmitting={isLoading} disabled={!isValid} type="submit">Save</ClipLoaderButton>
+            {errors.body && <ErrorParagraph>{errors.body.message}</ErrorParagraph>}
+            <ClipLoaderButton isSubmitted={isSubmitSuccessful} isSubmitting={isSubmitting} disabled={disabled} type="submit">Save</ClipLoaderButton>
+            {errors.root && <ErrorParagraph>{errors.root.message}</ErrorParagraph>}
         </form>
     )
 }
